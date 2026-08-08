@@ -1,0 +1,753 @@
+/* ==========================================================================
+   NEXORA — Modern SaaS Social Media Platform Design System
+   Visual Style: Glassmorphism + Soft Gradients + Motion + Minimalism
+   ========================================================================== */
+
+:root {
+    --primary: #4f46e5;
+    --primary-hover: #4338ca;
+    --secondary: #7c3aed;
+    --secondary-hover: #6d28d9;
+    --accent: #06b6d4;
+    --accent-hover: #0891b2;
+    --bg-main: #f8fafc;
+    --surface: rgba(255, 255, 255, 0.72);
+    --surface-solid: #ffffff;
+    --surface-hover: rgba(241, 245, 249, 0.8);
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+    --border-glass: rgba(255, 255, 255, 0.6);
+    --border-subtle: rgba(226, 232, 240, 0.8);
+    --glass-shadow: 0 10px 30px -5px rgba(31, 38, 135, 0.08);
+    --glass-shadow-hover: 0 20px 40px -10px rgba(79, 70, 229, 0.18);
+    --gradient-primary: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #06b6d4 100%);
+    --gradient-text: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #06b6d4 100%);
+    --gradient-card: linear-gradient(135deg, rgba(255,255,255,0.8), rgba(255,255,255,0.5));
+    --radius-sm: 10px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    --radius-full: 9999px;
+    --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-theme="dark"] {
+    --primary: #6366f1;
+    --primary-hover: #4f46e5;
+    --secondary: #8b5cf6;
+    --secondary-hover: #7c3aed;
+    --accent: #22d3ee;
+    --accent-hover: #06b6d4;
+    --bg-main: #0b0f19;
+    --surface: rgba(18, 24, 38, 0.75);
+    --surface-solid: #1e293b;
+    --surface-hover: rgba(30, 41, 59, 0.8);
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --border-glass: rgba(255, 255, 255, 0.12);
+    --border-subtle: rgba(51, 65, 85, 0.8);
+    --glass-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.4);
+    --glass-shadow-hover: 0 20px 40px -10px rgba(99, 102, 241, 0.25);
+    --gradient-card: linear-gradient(135deg, rgba(30,41,59,0.8), rgba(15,23,42,0.5));
+}
+
+/* ==========================================================================
+   Global Reset & Animated Background
+   ========================================================================== */
+body {
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    transition: background-color 0.4s ease, color 0.4s ease;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+}
+
+/* Floating Gradient Background Blobs */
+.bg-blob-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.bg-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(90px);
+    opacity: 0.28;
+    animation: floatBlob 14s ease-in-out infinite alternate;
+}
+
+.bg-blob-1 {
+    top: -10%;
+    left: 20%;
+    width: 450px;
+    height: 450px;
+    background: radial-gradient(circle, #4f46e5 0%, #7c3aed 100%);
+}
+
+.bg-blob-2 {
+    bottom: 10%;
+    right: 15%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, #06b6d4 0%, #4f46e5 100%);
+    animation-delay: -5s;
+}
+
+.bg-blob-3 {
+    top: 45%;
+    left: -10%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, #ec4899 0%, #7c3aed 100%);
+    animation-delay: -9s;
+}
+
+@keyframes floatBlob {
+    0% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(60px, 40px) scale(1.1); }
+    100% { transform: translate(-40px, 80px) scale(0.95); }
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: rgba(148, 163, 184, 0.4);
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary);
+}
+
+/* ==========================================================================
+   Glassmorphism System
+   ========================================================================== */
+.glass-card {
+    background: var(--surface);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid var(--border-glass);
+    box-shadow: var(--glass-shadow);
+    border-radius: var(--radius-md);
+    transition: var(--transition);
+}
+
+.glass-card-hover:hover {
+    transform: translateY(-4px) scale(1.008);
+    box-shadow: var(--glass-shadow-hover);
+    border-color: rgba(99, 102, 241, 0.4);
+}
+
+/* Gradient Text */
+.gradient-text {
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* ==========================================================================
+   1. Floating Navbar
+   ========================================================================== */
+.navbar-nexora {
+    position: fixed;
+    top: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 95%;
+    max-width: 1320px;
+    height: 64px;
+    background: var(--surface);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-full);
+    box-shadow: var(--glass-shadow);
+    z-index: 1050;
+    transition: var(--transition);
+    padding: 0 20px;
+}
+
+.navbar-nexora.navbar-scrolled {
+    height: 56px;
+    top: 8px;
+    box-shadow: var(--glass-shadow-hover);
+}
+
+.brand-logo {
+    font-size: 1.4rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    color: var(--text-main);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.search-nexora {
+    position: relative;
+    width: 260px;
+}
+
+.search-nexora input {
+    width: 100%;
+    height: 38px;
+    padding: 0 16px 0 38px;
+    background: rgba(148, 163, 184, 0.12);
+    border: 1px solid transparent;
+    border-radius: var(--radius-full);
+    color: var(--text-main);
+    font-size: 0.875rem;
+    transition: var(--transition);
+}
+
+.search-nexora input:focus {
+    outline: none;
+    background: var(--surface-solid);
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+}
+
+.search-nexora i {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.nav-tab-nexora {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    font-size: 1.15rem;
+    border: none;
+    background: transparent;
+    transition: var(--transition);
+    position: relative;
+}
+
+.nav-tab-nexora:hover {
+    color: var(--primary);
+    background: var(--surface-hover);
+    transform: translateY(-2px);
+}
+
+.nav-tab-nexora.active {
+    color: #ffffff;
+    background: var(--gradient-primary);
+    box-shadow: 0 6px 16px rgba(79, 70, 229, 0.35);
+}
+
+.badge-counter-nexora {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    background: #ef4444;
+    color: #ffffff;
+    font-size: 0.7rem;
+    font-weight: 700;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--surface-solid);
+}
+
+/* User Avatar Dropdown Button */
+.user-avatar-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+    border: 2px solid var(--primary);
+    transition: var(--transition);
+}
+
+.user-avatar-btn:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.2);
+}
+
+/* ==========================================================================
+   2. Profile Sidebar Card
+   ========================================================================== */
+.profile-card-header {
+    text-align: center;
+    padding: 24px 16px 16px;
+    position: relative;
+}
+
+.avatar-wrapper-ring {
+    position: relative;
+    width: 84px;
+    height: 84px;
+    margin: 0 auto 12px;
+    border-radius: 50%;
+    padding: 3px;
+    background: var(--gradient-primary);
+    animation: rotateGlow 8s linear infinite;
+}
+
+@keyframes rotateGlow {
+    0% { filter: hue-rotate(0deg); }
+    100% { filter: hue-rotate(360deg); }
+}
+
+.avatar-wrapper-ring img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--surface-solid);
+}
+
+.sidebar-menu-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 16px;
+    color: var(--text-main);
+    text-decoration: none;
+    border-radius: var(--radius-sm);
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: var(--transition);
+}
+
+.sidebar-menu-item:hover {
+    background: var(--surface-hover);
+    color: var(--primary);
+    transform: translateX(4px);
+}
+
+.sidebar-icon-box {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    background: rgba(79, 70, 229, 0.1);
+    color: var(--primary);
+    transition: var(--transition);
+}
+
+.sidebar-menu-item:hover .sidebar-icon-box {
+    background: var(--gradient-primary);
+    color: #ffffff;
+    transform: scale(1.1);
+}
+
+/* ==========================================================================
+   3. Stories Section
+   ========================================================================== */
+.stories-scroll-box {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    scroll-behavior: smooth;
+}
+
+.stories-scroll-box::-webkit-scrollbar {
+    height: 4px;
+}
+
+.story-card-nexora {
+    position: relative;
+    width: 110px;
+    height: 170px;
+    flex-shrink: 0;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    cursor: pointer;
+    background-size: cover;
+    background-position: center;
+    box-shadow: var(--glass-shadow);
+    transition: var(--transition);
+    border: 1px solid var(--border-glass);
+}
+
+.story-card-nexora:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: var(--glass-shadow-hover);
+}
+
+.story-card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.75) 100%);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.story-avatar-ring {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    padding: 2px;
+    background: var(--gradient-primary);
+}
+
+.story-avatar-ring img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid #ffffff;
+}
+
+.story-card-add {
+    background: var(--surface-solid);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed rgba(79, 70, 229, 0.3);
+}
+
+.add-story-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--gradient-primary);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+    transition: var(--transition);
+}
+
+.story-card-add:hover .add-story-icon {
+    transform: scale(1.15) rotate(90deg);
+}
+
+/* ==========================================================================
+   4. Create Post Card & Feed Cards
+   ========================================================================== */
+.create-post-input-box {
+    background: var(--surface-hover);
+    border-radius: var(--radius-full);
+    padding: 10px 18px;
+    cursor: pointer;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    transition: var(--transition);
+    border: 1px solid transparent;
+}
+
+.create-post-input-box:hover {
+    background: var(--surface-solid);
+    border-color: var(--primary);
+    color: var(--text-main);
+}
+
+.action-post-pill {
+    background: transparent;
+    border: none;
+    padding: 8px 14px;
+    border-radius: var(--radius-full);
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: var(--transition);
+}
+
+.action-post-pill:hover {
+    background: var(--surface-hover);
+    color: var(--text-main);
+    transform: translateY(-2px);
+}
+
+/* Post Entrance Reveal Animation */
+.post-card-nexora {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.post-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.post-reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.post-media-box {
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    margin: 12px 0;
+    position: relative;
+}
+
+.post-media-box img {
+    width: 100%;
+    max-height: 480px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.post-media-box:hover img {
+    transform: scale(1.02);
+}
+
+/* Like Particle Effect */
+.btn-like-nexora {
+    position: relative;
+    overflow: visible;
+}
+
+.particle-burst {
+    position: absolute;
+    pointer-events: none;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    animation: particleBurst 0.6s ease-out forwards;
+}
+
+@keyframes particleBurst {
+    0% { opacity: 1; transform: translate(0, 0) scale(1); }
+    100% { opacity: 0; transform: translate(var(--tx), var(--ty)) scale(0.2); }
+}
+
+.heart-pop {
+    animation: heartPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes heartPop {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.4); }
+    100% { transform: scale(1); }
+}
+
+/* Comments Section */
+.comment-bubble-nexora {
+    background: var(--surface-hover);
+    border-radius: 14px;
+    padding: 10px 14px;
+    font-size: 0.875rem;
+}
+
+/* ==========================================================================
+   5. Floating Messenger Widget
+   ========================================================================== */
+.messenger-floating-panel {
+    position: fixed;
+    bottom: 90px;
+    right: 24px;
+    width: 350px;
+    height: 480px;
+    background: var(--surface);
+    backdrop-filter: blur(28px);
+    -webkit-backdrop-filter: blur(28px);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+    z-index: 1060;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.messenger-header-nexora {
+    padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid var(--border-glass);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.messenger-body-nexora {
+    flex: 1;
+    padding: 14px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.chat-bubble-nexora {
+    max-width: 80%;
+    padding: 9px 14px;
+    border-radius: 16px;
+    font-size: 0.875rem;
+    line-height: 1.4;
+    word-break: break-word;
+}
+
+.chat-bubble-nexora.received {
+    background: var(--surface-solid);
+    color: var(--text-main);
+    align-self: flex-start;
+    border-bottom-left-radius: 4px;
+    box-shadow: var(--glass-shadow);
+}
+
+.chat-bubble-nexora.sent {
+    background: var(--gradient-primary);
+    color: #ffffff;
+    align-self: flex-end;
+    border-bottom-right-radius: 4px;
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);
+}
+
+.messenger-footer-nexora {
+    padding: 10px 14px;
+    background: rgba(255, 255, 255, 0.2);
+    border-top: 1px solid var(--border-glass);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.messenger-footer-nexora input {
+    flex: 1;
+    height: 36px;
+    border-radius: var(--radius-full);
+    border: 1px solid var(--border-subtle);
+    padding: 0 14px;
+    background: var(--surface-solid);
+    color: var(--text-main);
+    font-size: 0.85rem;
+}
+
+/* ==========================================================================
+   6. Mobile Bottom Navigation Bar (< 768px)
+   ========================================================================== */
+.mobile-bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    height: 64px;
+    background: var(--surface);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border-top: 1px solid var(--border-glass);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    z-index: 1050;
+    box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.mobile-nav-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.mobile-nav-btn.active {
+    color: var(--primary);
+}
+
+.mobile-nav-btn i {
+    font-size: 1.2rem;
+}
+
+/* Toast Container Custom */
+.toast-container-nexora {
+    position: fixed;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1090;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    pointer-events: none;
+}
+
+.toast-nexora {
+    pointer-events: auto;
+    background: var(--surface-solid);
+    color: var(--text-main);
+    padding: 10px 20px;
+    border-radius: var(--radius-full);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    border: 1px solid var(--primary);
+    font-weight: 600;
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    animation: toastSlideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes toastSlideIn {
+    from { opacity: 0; transform: translateY(20px) scale(0.9); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ==========================================================================
+   7. Media Queries (Mobile & Tablet Responsiveness)
+   ========================================================================== */
+@media (max-width: 991.98px) {
+    .search-nexora {
+        width: 180px;
+    }
+}
+
+@media (max-width: 767.98px) {
+    body {
+        padding-top: 70px;
+        padding-bottom: 80px;
+    }
+    .navbar-nexora {
+        width: 100%;
+        border-radius: 0;
+        top: 0;
+    }
+    .messenger-floating-panel {
+        bottom: 74px;
+        right: 12px;
+        left: 12px;
+        width: auto;
+    }
+}

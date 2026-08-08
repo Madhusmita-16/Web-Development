@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="NEXORA — Next-Generation Modern SaaS Social Media Platform built with HTML5, CSS3, JavaScript, and Bootstrap 5.">
+    <title>NEXORA — Next-Gen Social Media Platform</title>
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome 6 Pro / Free Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- ==========================================================================
+         Floating Background Gradient Blobs
+         ========================================================================== -->
+    <div class="bg-blob-container">
+        <div class="bg-blob bg-blob-1"></div>
+        <div class="bg-blob bg-blob-2"></div>
+        <div class="bg-blob bg-blob-3"></div>
+    </div>
+
+    <!-- ==========================================================================
+         1. Floating Glass Navbar
+         ========================================================================== -->
+    <nav class="navbar-nexora d-flex align-items-center justify-content-between" id="mainNavbar">
+        
+        <!-- Left Brand & Search -->
+        <div class="d-flex align-items-center gap-3">
+            <button class="btn border-0 text-secondary d-lg-none p-1 fs-5" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSidebar">
+                <i class="fa-solid fa-bars-staggered"></i>
+            </button>
+            <a href="#" class="brand-logo">
+                <i class="fa-solid fa-bolt-lightning text-primary fs-3"></i>
+                <span class="gradient-text">NEXORA</span>
+            </a>
+            <div class="search-nexora d-none d-md-block">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="searchInput" placeholder="Search NEXORA..." autocomplete="off">
+            </div>
+        </div>
+
+        <!-- Center Nav Tabs (Desktop) -->
+        <div class="d-none d-md-flex align-items-center gap-2">
+            <button class="nav-tab-nexora active" id="tabHome" data-bs-toggle="tooltip" title="Home Feed">
+                <i class="fa-solid fa-house"></i>
+            </button>
+            <button class="nav-tab-nexora" id="tabFriends" data-bs-toggle="modal" data-bs-target="#allRequestsModal" title="Friends">
+                <i class="fa-solid fa-user-group"></i>
+            </button>
+            <button class="nav-tab-nexora" id="tabGroups" data-bs-toggle="modal" data-bs-target="#groupsModal" title="Groups">
+                <i class="fa-solid fa-users"></i>
+            </button>
+            <button class="nav-tab-nexora" id="tabVideos" data-bs-toggle="modal" data-bs-target="#videosModal" title="Watch Videos">
+                <i class="fa-solid fa-tv"></i>
+            </button>
+            <button class="nav-tab-nexora" id="tabMarketplace" data-bs-toggle="modal" data-bs-target="#marketplaceModal" title="Marketplace">
+                <i class="fa-solid fa-store"></i>
+            </button>
+        </div>
+
+        <!-- Right Controls & User Profile -->
+        <div class="d-flex align-items-center gap-2">
+            <!-- Theme Switcher -->
+            <button class="nav-tab-nexora" id="themeToggleBtn" data-bs-toggle="tooltip" title="Toggle Theme">
+                <i class="fa-solid fa-moon text-warning" id="themeIcon"></i>
+            </button>
+
+            <!-- Notifications Dropdown -->
+            <div class="dropdown">
+                <button class="nav-tab-nexora" id="notifDropdown" data-bs-toggle="dropdown" aria-expanded="false" title="Notifications">
+                    <i class="fa-solid fa-bell"></i>
+                    <span class="badge-counter-nexora" id="notifCountBadge">3</span>
+                </button>
+                <div class="dropdown-menu dropdown-menu-end shadow-lg p-2 rounded-4 border-0 glass-card" style="width: 320px;">
+                    <div class="d-flex justify-content-between align-items-center px-2 py-1 mb-2">
+                        <h6 class="fw-bold mb-0">Notifications</h6>
+                        <button class="btn btn-link btn-sm p-0 text-decoration-none" id="markAllReadBtn">Mark read</button>
+                    </div>
+                    <div class="list-group list-group-flush" id="notifList">
+                        <a href="#" class="dropdown-item d-flex align-items-center gap-3 py-2 rounded-3 unread">
+                            <span class="badge bg-danger rounded-circle p-2"><i class="fa-solid fa-heart"></i></span>
+                            <div>
+                                <p class="mb-0 small"><strong>Sarah Williams</strong> liked your post.</p>
+                                <small class="text-muted">5 min ago</small>
+                            </div>
+                        </a>
+                        <a href="#" class="dropdown-item d-flex align-items-center gap-3 py-2 rounded-3 unread">
+                            <span class="badge bg-primary rounded-circle p-2"><i class="fa-solid fa-comment"></i></span>
+                            <div>
+                                <p class="mb-0 small"><strong>Rahul Sharma</strong> commented on your photo.</p>
+                                <small class="text-muted">1 hr ago</small>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Floating Messenger Toggle -->
+            <button class="nav-tab-nexora" id="toggleMessengerBtn" title="Messenger">
+                <i class="fa-solid fa-paper-plane text-primary"></i>
+            </button>
+
+            <!-- User Avatar & Profile Modal -->
+            <img src="images/avatars/user.jpg" alt="Madhu Smita" class="user-avatar-btn" id="openProfileBtn" data-bs-toggle="modal" data-bs-target="#profileModal">
+        </div>
+
+    </nav>
+
+    <!-- ==========================================================================
+         2. Main 3-Column Responsive Grid Layout
+         ========================================================================== -->
+    <div class="container-fluid px-lg-4">
+        <div class="row g-4">
+
+            <!-- ------------------------------------------------------------------
+                 LEFT SIDEBAR COLUMN (Desktop 25%)
+                 ------------------------------------------------------------------ -->
+            <aside class="col-lg-3 d-none d-lg-block">
+                <div class="sticky-top" style="top: 96px;">
+                    
+                    <!-- Glass Profile Card -->
+                    <div class="glass-card profile-card-header mb-4 glass-card-hover">
+                        <div class="avatar-wrapper-ring">
+                            <img src="images/avatars/user.jpg" alt="Madhu Smita">
+                        </div>
+                        <h5 class="fw-bold mb-0">Madhu Smita Mishra</h5>
+                        <p class="text-muted small fw-semibold mb-2">Full Stack Engineer</p>
+                        
+                        <div class="d-flex justify-content-center gap-4 py-2 border-top border-bottom my-3 border-subtle">
+                            <div>
+                                <h6 class="fw-bold mb-0">1.2K</h6>
+                                <small class="text-muted" style="font-size:0.75rem;">Friends</small>
+                            </div>
+                            <div class="border-start ps-4">
+                                <h6 class="fw-bold mb-0">245</h6>
+                                <small class="text-muted" style="font-size:0.75rem;">Following</small>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-primary btn-sm w-100 rounded-pill fw-bold shadow-sm" data-bs-toggle="modal" data-bs-target="#profileModal">
+                            <i class="fa-solid fa-user me-1"></i> View Profile
+                        </button>
+                    </div>
+
+                    <!-- Navigation Links -->
+                    <div class="glass-card p-2">
+                        <a href="#" class="sidebar-menu-item active">
+                            <div class="sidebar-icon-box"><i class="fa-solid fa-house"></i></div>
+                            <span>Home Feed</span>
+                        </a>
+                        <a href="#" class="sidebar-menu-item" data-bs-toggle="modal" data-bs-target="#allRequestsModal">
+                            <div class="sidebar-icon-box" style="color:#ec4899; background:rgba(236,72,153,0.1);"><i class="fa-solid fa-user-group"></i></div>
+                            <span>Friends</span>
+                        </a>
+                        <a href="#" class="sidebar-menu-item" data-bs-toggle="modal" data-bs-target="#memoriesModal">
+                            <div class="sidebar-icon-box" style="color:#06b6d4; background:rgba(6,182,212,0.1);"><i class="fa-solid fa-clock-rotate-left"></i></div>
+                            <span>Memories</span>
+                        </a>
+                        <a href="#" class="sidebar-menu-item" data-bs-toggle="modal" data-bs-target="#savedModal">
+                            <div class="sidebar-icon-box" style="color:#f59e0b; background:rgba(245,158,11,0.1);"><i class="fa-solid fa-bookmark"></i></div>
+                            <span>Saved Items</span>
+                        </a>
+                        <a href="#" class="sidebar-menu-item" data-bs-toggle="modal" data-bs-target="#groupsModal">
+                            <div class="sidebar-icon-box" style="color:#10b981; background:rgba(16,185,129,0.1);"><i class="fa-solid fa-users"></i></div>
+                            <span>Groups</span>
+                        </a>
+                        <a href="#" class="sidebar-menu-item" data-bs-toggle="modal" data-bs-target="#eventsModal">
+                            <div class="sidebar-icon-box" style="color:#ef4444; background:rgba(239,68,68,0.1);"><i class="fa-solid fa-calendar-days"></i></div>
+                            <span>Events</span>
+                        </a>
+                        <a href="#" class="sidebar-menu-item" data-bs-toggle="modal" data-bs-target="#marketplaceModal">
+                            <div class="sidebar-icon-box" style="color:#8b5cf6; background:rgba(139,92,246,0.1);"><i class="fa-solid fa-store"></i></div>
+                            <span>Marketplace</span>
+                        </a>
+                        <a href="#" class="sidebar-menu-item" data-bs-toggle="modal" data-bs-target="#settingsModal">
+                            <div class="sidebar-icon-box" style="color:#64748b; background:rgba(100,116,139,0.1);"><i class="fa-solid fa-gear"></i></div>
+                            <span>Settings & Privacy</span>
+                        </a>
+                    </div>
+
+                </div>
+            </aside>
+
+            <!-- ------------------------------------------------------------------
+                 CENTER FEED COLUMN (Desktop 50%, Tablet/Mobile 100%)
+                 ------------------------------------------------------------------ -->
+            <main class="col-lg-6 col-md-12">
+                <div class="mx-auto" style="max-width: 680px;">
+
+                    <!-- Stories Horizontal Section -->
+                    <div class="glass-card p-3 mb-4">
+                        <div class="stories-scroll-box">
+                            <!-- Add Story Card -->
+                            <div class="story-card-nexora story-card-add" data-bs-toggle="modal" data-bs-target="#createPostModal">
+                                <div class="add-story-icon mb-2"><i class="fa-solid fa-plus"></i></div>
+                                <span class="fw-bold small text-primary text-center">Add Story</span>
+                            </div>
+
+                            <!-- Sarah Story -->
+                            <div class="story-card-nexora" style="background-image: url('images/stories/story1.jpg');" data-story-name="Sarah Williams" data-story-img="images/stories/story1.jpg" data-avatar="images/avatars/sarah.jpg">
+                                <div class="story-card-overlay">
+                                    <div class="story-avatar-ring"><img src="images/avatars/sarah.jpg" alt="Sarah"></div>
+                                    <span class="text-white fw-bold small text-truncate">Sarah</span>
+                                </div>
+                            </div>
+
+                            <!-- Rahul Story -->
+                            <div class="story-card-nexora" style="background-image: url('images/stories/story2.jpg');" data-story-name="Rahul Sharma" data-story-img="images/stories/story2.jpg" data-avatar="images/avatars/rahul.jpg">
+                                <div class="story-card-overlay">
+                                    <div class="story-avatar-ring"><img src="images/avatars/rahul.jpg" alt="Rahul"></div>
+                                    <span class="text-white fw-bold small text-truncate">Rahul</span>
+                                </div>
+                            </div>
+
+                            <!-- Priya Story -->
+                            <div class="story-card-nexora" style="background-image: url('images/stories/story3.jpg');" data-story-name="Priya Das" data-story-img="images/stories/story3.jpg" data-avatar="images/avatars/priya.jpg">
+                                <div class="story-card-overlay">
+                                    <div class="story-avatar-ring"><img src="images/avatars/priya.jpg" alt="Priya"></div>
+                                    <span class="text-white fw-bold small text-truncate">Priya</span>
+                                </div>
+                            </div>
+
+                            <!-- Alex Story -->
+                            <div class="story-card-nexora" style="background-image: url('images/stories/story4.jpg');" data-story-name="Alex Johnson" data-story-img="images/stories/story4.jpg" data-avatar="images/avatars/alex.jpg">
+                                <div class="story-card-overlay">
+                                    <div class="story-avatar-ring"><img src="images/avatars/alex.jpg" alt="Alex"></div>
+                                    <span class="text-white fw-bold small text-truncate">Alex</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Create Post Glass Card -->
+                    <div class="glass-card p-3 mb-4">
+                        <div class="d-flex align-items-center gap-3 mb-3 pb-2 border-bottom border-subtle">
+                            <img src="images/avatars/user.jpg" alt="User" class="rounded-circle" style="width:42px; height:42px; object-fit:cover;">
+                            <div class="flex-grow-1 create-post-input-box" data-bs-toggle="modal" data-bs-target="#createPostModal">
+                                What's on your mind, Madhu Smita?
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-between">
+                            <button class="action-post-pill text-danger" data-bs-toggle="modal" data-bs-target="#createPostModal">
+                                <i class="fa-solid fa-video fs-5"></i> Live Stream
+                            </button>
+                            <button class="action-post-pill text-success" data-bs-toggle="modal" data-bs-target="#createPostModal">
+                                <i class="fa-solid fa-image fs-5"></i> Photo/Video
+                            </button>
+                            <button class="action-post-pill text-warning" data-bs-toggle="modal" data-bs-target="#createPostModal">
+                                <i class="fa-solid fa-face-smile fs-5"></i> Feeling
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Social Feed Container (Dynamic Posts Inserted Here) -->
+                    <div id="postsFeedContainer">
+
+                        <!-- Post 1: Sarah Williams -->
+                        <div class="glass-card p-3 post-card-nexora post-reveal active" data-post-id="post-1">
+                            <div class="d-flex align-items-center justify-content-between mb-3">
+                                <div class="d-flex align-items-center gap-2">
+                                    <img src="images/avatars/sarah.jpg" alt="Sarah" class="rounded-circle" style="width:42px; height:42px; object-fit:cover;">
+                                    <div>
+                                        <h6 class="fw-bold mb-0">Sarah Williams</h6>
+                                        <small class="text-muted">2 hours ago · <i class="fa-solid fa-earth-americas"></i></small>
+                                    </div>
+                                </div>
+                                <div class="dropdown">
+                                    <button class="btn btn-sm border-0 text-muted" data-bs-toggle="dropdown"><i class="fa-solid fa-ellipsis"></i></button>
+                                    <ul class="dropdown-menu dropdown-menu-end shadow-sm">
+                                        <li><a class="dropdown-item btn-save-post-item" href="#"><i class="fa-solid fa-bookmark me-2 text-primary"></i>Save Post</a></li>
+                                        <li><a class="dropdown-item btn-delete-post text-danger" href="#"><i class="fa-solid fa-trash me-2"></i>Delete Post</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <p class="mb-3">Crushed an incredible high-intensity workout session today! 🏋️‍♀️ Consistency and dedication turn goals into reality. Keep grinding every single day! 💪🔥</p>
+                            <div class="post-media-box">
+                                <img src="images/posts/post1.jpg" alt="Workout Gym">
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center pt-2 pb-2 text-muted small border-bottom border-subtle">
+                                <div>
+                                    <span class="badge bg-danger rounded-circle p-1"><i class="fa-solid fa-heart"></i></span>
+                                    <span class="ms-1 fw-bold like-count">245 Likes</span>
+                                </div>
+                                <div>
+                                    <span class="comment-count-label">32 Comments</span> · <span>12 Shares</span>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center pt-2">
+                                <button class="action-post-pill btn-like-nexora">
+                                    <i class="fa-regular fa-heart fs-5"></i> Like
+                                </button>
+                                <button class="action-post-pill btn-comment-toggle">
+                                    <i class="fa-regular fa-comment fs-5"></i> Comment
+                                </button>
+                                <button class="action-post-pill" data-bs-toggle="modal" data-bs-target="#shareModal">
+                                    <i class="fa-regular fa-paper-plane fs-5"></i> Share
+                                </button>
+                            </div>
+                            <!-- Comments List -->
+                            <div class="comments-section mt-3 pt-3 border-top border-subtle">
+                                <div class="d-flex gap-2 mb-3">
+                                    <img src="images/avatars/user.jpg" class="rounded-circle" style="width:32px; height:32px; object-fit:cover;">
+                                    <input type="text" class="form-control form-control-sm rounded-pill comment-input" placeholder="Write a comment..." autocomplete="off">
+                                    <button class="btn btn-primary btn-sm rounded-circle px-3 btn-submit-comment"><i class="fa-solid fa-paper-plane"></i></button>
+                                </div>
+                                <div class="comments-list">
+                                    <div class="d-flex gap-2 mb-2">
+                                        <img src="images/avatars/rahul.jpg" class="rounded-circle" style="width:32px; height:32px; object-fit:cover;">
+                                        <div class="comment-bubble-nexora flex-grow-1">
+                                            <div class="fw-bold small">Rahul Sharma</div>
+                                            Super inspiring post, Sarah! Keep crushing it! 🔥
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Post 2: Rahul Sharma -->
+                        <div class="glass-card p-3 post-card-nexora post-reveal active" data-post-id="post-2">
+                            <div class="d-flex align-items-center justify-content-between mb-3">
+                                <div class="d-flex align-items-center gap-2">
+                                    <img src="images/avatars/rahul.jpg" alt="Rahul" class="rounded-circle" style="width:42px; height:42px; object-fit:cover;">
+                                    <div>
+                                        <h6 class="fw-bold mb-0">Rahul Sharma</h6>
+                                        <small class="text-muted">4 hours ago · <i class="fa-solid fa-earth-americas"></i></small>
+                                    </div>
+                                </div>
+                                <div class="dropdown">
+                                    <button class="btn btn-sm border-0 text-muted" data-bs-toggle="dropdown"><i class="fa-solid fa-ellipsis"></i></button>
+                                    <ul class="dropdown-menu dropdown-menu-end shadow-sm">
+                                        <li><a class="dropdown-item btn-save-post-item" href="#"><i class="fa-solid fa-bookmark me-2 text-primary"></i>Save Post</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <p class="mb-3">Built this sleek futuristic developer setup over the weekend! 🚀 Dual monitors, RGB ambience, and ergonomic keyboard. Ready to write clean code! 💻✨</p>
+                            <div class="post-media-box">
+                                <img src="images/posts/post2.jpg" alt="Developer Setup">
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center pt-2 pb-2 text-muted small border-bottom border-subtle">
+                                <div>
+                                    <span class="badge bg-primary rounded-circle p-1"><i class="fa-solid fa-thumbs-up"></i></span>
+                                    <span class="ms-1 fw-bold like-count">189 Likes</span>
+                                </div>
+                                <div><span>18 Comments</span></div>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center pt-2">
+                                <button class="action-post-pill btn-like-nexora">
+                                    <i class="fa-regular fa-heart fs-5"></i> Like
+                                </button>
+                                <button class="action-post-pill btn-comment-toggle">
+                                    <i class="fa-regular fa-comment fs-5"></i> Comment
+                                </button>
+                                <button class="action-post-pill" data-bs-toggle="modal" data-bs-target="#shareModal">
+                                    <i class="fa-regular fa-paper-plane fs-5"></i> Share
+                                </button>
+                            </div>
+                            <div class="comments-section mt-3 pt-3 border-top border-subtle">
+                                <div class="d-flex gap-2 mb-3">
+                                    <img src="images/avatars/user.jpg" class="rounded-circle" style="width:32px; height:32px; object-fit:cover;">
+                                    <input type="text" class="form-control form-control-sm rounded-pill comment-input" placeholder="Write a comment..." autocomplete="off">
+                                    <button class="btn btn-primary btn-sm rounded-circle px-3 btn-submit-comment"><i class="fa-solid fa-paper-plane"></i></button>
+                                </div>
+                                <div class="comments-list"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </main>
+
+            <!-- ------------------------------------------------------------------
+                 RIGHT SIDEBAR COLUMN (Desktop 25%)
+                 ------------------------------------------------------------------ -->
+            <aside class="col-lg-3 d-none d-lg-block">
+                <div class="sticky-top" style="top: 96px;">
+
+                    <!-- Trending Hashtags Widget -->
+                    <div class="glass-card p-3 mb-4">
+                        <h6 class="fw-bold mb-3"><i class="fa-solid fa-fire text-danger me-2"></i>Trending Topics</h6>
+                        <div class="d-flex flex-wrap gap-2">
+                            <span class="badge bg-primary-subtle text-primary rounded-pill px-3 py-2">#Fitness</span>
+                            <span class="badge bg-primary-subtle text-primary rounded-pill px-3 py-2">#Technology</span>
+                            <span class="badge bg-primary-subtle text-primary rounded-pill px-3 py-2">#AI</span>
+                            <span class="badge bg-primary-subtle text-primary rounded-pill px-3 py-2">#SaaS</span>
+                            <span class="badge bg-primary-subtle text-primary rounded-pill px-3 py-2">#Web3</span>
+                        </div>
+                    </div>
+
+                    <!-- Suggested Friends Widget -->
+                    <div class="glass-card p-3 mb-4">
+                        <h6 class="fw-bold mb-3"><i class="fa-solid fa-user-plus text-primary me-2"></i>Suggested Friends</h6>
+                        
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <div class="d-flex align-items-center gap-2">
+                                <img src="images/avatars/priya.jpg" class="rounded-circle" style="width:38px; height:38px; object-fit:cover;">
+                                <div>
+                                    <h6 class="fw-bold small mb-0">Priya Das</h6>
+                                    <small class="text-muted" style="font-size:0.75rem;">8 mutual friends</small>
+                                </div>
+                            </div>
+                            <button class="btn btn-outline-primary btn-sm rounded-pill px-3 btn-add-friend">Add</button>
+                        </div>
+
+                        <div class="d-flex align-items-center justify-content-between">
+                            <div class="d-flex align-items-center gap-2">
+                                <img src="images/avatars/alex.jpg" class="rounded-circle" style="width:38px; height:38px; object-fit:cover;">
+                                <div>
+                                    <h6 class="fw-bold small mb-0">Alex Johnson</h6>
+                                    <small class="text-muted" style="font-size:0.75rem;">14 mutual friends</small>
+                                </div>
+                            </div>
+                            <button class="btn btn-outline-primary btn-sm rounded-pill px-3 btn-add-friend">Add</button>
+                        </div>
+                    </div>
+
+                    <!-- Upcoming Events Widget -->
+                    <div class="glass-card p-3">
+                        <h6 class="fw-bold mb-3"><i class="fa-solid fa-calendar-days text-danger me-2"></i>Upcoming Event</h6>
+                        <div class="p-2 border rounded-3 border-subtle">
+                            <span class="badge bg-danger mb-1">TOMORROW · 6:00 PM</span>
+                            <h6 class="fw-bold small mb-1">Global Tech Summit 2026</h6>
+                            <p class="text-muted small mb-2">Live Stream & Conference</p>
+                            <button class="btn btn-primary btn-sm w-100 rounded-pill btn-rsvp-event">RSVP Interested</button>
+                        </div>
+                    </div>
+
+                </div>
+            </aside>
+
+        </div>
+    </div>
+
+    <!-- ==========================================================================
+         3. Floating Messenger Widget
+         ========================================================================== -->
+    <div class="messenger-floating-panel d-none" id="messengerPanel">
+        <div class="messenger-header-nexora">
+            <div class="d-flex align-items-center gap-2">
+                <img src="images/avatars/sarah.jpg" class="rounded-circle" style="width:34px; height:34px; object-fit:cover;" id="chatHeaderAvatar">
+                <div>
+                    <h6 class="fw-bold small mb-0" id="chatHeaderName">Sarah Williams</h6>
+                    <small class="text-success" style="font-size:0.75rem;">● Online</small>
+                </div>
+            </div>
+            <button class="btn btn-sm border-0 text-muted" id="closeMessengerBtn"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="messenger-body-nexora" id="chatMessagesContainer">
+            <div class="chat-bubble-nexora received">Hey Madhu! How are you doing today?</div>
+            <div class="chat-bubble-nexora sent">I'm doing great! Building NEXORA modern social app.</div>
+            <div class="chat-bubble-nexora received">Looks super futuristic! Can't wait! 🔥</div>
+        </div>
+        <div class="messenger-footer-nexora">
+            <input type="text" id="chatMessageInput" placeholder="Write a message..." autocomplete="off">
+            <button class="btn btn-primary btn-sm rounded-circle" id="sendMessageBtn" style="width:34px; height:34px;"><i class="fa-solid fa-paper-plane" style="font-size:0.8rem;"></i></button>
+        </div>
+    </div>
+
+    <!-- ==========================================================================
+         4. Mobile Fixed Bottom Navigation Bar (< 768px)
+         ========================================================================== -->
+    <div class="mobile-bottom-nav d-md-none">
+        <button class="mobile-nav-btn active">
+            <i class="fa-solid fa-house"></i>
+            <span>Home</span>
+        </button>
+        <button class="mobile-nav-btn" data-bs-toggle="modal" data-bs-target="#allRequestsModal">
+            <i class="fa-solid fa-user-group"></i>
+            <span>Friends</span>
+        </button>
+        <button class="mobile-nav-btn" data-bs-toggle="modal" data-bs-target="#createPostModal">
+            <i class="fa-solid fa-circle-plus text-primary fs-3"></i>
+            <span>Create</span>
+        </button>
+        <button class="mobile-nav-btn" id="mobileNotifBtn">
+            <i class="fa-solid fa-bell"></i>
+            <span>Alerts</span>
+        </button>
+        <button class="mobile-nav-btn" data-bs-toggle="modal" data-bs-target="#profileModal">
+            <i class="fa-solid fa-user"></i>
+            <span>Profile</span>
+        </button>
+    </div>
+
+    <!-- ==========================================================================
+         5. Modals & Offcanvas
+         ========================================================================== -->
+    <!-- Create Post Modal -->
+    <div class="modal fade" id="createPostModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content glass-card border-0 p-2">
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="modal-title fw-bold">Create Post</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <textarea class="form-control border-0 shadow-none fs-5 mb-3" id="createPostTextarea" rows="4" placeholder="What's on your mind, Madhu Smita?"></textarea>
+                    <div class="mb-3">
+                        <label class="form-label small text-muted fw-bold">Attach Image (Optional):</label>
+                        <select class="form-select form-select-sm" id="postImageSelect">
+                            <option value="">No image</option>
+                            <option value="images/posts/post1.jpg">Workout Gym Image</option>
+                            <option value="images/posts/post2.jpg">Developer Setup Image</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn btn-primary w-100 rounded-pill fw-bold" id="submitNewPostBtn">Post to NEXORA</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Profile View Modal -->
+    <div class="modal fade" id="profileModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content glass-card overflow-hidden border-0">
+                <div class="modal-body p-0">
+                    <div style="height:180px; background:var(--gradient-primary);" class="w-100"></div>
+                    <div class="p-4 text-center text-md-start d-md-flex align-items-end justify-content-between" style="margin-top:-60px;">
+                        <div class="d-md-flex align-items-end gap-3">
+                            <img src="images/avatars/user.jpg" class="rounded-circle border border-4 border-white shadow" style="width:110px; height:110px; object-fit:cover;">
+                            <div class="mt-2">
+                                <h4 class="fw-bold mb-0">Madhu Smita Mishra</h4>
+                                <p class="text-muted fw-semibold mb-0">Full Stack Engineer</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Share Modal -->
+    <div class="modal fade" id="shareModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content glass-card border-0">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title fw-bold">Share Post</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="list-group">
+                        <button class="list-group-item list-group-item-action d-flex align-items-center gap-3 border-0 rounded-3 py-3" id="copyLinkBtn">
+                            <i class="fa-solid fa-link text-warning fs-4"></i>
+                            <div>
+                                <h6 class="fw-bold mb-0">Copy Link</h6>
+                                <small class="text-muted">Copy post link to clipboard</small>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Offcanvas Mobile Sidebar -->
+    <div class="offcanvas offcanvas-start glass-card" tabindex="-1" id="offcanvasSidebar">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title fw-bold gradient-text"><i class="fa-solid fa-bolt-lightning me-2"></i>NEXORA</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <a href="#" class="sidebar-menu-item mb-2" data-bs-toggle="modal" data-bs-target="#profileModal">
+                <img src="images/avatars/user.jpg" class="rounded-circle me-2" style="width:32px; height:32px;">
+                <span class="fw-bold">Madhu Smita Mishra</span>
+            </a>
+            <a href="#" class="sidebar-menu-item mb-2" data-bs-toggle="modal" data-bs-target="#allRequestsModal"><i class="fa-solid fa-user-group me-2"></i> Friends</a>
+            <a href="#" class="sidebar-menu-item mb-2" data-bs-toggle="modal" data-bs-target="#groupsModal"><i class="fa-solid fa-users me-2"></i> Groups</a>
+            <a href="#" class="sidebar-menu-item mb-2" data-bs-toggle="modal" data-bs-target="#marketplaceModal"><i class="fa-solid fa-store me-2"></i> Marketplace</a>
+        </div>
+    </div>
+
+    <!-- Story Viewer Modal -->
+    <div class="modal fade" id="storyViewerModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-sm">
+            <div class="modal-content border-0 glass-card text-white rounded-4 overflow-hidden position-relative" style="height:520px;">
+                <div class="position-absolute top-0 start-0 end-0 p-3 z-3 bg-gradient-dark d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center gap-2">
+                        <img src="" id="storyModalAvatar" class="rounded-circle border border-2 border-primary" style="width:36px; height:36px; object-fit:cover;">
+                        <span class="fw-bold small" id="storyModalName">User Story</span>
+                    </div>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <img src="" id="storyModalImage" class="w-100 h-100 object-fit-cover">
+            </div>
+        </div>
+    </div>
+
+    <!-- All Friend Requests Modal -->
+    <div class="modal fade" id="allRequestsModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content glass-card border-0">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title fw-bold text-primary"><i class="fa-solid fa-user-plus me-2"></i>Friend Requests</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="d-flex align-items-center justify-content-between p-2 border rounded-3 mb-2 border-subtle">
+                        <div class="d-flex align-items-center gap-2">
+                            <img src="images/avatars/rahul.jpg" class="rounded-circle" style="width:44px; height:44px; object-fit:cover;">
+                            <div>
+                                <h6 class="fw-bold small mb-0">Rahul Sharma</h6>
+                                <small class="text-muted">12 mutual friends</small>
+                            </div>
+                        </div>
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-primary btn-sm rounded-pill btn-confirm-freq" data-name="Rahul Sharma">Confirm</button>
+                            <button class="btn btn-outline-secondary btn-sm rounded-pill btn-delete-freq">Delete</button>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-between p-2 border rounded-3 border-subtle">
+                        <div class="d-flex align-items-center gap-2">
+                            <img src="images/avatars/priya.jpg" class="rounded-circle" style="width:44px; height:44px; object-fit:cover;">
+                            <div>
+                                <h6 class="fw-bold small mb-0">Priya Das</h6>
+                                <small class="text-muted">8 mutual friends</small>
+                            </div>
+                        </div>
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-primary btn-sm rounded-pill btn-confirm-freq" data-name="Priya Das">Confirm</button>
+                            <button class="btn btn-outline-secondary btn-sm rounded-pill btn-delete-freq">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Watch Videos Modal -->
+    <div class="modal fade" id="videosModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content glass-card border-0">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title fw-bold text-primary"><i class="fa-solid fa-tv me-2"></i>NEXORA Watch Videos</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="card border-0 glass-card mb-3">
+                        <img src="images/posts/post2.jpg" class="card-img-top object-fit-cover" style="height:260px;">
+                        <div class="card-body">
+                            <h5 class="fw-bold">Future of Web Development in 2026</h5>
+                            <p class="text-muted small">Explore AI tools, glassmorphism, Web3, and reactive UI frameworks!</p>
+                            <button class="btn btn-primary btn-sm rounded-pill px-4 btn-play-video-demo"><i class="fa-solid fa-play me-1"></i> Play Video</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Marketplace Modal -->
+    <div class="modal fade" id="marketplaceModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content glass-card border-0">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title fw-bold text-warning"><i class="fa-solid fa-store me-2"></i>NEXORA Marketplace</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="glass-card p-3 h-100">
+                                <img src="images/posts/post2.jpg" class="w-100 rounded-3 mb-2" style="height:150px; object-fit:cover;">
+                                <h6 class="fw-bold text-success">$850</h6>
+                                <h6 class="fw-bold mb-1">MacBook Pro 16" (M2)</h6>
+                                <small class="text-muted d-block mb-3">Seattle, WA</small>
+                                <button class="btn btn-primary btn-sm w-100 rounded-pill btn-message-seller"><i class="fa-solid fa-paper-plane me-1"></i> Message Seller</button>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="glass-card p-3 h-100">
+                                <img src="images/posts/post1.jpg" class="w-100 rounded-3 mb-2" style="height:150px; object-fit:cover;">
+                                <h6 class="fw-bold text-success">$220</h6>
+                                <h6 class="fw-bold mb-1">Mountain Bike 21-Speed</h6>
+                                <small class="text-muted d-block mb-3">Austin, TX</small>
+                                <button class="btn btn-primary btn-sm w-100 rounded-pill btn-message-seller"><i class="fa-solid fa-paper-plane me-1"></i> Message Seller</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Groups Modal -->
+    <div class="modal fade" id="groupsModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content glass-card border-0">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title fw-bold text-success"><i class="fa-solid fa-users me-2"></i>NEXORA Communities</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="list-group">
+                        <div class="list-group-item d-flex align-items-center justify-content-between glass-card mb-2 border-0">
+                            <div>
+                                <h6 class="fw-bold mb-0">Web Development Hub</h6>
+                                <small class="text-muted">145K Members</small>
+                            </div>
+                            <button class="btn btn-outline-primary btn-sm rounded-pill btn-join-group">Join</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Events Modal -->
+    <div class="modal fade" id="eventsModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content glass-card border-0">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title fw-bold text-danger"><i class="fa-solid fa-calendar-days me-2"></i>Upcoming Events</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="p-3 glass-card mb-2">
+                        <span class="badge bg-primary mb-2">SAT, AUG 15</span>
+                        <h6 class="fw-bold">Global Tech Summit 2026</h6>
+                        <p class="small text-muted mb-2">Live Stream & Conference</p>
+                        <button class="btn btn-sm btn-primary rounded-pill btn-rsvp-event me-2">Interested</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Memories Modal -->
+    <div class="modal fade" id="memoriesModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content glass-card border-0">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title fw-bold text-info"><i class="fa-solid fa-clock-rotate-left me-2"></i>On This Day</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img src="images/posts/post2.jpg" class="img-fluid rounded-3 mb-3" style="max-height:200px;">
+                    <h6 class="fw-bold">2 Years Ago Today</h6>
+                    <p class="text-muted small">"Exploring mountain trails and writing code!"</p>
+                    <button class="btn btn-primary w-100 rounded-pill fw-bold" id="reshareMemoryBtn"><i class="fa-solid fa-share me-1"></i> Reshare Memory</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Saved Modal -->
+    <div class="modal fade" id="savedModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content glass-card border-0">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title fw-bold text-warning"><i class="fa-solid fa-bookmark me-2"></i>Saved Items</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="d-flex align-items-center justify-content-between p-2 border rounded-3 mb-2 border-subtle">
+                        <div class="d-flex align-items-center gap-2">
+                            <img src="images/posts/post1.jpg" class="rounded-2" style="width:44px; height:44px; object-fit:cover;">
+                            <div>
+                                <h6 class="fw-bold small mb-0">Workout Motivation Post</h6>
+                                <small class="text-muted">Saved from Sarah Williams</small>
+                            </div>
+                        </div>
+                        <button class="btn btn-sm btn-outline-danger rounded-pill btn-unsave-item">Unsave</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div class="modal fade" id="settingsModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content glass-card border-0">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title fw-bold"><i class="fa-solid fa-gear me-2"></i>Settings & Privacy</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="list-group list-group-flush">
+                        <a href="#" class="list-group-item list-group-item-action d-flex align-items-center gap-3 border-0 py-3 bg-transparent text-main" id="btnSaveSettings">
+                            <i class="fa-solid fa-shield-halved fs-4 text-primary"></i>
+                            <div>
+                                <h6 class="mb-0 fw-bold">Privacy & Security</h6>
+                                <small class="text-muted">Manage account security and 2FA settings</small>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Search Results Modal -->
+    <div class="modal fade" id="searchResultsModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content glass-card border-0">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title fw-bold">Search Results</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="searchResultsList" class="list-group list-group-flush">
+                        <p class="text-muted text-center py-4">Start typing to search NEXORA...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications Container -->
+    <div class="toast-container-nexora" id="toastContainer"></div>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JS Script -->
+    <script src="js/script.js"></script>
+</body>
+</html>
