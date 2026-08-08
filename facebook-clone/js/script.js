@@ -554,4 +554,179 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    /* --------------------------------------------------------------------------
+       16. Advanced Facebook Feature Handlers (Modals & Buttons)
+       -------------------------------------------------------------------------- */
+    // Edit Profile Save Handler
+    const saveProfileChangesBtn = document.getElementById('saveProfileChangesBtn');
+    if (saveProfileChangesBtn) {
+        saveProfileChangesBtn.addEventListener('click', () => {
+            const newName = document.getElementById('editProfileNameInput').value.trim();
+            const newBio = document.getElementById('editProfileBioInput').value.trim();
+            
+            if (newName) {
+                currentUser.name = newName;
+                document.querySelectorAll('.profile-header-info h3, #openProfileViewBtn span, #sidebarProfileLink span, #mobileProfileLink span').forEach(el => el.innerText = newName);
+            }
+            if (newBio) {
+                document.querySelectorAll('.profile-header-info p').forEach(el => el.innerText = newBio);
+            }
+            closeModal('editProfileModal');
+            showToast('Profile updated successfully!', 'fa-solid fa-user-check text-success');
+        });
+    }
+
+    // Go Live Stream Handler
+    const startLiveVideoBtn = document.getElementById('startLiveVideoBtn');
+    if (startLiveVideoBtn) {
+        startLiveVideoBtn.addEventListener('click', () => {
+            closeModal('liveVideoModal');
+            showToast('Live stream started! Broadcast is now live to your followers.', 'fa-solid fa-broadcast-tower text-danger');
+        });
+    }
+
+    // Feeling Selector Handler
+    document.querySelectorAll('.btn-select-feeling').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const feeling = btn.getAttribute('data-feeling');
+            if (createPostTextarea) {
+                createPostTextarea.value += ` — feeling ${feeling}`;
+            }
+            closeModal('feelingModal');
+            showToast(`Added feeling: ${feeling}`, 'fa-solid fa-face-smile text-warning');
+        });
+    });
+
+    // Location Check-in Handler
+    document.querySelectorAll('.btn-select-location').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const loc = btn.getAttribute('data-location');
+            if (createPostTextarea) {
+                createPostTextarea.value += ` at ${loc}`;
+            }
+            closeModal('locationModal');
+            showToast(`Checked in at ${loc}`, 'fa-solid fa-location-dot text-danger');
+        });
+    });
+
+    // Report Post Handler
+    const submitReportBtn = document.getElementById('submitReportBtn');
+    if (submitReportBtn) {
+        submitReportBtn.addEventListener('click', () => {
+            closeModal('reportPostModal');
+            showToast('Report submitted. Thank you for keeping Facebook safe.', 'fa-solid fa-shield-halved text-success');
+        });
+    }
+
+    // Video Play Demo
+    document.querySelectorAll('.btn-play-video-demo').forEach(btn => {
+        btn.addEventListener('click', () => {
+            showToast('Playing video on Facebook Watch...', 'fa-solid fa-circle-play text-primary');
+        });
+    });
+
+    // Marketplace Message Seller
+    document.querySelectorAll('.btn-message-seller').forEach(btn => {
+        btn.addEventListener('click', () => {
+            closeModal('marketplaceModal');
+            if (chatHeaderName) chatHeaderName.innerText = "Marketplace Seller";
+            if (messengerPanel) messengerPanel.classList.remove('d-none');
+            showToast('Chat opened with seller', 'fa-solid fa-store text-warning');
+        });
+    });
+
+    // Join Group Handler
+    document.querySelectorAll('.btn-join-group').forEach(btn => {
+        btn.addEventListener('click', () => {
+            if (btn.classList.contains('joined')) {
+                btn.classList.remove('joined', 'btn-success');
+                btn.classList.add('btn-outline-primary');
+                btn.innerText = 'Join Group';
+                showToast('Left group', 'fa-solid fa-user-minus text-secondary');
+            } else {
+                btn.classList.add('joined', 'btn-success');
+                btn.classList.remove('btn-outline-primary');
+                btn.innerText = 'Joined ✓';
+                showToast('Joined group successfully!', 'fa-solid fa-user-group text-success');
+            }
+        });
+    });
+
+    // Event Interested & Going Handlers
+    document.querySelectorAll('.btn-event-interested').forEach(btn => {
+        btn.addEventListener('click', () => {
+            btn.classList.toggle('btn-primary');
+            btn.classList.toggle('btn-outline-primary');
+            showToast('Marked as Interested in Event!', 'fa-solid fa-star text-warning');
+        });
+    });
+    document.querySelectorAll('.btn-event-going').forEach(btn => {
+        btn.addEventListener('click', () => {
+            btn.classList.toggle('btn-success');
+            btn.classList.toggle('btn-outline-secondary');
+            showToast('Marked as Going to Event!', 'fa-solid fa-calendar-check text-success');
+        });
+    });
+
+    // Memory Reshare Handler
+    const reshareMemoryBtn = document.getElementById('reshareMemoryBtn');
+    if (reshareMemoryBtn) {
+        reshareMemoryBtn.addEventListener('click', () => {
+            closeModal('memoriesModal');
+            showToast('Memory shared to your Feed!', 'fa-solid fa-share text-info');
+        });
+    }
+
+    // Save & Unsave Items Handler
+    document.querySelectorAll('.btn-save-post-item').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            showToast('Post saved to your Saved Items', 'fa-solid fa-bookmark text-primary');
+        });
+    });
+    document.querySelectorAll('.btn-unsave-item').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const row = btn.closest('.d-flex');
+            if (row) row.remove();
+            showToast('Item removed from Saved', 'fa-solid fa-trash text-danger');
+        });
+    });
+
+    // Page Like Handler
+    document.querySelectorAll('.btn-like-page').forEach(btn => {
+        btn.addEventListener('click', () => {
+            if (btn.innerText.includes('Liked')) {
+                btn.innerText = 'Like Page';
+                btn.className = 'btn btn-outline-primary btn-sm btn-like-page';
+                showToast('Unliked Page', 'fa-solid fa-thumbs-down text-secondary');
+            } else {
+                btn.innerText = 'Liked ✓';
+                btn.className = 'btn btn-primary btn-sm btn-like-page';
+                showToast('Liked Page!', 'fa-solid fa-thumbs-up text-primary');
+            }
+        });
+    });
+
+    // Play Instant Game Handler
+    document.querySelectorAll('.btn-play-game').forEach(btn => {
+        btn.addEventListener('click', () => {
+            closeModal('gamingModal');
+            showToast('Launching Facebook Instant Game...', 'fa-solid fa-gamepad text-danger');
+        });
+    });
+
+    // Settings Quick Links
+    const settingLinks = ['btnAccountSettings', 'btnPrivacySettings', 'btnSecuritySettings'];
+    settingLinks.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+            el.addEventListener('click', (e) => {
+                e.preventDefault();
+                closeModal('settingsModal');
+                showToast('Settings saved successfully', 'fa-solid fa-gear text-primary');
+            });
+        }
+    });
+
 });
+
