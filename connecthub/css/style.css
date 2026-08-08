@@ -1,0 +1,953 @@
+/* ==========================================================================
+   ConnectHub — Social Media Platform Design System & Stylesheet
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. CSS Custom Properties (Light / Dark Design Tokens)
+   -------------------------------------------------------------------------- */
+:root {
+  /* Color Palette - Light Theme (Default) */
+  --bg-main: #f0f2f5;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f5f6f8;
+  --bg-input: #f0f2f5;
+  --bg-hover: #e4e6eb;
+  --bg-active: #e7f3ff;
+  
+  --text-primary: #050505;
+  --text-secondary: #65676b;
+  --text-muted: #8a8d91;
+  --text-link: #1877f2;
+
+  --accent-primary: #1877f2;
+  --accent-hover: #166fe5;
+  --accent-light: #e7f3ff;
+  
+  --border-color: #ced0d4;
+  --border-subtle: #e4e6eb;
+  
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.2);
+
+  --online-indicator: #31a24c;
+  --badge-bg: #e4e6eb;
+  --badge-text: #050505;
+
+  --navbar-height: 56px;
+  --border-radius: 8px;
+  --border-radius-lg: 12px;
+  --border-radius-full: 9999px;
+  
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.25s ease;
+}
+
+/* Dark Theme Overrides */
+[data-theme="dark"] {
+  --bg-main: #18191a;
+  --bg-card: #242526;
+  --bg-card-hover: #3a3b3c;
+  --bg-input: #3a3b3c;
+  --bg-hover: #3a3b3c;
+  --bg-active: #263951;
+  
+  --text-primary: #e4e6eb;
+  --text-secondary: #b0b3b8;
+  --text-muted: #8a8d91;
+  --text-link: #4599ff;
+
+  --accent-primary: #2d88ff;
+  --accent-hover: #1877f2;
+  --accent-light: #263951;
+  
+  --border-color: #393a3b;
+  --border-subtle: #2f3031;
+  
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
+
+  --badge-bg: #3a3b3c;
+  --badge-text: #e4e6eb;
+}
+
+/* --------------------------------------------------------------------------
+   2. Global Resets & Base Styles
+   -------------------------------------------------------------------------- */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  margin: 0;
+  padding-top: var(--navbar-height);
+  transition: background-color var(--transition-normal), color var(--transition-normal);
+  overflow-x: hidden;
+}
+
+a {
+  color: var(--text-link);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* --------------------------------------------------------------------------
+   3. Navbar Component
+   -------------------------------------------------------------------------- */
+.navbar-connecthub {
+  height: var(--navbar-height);
+  background-color: var(--bg-card);
+  border-bottom: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-sm);
+  z-index: 1030;
+  transition: background-color var(--transition-normal);
+}
+
+.brand-logo {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--accent-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.search-bar-box {
+  position: relative;
+  width: 240px;
+}
+
+.search-bar-box input {
+  background-color: var(--bg-input);
+  border: none;
+  border-radius: 50px;
+  padding: 8px 16px 8px 38px;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  width: 100%;
+  transition: all var(--transition-fast);
+}
+
+.search-bar-box input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--accent-primary);
+  background-color: var(--bg-card);
+}
+
+.search-bar-box i {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+/* Center Nav Icons */
+.nav-tab-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 48px;
+  border-radius: var(--border-radius);
+  color: var(--text-secondary);
+  font-size: 1.4rem;
+  position: relative;
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+  cursor: pointer;
+  border: none;
+  background: transparent;
+}
+
+.nav-tab-btn:hover {
+  background-color: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.nav-tab-btn.active {
+  color: var(--accent-primary);
+}
+
+.nav-tab-btn.active::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background-color: var(--accent-primary);
+  border-radius: 3px 3px 0 0;
+}
+
+/* Right Nav Buttons */
+.icon-btn-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--bg-hover);
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  transition: background-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.icon-btn-circle:hover {
+  background-color: var(--bg-input);
+  transform: scale(1.05);
+}
+
+.icon-btn-circle .badge-counter {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background-color: #e41e3f;
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-avatar-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border-color var(--transition-fast);
+}
+
+.user-avatar-btn:hover {
+  border-color: var(--accent-primary);
+}
+
+/* Dropdown Menus */
+.dropdown-menu-connect {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: 8px;
+  min-width: 280px;
+}
+
+.dropdown-menu-connect .dropdown-item {
+  color: var(--text-primary);
+  border-radius: var(--border-radius);
+  padding: 10px 12px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: background-color var(--transition-fast);
+}
+
+.dropdown-menu-connect .dropdown-item:hover {
+  background-color: var(--bg-hover);
+}
+
+/* --------------------------------------------------------------------------
+   4. Left Sidebar Component
+   -------------------------------------------------------------------------- */
+.sidebar-sticky {
+  position: sticky;
+  top: calc(var(--navbar-height) + 16px);
+  max-height: calc(100vh - var(--navbar-height) - 32px);
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: var(--border-radius);
+  color: var(--text-primary);
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color var(--transition-fast), transform var(--transition-fast);
+  cursor: pointer;
+}
+
+.sidebar-item:hover {
+  background-color: var(--bg-hover);
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+.sidebar-icon-wrapper {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: var(--accent-primary);
+  background-color: var(--accent-light);
+}
+
+.sidebar-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* --------------------------------------------------------------------------
+   5. Stories Section
+   -------------------------------------------------------------------------- */
+.stories-container {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  scrollbar-width: thin;
+}
+
+.story-card {
+  min-width: 110px;
+  height: 180px;
+  border-radius: var(--border-radius-lg);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  background-size: cover;
+  background-position: center;
+  flex-shrink: 0;
+}
+
+.story-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.story-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.7) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.story-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 3px solid var(--accent-primary);
+  object-fit: cover;
+}
+
+.story-name {
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+  line-height: 1.2;
+}
+
+/* Create Story Card Special Styling */
+.story-card-add {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+}
+
+.story-card-add .story-bg-top {
+  height: 125px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.story-card-add .story-btn-wrapper {
+  background-color: var(--bg-card);
+  height: 55px;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 8px;
+}
+
+.plus-icon-circle {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background-color: var(--accent-primary);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid var(--bg-card);
+  position: absolute;
+  top: -17px;
+  font-size: 1rem;
+}
+
+/* --------------------------------------------------------------------------
+   6. Create Post Card Component
+   -------------------------------------------------------------------------- */
+.create-post-card {
+  background-color: var(--bg-card);
+  border-radius: var(--border-radius-lg);
+  padding: 14px 16px;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 16px;
+  border: 1px solid var(--border-subtle);
+}
+
+.create-post-input {
+  background-color: var(--bg-input);
+  border-radius: 50px;
+  padding: 10px 18px;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  cursor: pointer;
+  flex-grow: 1;
+  transition: background-color var(--transition-fast);
+}
+
+.create-post-input:hover {
+  background-color: var(--bg-hover);
+}
+
+.action-post-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: var(--border-radius);
+  color: var(--text-secondary);
+  font-weight: 600;
+  font-size: 0.9rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  flex: 1;
+  transition: background-color var(--transition-fast);
+}
+
+.action-post-btn:hover {
+  background-color: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+/* --------------------------------------------------------------------------
+   7. Post Card Component
+   -------------------------------------------------------------------------- */
+.post-card {
+  background-color: var(--bg-card);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 16px;
+  border: 1px solid var(--border-subtle);
+  overflow: hidden;
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.post-header {
+  padding: 12px 16px 8px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.post-author-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.post-author-name {
+  font-weight: 700;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  line-height: 1.2;
+}
+
+.post-time-privacy {
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+}
+
+.post-content-text {
+  padding: 0 16px 12px 16px;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  white-space: pre-line;
+}
+
+.post-media-img {
+  width: 100%;
+  max-height: 500px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Post Engagement Stats Bar */
+.post-stats-bar {
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+}
+
+.reaction-icons {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 6px;
+}
+
+.reaction-icon-badge {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  color: #ffffff;
+  margin-right: -4px;
+  border: 2px solid var(--bg-card);
+}
+
+.reaction-like { background-color: #1877f2; }
+.reaction-love { background-color: #f3425f; }
+.reaction-haha { background-color: #f7b125; }
+
+/* Post Action Buttons */
+.post-actions-bar {
+  display: flex;
+  padding: 4px 8px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.post-action-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 0;
+  border-radius: var(--border-radius);
+  color: var(--text-secondary);
+  font-weight: 600;
+  font-size: 0.9rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: background-color var(--transition-fast), color var(--transition-fast), transform 0.1s ease;
+}
+
+.post-action-btn:hover {
+  background-color: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.post-action-btn.liked {
+  color: var(--accent-primary);
+  font-weight: 700;
+}
+
+.post-action-btn.liked i {
+  transform: scale(1.2);
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Comments Section */
+.comments-section {
+  padding: 12px 16px;
+  background-color: rgba(0, 0, 0, 0.01);
+}
+
+.comment-input-box {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.comment-input-box input {
+  background-color: var(--bg-input);
+  border: none;
+  border-radius: 20px;
+  padding: 8px 14px;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  flex-grow: 1;
+}
+
+.comment-item {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.comment-bubble {
+  background-color: var(--bg-input);
+  border-radius: 16px;
+  padding: 8px 12px;
+  font-size: 0.88rem;
+  max-width: 85%;
+  position: relative;
+}
+
+.comment-author {
+  font-weight: 700;
+  color: var(--text-primary);
+  font-size: 0.82rem;
+}
+
+.comment-actions {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+  padding-left: 12px;
+}
+
+.btn-delete-comment {
+  color: var(--text-muted);
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  padding: 0;
+}
+
+.btn-delete-comment:hover {
+  color: #e41e3f;
+}
+
+/* --------------------------------------------------------------------------
+   8. Right Sidebar Components
+   -------------------------------------------------------------------------- */
+.right-sidebar-section {
+  margin-bottom: 24px;
+}
+
+.section-title-sm {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+}
+
+.friend-request-card {
+  display: flex;
+  gap: 12px;
+  padding: 8px;
+  border-radius: var(--border-radius);
+  transition: background-color var(--transition-fast);
+}
+
+.friend-request-card:hover {
+  background-color: var(--bg-hover);
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px;
+  border-radius: var(--border-radius);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.contact-item:hover {
+  background-color: var(--bg-hover);
+}
+
+.online-avatar-wrapper {
+  position: relative;
+}
+
+.online-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.online-status-dot {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background-color: var(--online-indicator);
+  border: 2px solid var(--bg-card);
+}
+
+/* --------------------------------------------------------------------------
+   9. Messenger Chat Panel Component
+   -------------------------------------------------------------------------- */
+.messenger-panel {
+  position: fixed;
+  bottom: 0;
+  right: 80px;
+  width: 330px;
+  height: 420px;
+  background-color: var(--bg-card);
+  border-radius: 12px 12px 0 0;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  z-index: 1040;
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+.messenger-header {
+  padding: 10px 14px;
+  background-color: var(--bg-card);
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 12px 12px 0 0;
+}
+
+.messenger-body {
+  flex: 1;
+  padding: 12px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.chat-bubble {
+  max-width: 75%;
+  padding: 8px 12px;
+  border-radius: 18px;
+  font-size: 0.9rem;
+  line-height: 1.3;
+}
+
+.chat-bubble.received {
+  background-color: var(--bg-input);
+  color: var(--text-primary);
+  align-self: flex-start;
+  border-bottom-left-radius: 4px;
+}
+
+.chat-bubble.sent {
+  background-color: var(--accent-primary);
+  color: #ffffff;
+  align-self: flex-end;
+  border-bottom-right-radius: 4px;
+}
+
+.messenger-footer {
+  padding: 8px 12px;
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.messenger-footer input {
+  background-color: var(--bg-input);
+  border: none;
+  border-radius: 20px;
+  padding: 6px 12px;
+  font-size: 0.88rem;
+  color: var(--text-primary);
+  flex-grow: 1;
+}
+
+/* --------------------------------------------------------------------------
+   10. Profile View Styles
+   -------------------------------------------------------------------------- */
+.profile-cover-wrapper {
+  position: relative;
+  height: 280px;
+  background-color: var(--border-subtle);
+  border-radius: 0 0 12px 12px;
+  overflow: hidden;
+}
+
+.profile-cover-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-header-info {
+  position: relative;
+  padding: 0 24px 20px 24px;
+  background-color: var(--bg-card);
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: 16px;
+  box-shadow: var(--shadow-sm);
+}
+
+.profile-avatar-large {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 4px solid var(--bg-card);
+  object-fit: cover;
+  margin-top: -75px;
+  position: relative;
+  z-index: 2;
+  box-shadow: var(--shadow-md);
+}
+
+/* --------------------------------------------------------------------------
+   11. Toast Notifications & Utility Classes
+   -------------------------------------------------------------------------- */
+.toast-container-custom {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  z-index: 1060;
+}
+
+.toast-custom {
+  background-color: var(--text-primary);
+  color: var(--bg-card);
+  padding: 10px 18px;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  box-shadow: var(--shadow-md);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  animation: popIn 0.3s ease-out;
+}
+
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.back-to-top-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  cursor: pointer;
+  z-index: 1020;
+  transition: transform var(--transition-fast), background-color var(--transition-fast);
+}
+
+.back-to-top-btn:hover {
+  transform: translateY(-3px);
+  background-color: var(--bg-hover);
+}
+
+/* Modal Dark Theme Adaptations */
+.modal-content {
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--border-radius-lg);
+}
+
+.modal-header, .modal-footer {
+  border-color: var(--border-subtle);
+}
+
+.form-control, .form-select {
+  background-color: var(--bg-input);
+  color: var(--text-primary);
+  border-color: var(--border-subtle);
+}
+
+.form-control:focus, .form-select:focus {
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+  border-color: var(--accent-primary);
+}
+
+/* Responsive Hide Rules */
+@media (max-width: 991.98px) {
+  .search-bar-box {
+    width: 180px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .search-bar-box {
+    display: none;
+  }
+  .messenger-panel {
+    width: 100%;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    border-radius: 16px 16px 0 0;
+    height: 80vh;
+  }
+}
