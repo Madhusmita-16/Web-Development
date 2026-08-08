@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="NEXORA — Sign In or Create Account. Secure authentication with form validation.">
+    <title>NEXORA — Sign In / Sign Up</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <!-- Custom Auth Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/auth.css">
+</head>
+<body class="auth-body">
+
+    <!-- Floating Background Blobs -->
+    <div class="bg-blob-container">
+        <div class="bg-blob bg-blob-1"></div>
+        <div class="bg-blob bg-blob-2"></div>
+        <div class="bg-blob bg-blob-3"></div>
+    </div>
+
+    <!-- Auth Container -->
+    <div class="auth-wrapper">
+
+        <!-- Brand Logo -->
+        <a href="auth.html" class="auth-brand mb-4 d-flex align-items-center justify-content-center gap-2 text-decoration-none">
+            <i class="fa-solid fa-bolt-lightning text-primary fs-2"></i>
+            <span class="gradient-text fw-black" style="font-size:2rem; letter-spacing:-1px;">NEXORA</span>
+        </a>
+
+        <!-- ============================================================
+             PANEL 1: Sign In Form
+             ============================================================ -->
+        <div class="auth-card glass-card" id="signinPanel">
+            <h2 class="fw-bold mb-1 text-center">Welcome back 👋</h2>
+            <p class="text-muted text-center small mb-4">Sign in to your NEXORA account</p>
+
+            <!-- Alert Area -->
+            <div class="auth-alert d-none" id="signinAlert" role="alert"></div>
+
+            <form id="signinForm" novalidate>
+                <!-- Email -->
+                <div class="mb-3">
+                    <label for="signinEmail" class="form-label fw-semibold small">Email Address</label>
+                    <div class="input-icon-wrapper">
+                        <i class="fa-solid fa-envelope input-icon-left"></i>
+                        <input type="email" class="form-control auth-input" id="signinEmail"
+                               placeholder="you@example.com" autocomplete="email" required>
+                    </div>
+                    <div class="invalid-feedback">Please enter a valid email address.</div>
+                </div>
+
+                <!-- Password -->
+                <div class="mb-2">
+                    <label for="signinPassword" class="form-label fw-semibold small">Password</label>
+                    <div class="input-icon-wrapper">
+                        <i class="fa-solid fa-lock input-icon-left"></i>
+                        <input type="password" class="form-control auth-input ps-5" id="signinPassword"
+                               placeholder="Enter your password" autocomplete="current-password" required minlength="6">
+                        <button type="button" class="btn-toggle-pwd" data-target="signinPassword" title="Toggle password">
+                            <i class="fa-regular fa-eye"></i>
+                        </button>
+                    </div>
+                    <div class="invalid-feedback">Password must be at least 6 characters.</div>
+                </div>
+
+                <!-- Remember Me & Forgot Password -->
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="rememberMe">
+                        <label class="form-check-label small" for="rememberMe">Remember me</label>
+                    </div>
+                    <button type="button" class="btn btn-link p-0 text-primary small fw-semibold text-decoration-none"
+                            id="showForgotBtn">Forgot password?</button>
+                </div>
+
+                <!-- Submit -->
+                <button type="submit" class="btn btn-primary w-100 rounded-pill fw-bold py-2 mb-3 auth-submit-btn" id="signinSubmitBtn">
+                    <span class="btn-text">Sign In to NEXORA</span>
+                    <span class="btn-spinner spinner-border spinner-border-sm d-none ms-2" role="status"></span>
+                </button>
+
+                <!-- Divider -->
+                <div class="auth-divider"><span>or continue with</span></div>
+
+                <!-- OAuth Buttons -->
+                <div class="d-flex gap-2 mb-4">
+                    <button type="button" class="btn auth-oauth-btn flex-fill" id="googleSigninBtn">
+                        <i class="fa-brands fa-google text-danger me-2"></i>Google
+                    </button>
+                    <button type="button" class="btn auth-oauth-btn flex-fill" id="githubSigninBtn">
+                        <i class="fa-brands fa-github me-2"></i>GitHub
+                    </button>
+                </div>
+            </form>
+
+            <!-- Switch to Sign Up -->
+            <p class="text-center text-muted small mb-0">
+                Don't have an account?
+                <button type="button" class="btn btn-link p-0 text-primary fw-bold text-decoration-none" id="showSignupBtn">Create account</button>
+            </p>
+        </div>
+
+        <!-- ============================================================
+             PANEL 2: Sign Up Form
+             ============================================================ -->
+        <div class="auth-card glass-card d-none" id="signupPanel">
+            <h2 class="fw-bold mb-1 text-center">Join NEXORA 🚀</h2>
+            <p class="text-muted text-center small mb-4">Create your free account in seconds</p>
+
+            <!-- Alert Area -->
+            <div class="auth-alert d-none" id="signupAlert" role="alert"></div>
+
+            <form id="signupForm" novalidate>
+                <!-- Full Name -->
+                <div class="mb-3">
+                    <label for="signupName" class="form-label fw-semibold small">Full Name</label>
+                    <div class="input-icon-wrapper">
+                        <i class="fa-solid fa-user input-icon-left"></i>
+                        <input type="text" class="form-control auth-input" id="signupName"
+                               placeholder="Madhu Smita Mishra" autocomplete="name" required minlength="3">
+                    </div>
+                    <div class="invalid-feedback">Name must be at least 3 characters.</div>
+                </div>
+
+                <!-- Email -->
+                <div class="mb-3">
+                    <label for="signupEmail" class="form-label fw-semibold small">Email Address</label>
+                    <div class="input-icon-wrapper">
+                        <i class="fa-solid fa-envelope input-icon-left"></i>
+                        <input type="email" class="form-control auth-input" id="signupEmail"
+                               placeholder="you@example.com" autocomplete="email" required>
+                        <span class="input-feedback-icon d-none" id="emailCheckIcon"></span>
+                    </div>
+                    <div class="invalid-feedback" id="signupEmailFeedback">Please enter a valid email address.</div>
+                </div>
+
+                <!-- Password -->
+                <div class="mb-1">
+                    <label for="signupPassword" class="form-label fw-semibold small">Password</label>
+                    <div class="input-icon-wrapper">
+                        <i class="fa-solid fa-lock input-icon-left"></i>
+                        <input type="password" class="form-control auth-input" id="signupPassword"
+                               placeholder="Create a strong password" autocomplete="new-password" required minlength="8">
+                        <button type="button" class="btn-toggle-pwd" data-target="signupPassword">
+                            <i class="fa-regular fa-eye"></i>
+                        </button>
+                    </div>
+                    <div class="invalid-feedback">Password must be at least 8 characters.</div>
+                </div>
+
+                <!-- Password Strength Bar -->
+                <div class="mb-3 mt-2">
+                    <div class="strength-bar-track">
+                        <div class="strength-bar-fill" id="strengthBarFill"></div>
+                    </div>
+                    <small class="strength-label" id="strengthLabel">Password strength</small>
+                </div>
+
+                <!-- Confirm Password -->
+                <div class="mb-4">
+                    <label for="signupConfirmPassword" class="form-label fw-semibold small">Confirm Password</label>
+                    <div class="input-icon-wrapper">
+                        <i class="fa-solid fa-shield-halved input-icon-left"></i>
+                        <input type="password" class="form-control auth-input" id="signupConfirmPassword"
+                               placeholder="Repeat your password" autocomplete="new-password" required>
+                        <button type="button" class="btn-toggle-pwd" data-target="signupConfirmPassword">
+                            <i class="fa-regular fa-eye"></i>
+                        </button>
+                    </div>
+                    <div class="invalid-feedback" id="confirmPasswordFeedback">Passwords do not match.</div>
+                </div>
+
+                <!-- Terms -->
+                <div class="mb-4">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="agreeTerms" required>
+                        <label class="form-check-label small" for="agreeTerms">
+                            I agree to NEXORA's <a href="#" class="text-primary fw-semibold">Terms of Service</a> and
+                            <a href="#" class="text-primary fw-semibold">Privacy Policy</a>
+                        </label>
+                        <div class="invalid-feedback">You must accept the terms to continue.</div>
+                    </div>
+                </div>
+
+                <!-- Submit -->
+                <button type="submit" class="btn btn-primary w-100 rounded-pill fw-bold py-2 mb-3 auth-submit-btn" id="signupSubmitBtn">
+                    <span class="btn-text">Create My Account</span>
+                    <span class="btn-spinner spinner-border spinner-border-sm d-none ms-2" role="status"></span>
+                </button>
+            </form>
+
+            <!-- Switch to Sign In -->
+            <p class="text-center text-muted small mb-0">
+                Already have an account?
+                <button type="button" class="btn btn-link p-0 text-primary fw-bold text-decoration-none" id="showSigninBtn">Sign in</button>
+            </p>
+        </div>
+
+        <!-- ============================================================
+             PANEL 3: Forgot Password Form
+             ============================================================ -->
+        <div class="auth-card glass-card d-none" id="forgotPanel">
+            <div class="text-center mb-4">
+                <div class="auth-icon-ring mx-auto mb-3">
+                    <i class="fa-solid fa-key fs-3 text-primary"></i>
+                </div>
+                <h2 class="fw-bold mb-1">Reset Password 🔐</h2>
+                <p class="text-muted small">Enter your email and we'll send a secure reset link.</p>
+            </div>
+
+            <!-- Alert Area -->
+            <div class="auth-alert d-none" id="forgotAlert" role="alert"></div>
+
+            <!-- Step 1: Email Input -->
+            <div id="forgotStep1">
+                <form id="forgotForm" novalidate>
+                    <div class="mb-4">
+                        <label for="forgotEmail" class="form-label fw-semibold small">Registered Email Address</label>
+                        <div class="input-icon-wrapper">
+                            <i class="fa-solid fa-envelope input-icon-left"></i>
+                            <input type="email" class="form-control auth-input" id="forgotEmail"
+                                   placeholder="you@example.com" autocomplete="email" required>
+                        </div>
+                        <div class="invalid-feedback">Please enter a valid email address.</div>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100 rounded-pill fw-bold py-2 mb-3 auth-submit-btn" id="forgotSubmitBtn">
+                        <span class="btn-text"><i class="fa-solid fa-paper-plane me-2"></i>Send Reset Link</span>
+                        <span class="btn-spinner spinner-border spinner-border-sm d-none ms-2" role="status"></span>
+                    </button>
+                </form>
+            </div>
+
+            <!-- Step 2: OTP Input (shown after email submit) -->
+            <div id="forgotStep2" class="d-none">
+                <p class="text-muted small text-center mb-3">A 6-digit OTP has been sent to your email. Enter it below.</p>
+                <div class="d-flex justify-content-center gap-2 mb-4" id="otpInputGroup">
+                    <input type="text" class="otp-input form-control text-center fw-bold" maxlength="1" inputmode="numeric">
+                    <input type="text" class="otp-input form-control text-center fw-bold" maxlength="1" inputmode="numeric">
+                    <input type="text" class="otp-input form-control text-center fw-bold" maxlength="1" inputmode="numeric">
+                    <input type="text" class="otp-input form-control text-center fw-bold" maxlength="1" inputmode="numeric">
+                    <input type="text" class="otp-input form-control text-center fw-bold" maxlength="1" inputmode="numeric">
+                    <input type="text" class="otp-input form-control text-center fw-bold" maxlength="1" inputmode="numeric">
+                </div>
+                <div class="auth-alert d-none" id="otpAlert" role="alert"></div>
+                <button type="button" class="btn btn-primary w-100 rounded-pill fw-bold py-2 mb-2" id="verifyOtpBtn">
+                    Verify OTP
+                </button>
+                <button type="button" class="btn btn-link w-100 text-muted small" id="resendOtpBtn">
+                    Didn't receive it? <span class="text-primary fw-bold">Resend OTP</span>
+                </button>
+            </div>
+
+            <!-- Step 3: New Password -->
+            <div id="forgotStep3" class="d-none">
+                <p class="text-muted small text-center mb-3">Set your new password below.</p>
+                <div class="mb-3">
+                    <label class="form-label fw-semibold small">New Password</label>
+                    <div class="input-icon-wrapper">
+                        <i class="fa-solid fa-lock input-icon-left"></i>
+                        <input type="password" class="form-control auth-input" id="newPassword" placeholder="New password" minlength="8" required>
+                        <button type="button" class="btn-toggle-pwd" data-target="newPassword">
+                            <i class="fa-regular fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <label class="form-label fw-semibold small">Confirm New Password</label>
+                    <div class="input-icon-wrapper">
+                        <i class="fa-solid fa-shield-halved input-icon-left"></i>
+                        <input type="password" class="form-control auth-input" id="confirmNewPassword" placeholder="Confirm new password" required>
+                        <button type="button" class="btn-toggle-pwd" data-target="confirmNewPassword">
+                            <i class="fa-regular fa-eye"></i>
+                        </button>
+                    </div>
+                    <div class="text-danger small d-none" id="newPwdMismatch">Passwords do not match.</div>
+                </div>
+                <button type="button" class="btn btn-success w-100 rounded-pill fw-bold py-2" id="resetPasswordBtn">
+                    <i class="fa-solid fa-shield-check me-2"></i>Reset Password
+                </button>
+            </div>
+
+            <p class="text-center text-muted small mt-3 mb-0">
+                <button type="button" class="btn btn-link p-0 text-primary fw-semibold text-decoration-none" id="backToSigninBtn">
+                    <i class="fa-solid fa-arrow-left me-1"></i>Back to Sign In
+                </button>
+            </p>
+        </div>
+
+        <!-- Footer -->
+        <p class="text-center text-muted small mt-3" style="font-size:0.78rem;">
+            &copy; 2026 NEXORA Inc. · <a href="#" class="text-muted">Privacy</a> · <a href="#" class="text-muted">Terms</a>
+        </p>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Auth Script -->
+    <script src="js/auth.js"></script>
+</body>
+</html>

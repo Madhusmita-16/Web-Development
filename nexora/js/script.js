@@ -6,6 +6,26 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     /* --------------------------------------------------------------------------
+       0. Sign Out Handler
+       -------------------------------------------------------------------------- */
+    const signOutBtn = document.getElementById('signOutBtn');
+    if (signOutBtn) {
+        signOutBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            localStorage.removeItem('nexora_session');
+            window.location.href = 'auth.html';
+        });
+    }
+
+    // Populate create post greeting from session
+    const session = JSON.parse(localStorage.getItem('nexora_session') || 'null');
+    const greetText = document.querySelector('.current-user-greeting');
+    const createPostInputBox = document.querySelector('.create-post-input-box');
+    if (session && createPostInputBox) {
+        createPostInputBox.innerText = `What's on your mind, ${session.name.split(' ')[0]}?`;
+    }
+
+    /* --------------------------------------------------------------------------
        1. Global Initializations & Bootstrap Tooltips
        -------------------------------------------------------------------------- */
     const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');

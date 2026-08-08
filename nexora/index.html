@@ -112,8 +112,29 @@
                 <i class="fa-solid fa-paper-plane text-primary"></i>
             </button>
 
-            <!-- User Avatar & Profile Modal -->
-            <img src="images/avatars/user.jpg" alt="Madhu Smita" class="user-avatar-btn" id="openProfileBtn" data-bs-toggle="modal" data-bs-target="#profileModal">
+            <!-- User Avatar & Dropdown -->
+            <div class="dropdown">
+                <img src="images/avatars/user.jpg" alt="Madhu Smita" class="user-avatar-btn" id="openProfileBtn"
+                     data-bs-toggle="dropdown" aria-expanded="false" role="button">
+                <ul class="dropdown-menu dropdown-menu-end shadow glass-card border-0 p-1" style="min-width:200px;">
+                    <li>
+                        <a class="dropdown-item rounded-3 py-2" href="#" data-bs-toggle="modal" data-bs-target="#profileModal">
+                            <i class="fa-solid fa-user me-2 text-primary"></i>View Profile
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item rounded-3 py-2" href="#" data-bs-toggle="modal" data-bs-target="#settingsModal">
+                            <i class="fa-solid fa-gear me-2 text-muted"></i>Settings
+                        </a>
+                    </li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li>
+                        <a class="dropdown-item rounded-3 py-2 text-danger" href="#" id="signOutBtn">
+                            <i class="fa-solid fa-right-from-bracket me-2"></i>Sign Out
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
 
     </nav>
@@ -821,6 +842,23 @@
 
     <!-- Toast Notifications Container -->
     <div class="toast-container-nexora" id="toastContainer"></div>
+
+    <!-- Session Guard: redirect unauthenticated users to auth page -->
+    <script>
+        (function() {
+            var session = null;
+            try { session = JSON.parse(localStorage.getItem('nexora_session')); } catch(e) {}
+            if (!session || !session.loggedIn) {
+                window.location.href = 'auth.html';
+            } else {
+                // Populate user name dynamically
+                var nameEls = document.querySelectorAll('.current-user-name');
+                nameEls.forEach(function(el) { el.innerText = session.name; });
+                var greetEls = document.querySelectorAll('.current-user-greeting');
+                greetEls.forEach(function(el) { el.innerText = 'What\'s on your mind, ' + session.name.split(' ')[0] + '?'; });
+            }
+        })();
+    </script>
 
     <!-- Bootstrap 5 JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
