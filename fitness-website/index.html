@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FITFORGE | Fitness & Wellness</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top" id="mainNavbar">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-uppercase" href="#">
+                <i class="fa-solid fa-dumbbell text-primary-accent me-2"></i>FITFORGE
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#programs">Programs</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#trainers">Trainers</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#membership">Membership</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+                <a href="#membership" class="btn btn-primary-accent rounded-pill px-4 py-2 fw-semibold">Join Now</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero d-flex align-items-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 reveal-fade-up">
+                    <h1 class="display-1 fw-black text-uppercase mb-4">Build Your <span class="text-primary-accent">Strongest</span> Self.</h1>
+                    <p class="lead mb-5 text-light w-75">Transform your body and mind with our state-of-the-art facilities, expert trainers, and a community that pushes you to be your best.</p>
+                    <div class="d-flex flex-wrap gap-3">
+                        <a href="#membership" class="btn btn-primary-accent btn-lg rounded-pill px-5">Start Your Journey</a>
+                        <a href="#programs" class="btn btn-outline-light btn-lg rounded-pill px-5">Explore Programs</a>
+                    </div>
+                    
+                    <!-- Floating Statistics -->
+                    <div class="mt-5 d-flex gap-4 floating-stats">
+                        <div class="stat-item">
+                            <h3 class="fw-bold text-primary-accent mb-0">10+</h3>
+                            <p class="text-white small text-uppercase">Years Exp</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3 class="fw-bold text-primary-accent mb-0">5K+</h3>
+                            <p class="text-white small text-uppercase">Members</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3 class="fw-bold text-primary-accent mb-0">20+</h3>
+                            <p class="text-white small text-uppercase">Trainers</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-overlay"></div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section-padding bg-darker">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6 reveal-fade-right">
+                    <div class="about-image-wrapper position-relative">
+                        <img src="images/gym.jpg" alt="FITFORGE Gym Interior" class="img-fluid rounded-4 shadow-lg w-100 object-fit-cover" style="height: 500px;">
+                        <div class="experience-badge bg-primary-accent text-dark p-4 rounded-3 position-absolute">
+                            <h2 class="fw-bold mb-0">10+</h2>
+                            <p class="mb-0 fw-semibold">Years of Excellence</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 reveal-fade-left">
+                    <h6 class="text-primary-accent text-uppercase fw-bold letter-spacing-1">About FITFORGE</h6>
+                    <h2 class="display-5 fw-bold mb-4">More Than Just A Gym. It's A Lifestyle.</h2>
+                    <p class="text-white mb-4">FITFORGE is a premium fitness facility dedicated to helping you achieve your health and wellness goals. Whether you are a beginner or a seasoned athlete, we have everything you need to succeed.</p>
+                    
+                    <ul class="list-unstyled mb-5">
+                        <li class="mb-3 d-flex align-items-center"><i class="fa-solid fa-circle-check text-primary-accent me-3 fs-5"></i> <span class="fw-medium">Modern, state-of-the-art Equipment</span></li>
+                        <li class="mb-3 d-flex align-items-center"><i class="fa-solid fa-circle-check text-primary-accent me-3 fs-5"></i> <span class="fw-medium">Certified & Experienced Trainers</span></li>
+                        <li class="mb-3 d-flex align-items-center"><i class="fa-solid fa-circle-check text-primary-accent me-3 fs-5"></i> <span class="fw-medium">Personalized Workout Programs</span></li>
+                        <li class="mb-3 d-flex align-items-center"><i class="fa-solid fa-circle-check text-primary-accent me-3 fs-5"></i> <span class="fw-medium">Flexible Memberships without hidden fees</span></li>
+                    </ul>
+                    
+                    <a href="#contact" class="btn btn-outline-primary-accent rounded-pill px-4 py-2">Learn More About Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section id="programs" class="section-padding bg-dark">
+        <div class="container">
+            <div class="text-center mb-5 reveal-fade-up">
+                <h6 class="text-primary-accent text-uppercase fw-bold letter-spacing-1">Our Offerings</h6>
+                <h2 class="display-5 fw-bold">Explore Our Programs</h2>
+            </div>
+            
+            <div class="row g-4">
+                <!-- Program 1 -->
+                <div class="col-md-6 col-lg-4 reveal-fade-up" style="transition-delay: 0.1s;">
+                    <div class="program-card h-100 rounded-4 p-4 border border-secondary border-opacity-25 bg-darker transition-all">
+                        <div class="icon-box bg-primary-accent text-dark rounded-circle d-flex align-items-center justify-content-center mb-4 fs-3" style="width: 60px; height: 60px;">
+                            <i class="fa-solid fa-dumbbell"></i>
+                        </div>
+                        <h4 class="fw-bold mb-3">Strength Training</h4>
+                        <p class="text-white mb-4">Build muscle, increase power, and develop a stronger physique with our comprehensive strength programs.</p>
+                        <div class="d-flex justify-content-between text-white small mb-4">
+                            <span><i class="fa-solid fa-layer-group me-2 text-primary-accent"></i>All Levels</span>
+                            <span><i class="fa-regular fa-clock me-2 text-primary-accent"></i>60 Mins</span>
+                        </div>
+                        <button class="btn btn-link text-white text-decoration-none p-0 fw-semibold arrow-link btn-view-program" data-bs-toggle="modal" data-bs-target="#programModal" data-title="Strength Training" data-desc="Build muscle, increase power, and develop a stronger physique with our comprehensive strength programs led by certified coaches." data-level="All Levels" data-duration="60 Mins" data-icon="fa-dumbbell">View Program <i class="fa-solid fa-arrow-right ms-2 transition-transform"></i></button>
+                    </div>
+                </div>
+                <!-- Program 2 -->
+                <div class="col-md-6 col-lg-4 reveal-fade-up" style="transition-delay: 0.2s;">
+                    <div class="program-card h-100 rounded-4 p-4 border border-secondary border-opacity-25 bg-darker transition-all">
+                        <div class="icon-box bg-primary-accent text-dark rounded-circle d-flex align-items-center justify-content-center mb-4 fs-3" style="width: 60px; height: 60px;">
+                            <i class="fa-solid fa-fire"></i>
+                        </div>
+                        <h4 class="fw-bold mb-3">Weight Loss</h4>
+                        <p class="text-white mb-4">High-intensity workouts designed to burn maximum calories and shred fat efficiently.</p>
+                        <div class="d-flex justify-content-between text-white small mb-4">
+                            <span><i class="fa-solid fa-layer-group me-2 text-primary-accent"></i>Beginner</span>
+                            <span><i class="fa-regular fa-clock me-2 text-primary-accent"></i>45 Mins</span>
+                        </div>
+                        <button class="btn btn-link text-white text-decoration-none p-0 fw-semibold arrow-link btn-view-program" data-bs-toggle="modal" data-bs-target="#programModal" data-title="Weight Loss" data-desc="High-intensity workouts designed to burn maximum calories, boost metabolism, and shred fat efficiently with guided heart-rate tracking." data-level="Beginner" data-duration="45 Mins" data-icon="fa-fire">View Program <i class="fa-solid fa-arrow-right ms-2 transition-transform"></i></button>
+                    </div>
+                </div>
+                <!-- Program 3 -->
+                <div class="col-md-6 col-lg-4 reveal-fade-up" style="transition-delay: 0.3s;">
+                    <div class="program-card h-100 rounded-4 p-4 border border-secondary border-opacity-25 bg-darker transition-all">
+                        <div class="icon-box bg-primary-accent text-dark rounded-circle d-flex align-items-center justify-content-center mb-4 fs-3" style="width: 60px; height: 60px;">
+                            <i class="fa-solid fa-person-running"></i>
+                        </div>
+                        <h4 class="fw-bold mb-3">CrossFit</h4>
+                        <p class="text-white mb-4">Constantly varied functional movements performed at high intensity for ultimate fitness.</p>
+                        <div class="d-flex justify-content-between text-white small mb-4">
+                            <span><i class="fa-solid fa-layer-group me-2 text-primary-accent"></i>Advanced</span>
+                            <span><i class="fa-regular fa-clock me-2 text-primary-accent"></i>60 Mins</span>
+                        </div>
+                        <button class="btn btn-link text-white text-decoration-none p-0 fw-semibold arrow-link btn-view-program" data-bs-toggle="modal" data-bs-target="#programModal" data-title="CrossFit" data-desc="Constantly varied functional movements performed at high intensity for ultimate endurance, athletic agility, and core conditioning." data-level="Advanced" data-duration="60 Mins" data-icon="fa-person-running">View Program <i class="fa-solid fa-arrow-right ms-2 transition-transform"></i></button>
+                    </div>
+                </div>
+                <!-- Program 4 -->
+                <div class="col-md-6 col-lg-4 reveal-fade-up" style="transition-delay: 0.4s;">
+                    <div class="program-card h-100 rounded-4 p-4 border border-secondary border-opacity-25 bg-darker transition-all">
+                        <div class="icon-box bg-primary-accent text-dark rounded-circle d-flex align-items-center justify-content-center mb-4 fs-3" style="width: 60px; height: 60px;">
+                            <i class="fa-solid fa-child-reaching"></i>
+                        </div>
+                        <h4 class="fw-bold mb-3">Yoga & Mobility</h4>
+                        <p class="text-white mb-4">Improve flexibility, balance, and mental clarity through guided yoga and mobility flows.</p>
+                        <div class="d-flex justify-content-between text-white small mb-4">
+                            <span><i class="fa-solid fa-layer-group me-2 text-primary-accent"></i>All Levels</span>
+                            <span><i class="fa-regular fa-clock me-2 text-primary-accent"></i>60 Mins</span>
+                        </div>
+                        <button class="btn btn-link text-white text-decoration-none p-0 fw-semibold arrow-link btn-view-program" data-bs-toggle="modal" data-bs-target="#programModal" data-title="Yoga & Mobility" data-desc="Improve flexibility, joint health, alignment, and mental focus through restorative Vinyasa and targeted mobility flows." data-level="All Levels" data-duration="60 Mins" data-icon="fa-child-reaching">View Program <i class="fa-solid fa-arrow-right ms-2 transition-transform"></i></button>
+                    </div>
+                </div>
+                <!-- Program 5 -->
+                <div class="col-md-6 col-lg-4 reveal-fade-up" style="transition-delay: 0.5s;">
+                    <div class="program-card h-100 rounded-4 p-4 border border-secondary border-opacity-25 bg-darker transition-all">
+                        <div class="icon-box bg-primary-accent text-dark rounded-circle d-flex align-items-center justify-content-center mb-4 fs-3" style="width: 60px; height: 60px;">
+                            <i class="fa-solid fa-hand-fist"></i>
+                        </div>
+                        <h4 class="fw-bold mb-3">Muscle Building</h4>
+                        <p class="text-white mb-4">Targeted hypertrophy training to maximize muscle growth and sculpt your ideal physique.</p>
+                        <div class="d-flex justify-content-between text-white small mb-4">
+                            <span><i class="fa-solid fa-layer-group me-2 text-primary-accent"></i>Intermediate</span>
+                            <span><i class="fa-regular fa-clock me-2 text-primary-accent"></i>75 Mins</span>
+                        </div>
+                        <button class="btn btn-link text-white text-decoration-none p-0 fw-semibold arrow-link btn-view-program" data-bs-toggle="modal" data-bs-target="#programModal" data-title="Muscle Building" data-desc="Targeted hypertrophy split routines optimized to maximize muscle growth, progressive overload, and body sculpting." data-level="Intermediate" data-duration="75 Mins" data-icon="fa-hand-fist">View Program <i class="fa-solid fa-arrow-right ms-2 transition-transform"></i></button>
+                    </div>
+                </div>
+                <!-- Program 6 -->
+                <div class="col-md-6 col-lg-4 reveal-fade-up" style="transition-delay: 0.6s;">
+                    <div class="program-card h-100 rounded-4 p-4 border border-secondary border-opacity-25 bg-darker transition-all">
+                        <div class="icon-box bg-primary-accent text-dark rounded-circle d-flex align-items-center justify-content-center mb-4 fs-3" style="width: 60px; height: 60px;">
+                            <i class="fa-solid fa-user-ninja"></i>
+                        </div>
+                        <h4 class="fw-bold mb-3">Personal Training</h4>
+                        <p class="text-white mb-4">One-on-one coaching customized entirely to your specific goals, body type, and schedule.</p>
+                        <div class="d-flex justify-content-between text-white small mb-4">
+                            <span><i class="fa-solid fa-layer-group me-2 text-primary-accent"></i>Custom</span>
+                            <span><i class="fa-regular fa-clock me-2 text-primary-accent"></i>60 Mins</span>
+                        </div>
+                        <button class="btn btn-link text-white text-decoration-none p-0 fw-semibold arrow-link btn-view-program" data-bs-toggle="modal" data-bs-target="#programModal" data-title="Personal Training" data-desc="Dedicated 1-on-1 private coaching tailored strictly to your personal body metrics, nutrition plans, and peak performance milestones." data-level="Custom" data-duration="60 Mins" data-icon="fa-user-ninja">View Program <i class="fa-solid fa-arrow-right ms-2 transition-transform"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BMI Calculator Section -->
+    <section class="section-padding bg-darker position-relative overflow-hidden">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6 reveal-fade-right">
+                    <h6 class="text-primary-accent text-uppercase fw-bold letter-spacing-1">Check Your Body</h6>
+                    <h2 class="display-5 fw-bold mb-4">BMI Calculator</h2>
+                    <p class="text-white mb-4">Use our free BMI calculator to check your body mass index and understand your current health status. It's a quick way to see if you are at a healthy weight for your height.</p>
+                    
+                    <div class="bmi-form-wrapper bg-dark p-4 rounded-4 border border-secondary border-opacity-25">
+                        <form id="bmiForm">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="height" class="form-label text-white small">Height (cm)</label>
+                                    <input type="number" class="form-control bg-darker text-white border-secondary border-opacity-25" id="height" placeholder="e.g. 175" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="weight" class="form-label text-white small">Weight (kg)</label>
+                                    <input type="number" class="form-control bg-darker text-white border-secondary border-opacity-25" id="weight" placeholder="e.g. 70" required>
+                                </div>
+                                <div class="col-12 mt-4">
+                                    <button type="submit" class="btn btn-primary-accent w-100 py-3 rounded-3 fw-bold">Calculate BMI</button>
+                                </div>
+                            </div>
+                        </form>
+                        
+                        <!-- Results Area -->
+                        <div id="bmiResult" class="mt-4 p-4 rounded-3 d-none text-center transition-all">
+                            <h4 class="fw-bold mb-1">Your BMI: <span id="bmiValue" class="display-6">--</span></h4>
+                            <p class="mb-0 text-uppercase fw-semibold letter-spacing-1" id="bmiCategory">--</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 reveal-fade-left">
+                    <div class="bmi-table-wrapper bg-dark p-4 rounded-4 border border-secondary border-opacity-25">
+                        <h4 class="fw-bold mb-4 border-bottom border-secondary border-opacity-25 pb-3">BMI Categories</h4>
+                        <ul class="list-group list-group-flush bg-transparent">
+                            <li class="list-group-item bg-transparent text-white border-secondary border-opacity-25 d-flex justify-content-between align-items-center py-2">
+                                <span class="d-flex align-items-center"><span class="badge bg-danger rounded-pill me-3 p-2"></span>Severe Thinness</span>
+                                <span class="text-white fw-mono">&lt; 16.0</span>
+                            </li>
+                            <li class="list-group-item bg-transparent text-white border-secondary border-opacity-25 d-flex justify-content-between align-items-center py-2">
+                                <span class="d-flex align-items-center"><span class="badge bg-warning rounded-pill me-3 p-2"></span>Moderate Thinness</span>
+                                <span class="text-white fw-mono">16.0 – 16.9</span>
+                            </li>
+                            <li class="list-group-item bg-transparent text-white border-secondary border-opacity-25 d-flex justify-content-between align-items-center py-2">
+                                <span class="d-flex align-items-center"><span class="badge bg-info rounded-pill me-3 p-2"></span>Mild Thinness</span>
+                                <span class="text-white fw-mono">17.0 – 18.4</span>
+                            </li>
+                            <li class="list-group-item bg-transparent text-white border-secondary border-opacity-25 d-flex justify-content-between align-items-center py-2">
+                                <span class="d-flex align-items-center"><span class="badge bg-success rounded-pill me-3 p-2"></span>Normal Range</span>
+                                <span class="text-white fw-mono">18.5 – 24.9</span>
+                            </li>
+                            <li class="list-group-item bg-transparent text-white border-secondary border-opacity-25 d-flex justify-content-between align-items-center py-2">
+                                <span class="d-flex align-items-center"><span class="badge bg-warning rounded-pill me-3 p-2"></span>Pre-obese / Overweight</span>
+                                <span class="text-white fw-mono">25.0 – 29.9</span>
+                            </li>
+                            <li class="list-group-item bg-transparent text-white border-secondary border-opacity-25 d-flex justify-content-between align-items-center py-2">
+                                <span class="d-flex align-items-center"><span class="badge bg-danger rounded-pill me-3 p-2"></span>Obesity Class I</span>
+                                <span class="text-white fw-mono">30.0 – 34.9</span>
+                            </li>
+                            <li class="list-group-item bg-transparent text-white border-secondary border-opacity-25 d-flex justify-content-between align-items-center py-2">
+                                <span class="d-flex align-items-center"><span class="badge bg-danger rounded-pill me-3 p-2"></span>Obesity Class II</span>
+                                <span class="text-white fw-mono">35.0 – 39.9</span>
+                            </li>
+                            <li class="list-group-item bg-transparent text-white border-secondary border-opacity-25 d-flex justify-content-between align-items-center py-2">
+                                <span class="d-flex align-items-center"><span class="badge bg-danger rounded-pill me-3 p-2"></span>Obesity Class III</span>
+                                <span class="text-white fw-mono">≥ 40.0</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trainers Section -->
+    <section id="trainers" class="section-padding bg-dark">
+        <div class="container">
+            <div class="text-center mb-5 reveal-fade-up">
+                <h6 class="text-primary-accent text-uppercase fw-bold letter-spacing-1">Expert Team</h6>
+                <h2 class="display-5 fw-bold">Meet Our Trainers</h2>
+            </div>
+            
+            <div class="row g-4">
+                <!-- Trainer 1 -->
+                <div class="col-md-6 col-lg-3 reveal-fade-up" style="transition-delay: 0.1s;">
+                    <div class="trainer-card bg-darker rounded-4 overflow-hidden border border-secondary border-opacity-25 position-relative group">
+                        <div class="trainer-img-wrapper position-relative overflow-hidden" style="height: 350px;">
+                            <img src="images/trainers/alex.jpg" alt="Alex Morgan" class="w-100 h-100 object-fit-cover">
+                            <div class="trainer-social d-flex flex-column gap-2 position-absolute">
+                                <a href="#" class="btn btn-light rounded-circle btn-sm"><i class="fa-brands fa-instagram"></i></a>
+                                <a href="#" class="btn btn-light rounded-circle btn-sm"><i class="fa-brands fa-twitter"></i></a>
+                            </div>
+                        </div>
+                        <div class="p-4 text-center">
+                            <h4 class="fw-bold mb-1">Alex Morgan</h4>
+                            <p class="text-primary-accent small text-uppercase fw-semibold mb-3">Strength Coach</p>
+                            <p class="text-white small mb-4 border-top border-secondary border-opacity-25 pt-3">8 Years Experience</p>
+                            <button class="btn btn-outline-light w-100 rounded-pill btn-sm btn-view-trainer" data-bs-toggle="modal" data-bs-target="#trainerModal" data-name="Alex Morgan" data-role="Strength Coach" data-exp="8 Years Experience" data-img="images/trainers/alex.jpg" data-bio="Alex specializes in heavy compound lifts, powerlifting technique, and functional strength conditioning with over 8 years of elite coaching experience.">View Profile</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Trainer 2 -->
+                <div class="col-md-6 col-lg-3 reveal-fade-up" style="transition-delay: 0.2s;">
+                    <div class="trainer-card bg-darker rounded-4 overflow-hidden border border-secondary border-opacity-25 position-relative group">
+                        <div class="trainer-img-wrapper position-relative overflow-hidden" style="height: 350px;">
+                            <img src="images/trainers/sarah.jpg" alt="Sarah Williams" class="w-100 h-100 object-fit-cover">
+                            <div class="trainer-social d-flex flex-column gap-2 position-absolute">
+                                <a href="#" class="btn btn-light rounded-circle btn-sm"><i class="fa-brands fa-instagram"></i></a>
+                                <a href="#" class="btn btn-light rounded-circle btn-sm"><i class="fa-brands fa-twitter"></i></a>
+                            </div>
+                        </div>
+                        <div class="p-4 text-center">
+                            <h4 class="fw-bold mb-1">Sarah Williams</h4>
+                            <p class="text-primary-accent small text-uppercase fw-semibold mb-3">Yoga & Mobility</p>
+                            <p class="text-white small mb-4 border-top border-secondary border-opacity-25 pt-3">5 Years Experience</p>
+                            <button class="btn btn-outline-light w-100 rounded-pill btn-sm btn-view-trainer" data-bs-toggle="modal" data-bs-target="#trainerModal" data-name="Sarah Williams" data-role="Yoga & Mobility Specialist" data-exp="5 Years Experience" data-img="images/trainers/sarah.jpg" data-bio="Sarah brings holistic Vinyasa yoga, joint mobility recovery, and mindfulness practices to help athletes build flexibility and prevent injury.">View Profile</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Trainer 3 -->
+                <div class="col-md-6 col-lg-3 reveal-fade-up" style="transition-delay: 0.3s;">
+                    <div class="trainer-card bg-darker rounded-4 overflow-hidden border border-secondary border-opacity-25 position-relative group">
+                        <div class="trainer-img-wrapper position-relative overflow-hidden" style="height: 350px;">
+                            <img src="images/trainers/daniel.jpg" alt="Daniel Carter" class="w-100 h-100 object-fit-cover">
+                            <div class="trainer-social d-flex flex-column gap-2 position-absolute">
+                                <a href="#" class="btn btn-light rounded-circle btn-sm"><i class="fa-brands fa-instagram"></i></a>
+                                <a href="#" class="btn btn-light rounded-circle btn-sm"><i class="fa-brands fa-twitter"></i></a>
+                            </div>
+                        </div>
+                        <div class="p-4 text-center">
+                            <h4 class="fw-bold mb-1">Daniel Carter</h4>
+                            <p class="text-primary-accent small text-uppercase fw-semibold mb-3">Personal Trainer</p>
+                            <p class="text-white small mb-4 border-top border-secondary border-opacity-25 pt-3">10 Years Experience</p>
+                            <button class="btn btn-outline-light w-100 rounded-pill btn-sm btn-view-trainer" data-bs-toggle="modal" data-bs-target="#trainerModal" data-name="Daniel Carter" data-role="Master Personal Trainer" data-exp="10 Years Experience" data-img="images/trainers/daniel.jpg" data-bio="Daniel has transformed over 500+ clients through personalized 1-on-1 hypertrophy programs, body recomposition splits, and endurance training.">View Profile</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Trainer 4 -->
+                <div class="col-md-6 col-lg-3 reveal-fade-up" style="transition-delay: 0.4s;">
+                    <div class="trainer-card bg-darker rounded-4 overflow-hidden border border-secondary border-opacity-25 position-relative group">
+                        <div class="trainer-img-wrapper position-relative overflow-hidden" style="height: 350px;">
+                            <img src="images/trainers/emma.jpg" alt="Emma Wilson" class="w-100 h-100 object-fit-cover">
+                            <div class="trainer-social d-flex flex-column gap-2 position-absolute">
+                                <a href="#" class="btn btn-light rounded-circle btn-sm"><i class="fa-brands fa-instagram"></i></a>
+                                <a href="#" class="btn btn-light rounded-circle btn-sm"><i class="fa-brands fa-twitter"></i></a>
+                            </div>
+                        </div>
+                        <div class="p-4 text-center">
+                            <h4 class="fw-bold mb-1">Emma Wilson</h4>
+                            <p class="text-primary-accent small text-uppercase fw-semibold mb-3">Nutrition & Fitness</p>
+                            <p class="text-white small mb-4 border-top border-secondary border-opacity-25 pt-3">6 Years Experience</p>
+                            <button class="btn btn-outline-light w-100 rounded-pill btn-sm btn-view-trainer" data-bs-toggle="modal" data-bs-target="#trainerModal" data-name="Emma Wilson" data-role="Nutrition & Fitness Specialist" data-exp="6 Years Experience" data-img="images/trainers/emma.jpg" data-bio="Emma focuses on macro-nutrient meal planning, fat loss science, and sustainable lifestyle transformation to keep your energy and body at peak level.">View Profile</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Workout Schedule Section -->
+    <section class="section-padding bg-darker">
+        <div class="container">
+            <div class="text-center mb-5 reveal-fade-up">
+                <h6 class="text-primary-accent text-uppercase fw-bold letter-spacing-1">Timetable</h6>
+                <h2 class="display-5 fw-bold">Workout Schedule</h2>
+            </div>
+            
+            <div class="table-responsive reveal-fade-up">
+                <table class="table table-dark table-hover table-bordered border-secondary schedule-table text-center align-middle">
+                    <thead class="bg-primary-accent text-dark">
+                        <tr>
+                            <th class="py-3 text-dark fw-bold w-15">Time</th>
+                            <th class="py-3 text-dark fw-bold w-15">Monday</th>
+                            <th class="py-3 text-dark fw-bold w-15">Tuesday</th>
+                            <th class="py-3 text-dark fw-bold w-15">Wednesday</th>
+                            <th class="py-3 text-dark fw-bold w-15">Thursday</th>
+                            <th class="py-3 text-dark fw-bold w-15">Friday</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="text-primary-accent fw-bold py-4">06:00 AM</td>
+                            <td><div class="fw-bold">CrossFit</div><div class="small text-white">Alex</div></td>
+                            <td><div class="fw-bold">Yoga</div><div class="small text-white">Sarah</div></td>
+                            <td><div class="fw-bold">Strength</div><div class="small text-white">Daniel</div></td>
+                            <td><div class="fw-bold">Cardio</div><div class="small text-white">Emma</div></td>
+                            <td><div class="fw-bold">CrossFit</div><div class="small text-white">Alex</div></td>
+                        </tr>
+                        <tr>
+                            <td class="text-primary-accent fw-bold py-4">08:00 AM</td>
+                            <td><div class="fw-bold">Cardio</div><div class="small text-white">Emma</div></td>
+                            <td><div class="fw-bold">Strength</div><div class="small text-white">Daniel</div></td>
+                            <td><div class="fw-bold">Yoga</div><div class="small text-white">Sarah</div></td>
+                            <td><div class="fw-bold">CrossFit</div><div class="small text-white">Alex</div></td>
+                            <td><div class="fw-bold">Strength</div><div class="small text-white">Daniel</div></td>
+                        </tr>
+                        <tr>
+                            <td class="text-primary-accent fw-bold py-4">05:00 PM</td>
+                            <td><div class="fw-bold">Strength</div><div class="small text-white">Daniel</div></td>
+                            <td><div class="fw-bold">CrossFit</div><div class="small text-white">Alex</div></td>
+                            <td><div class="fw-bold">Cardio</div><div class="small text-white">Emma</div></td>
+                            <td><div class="fw-bold">Yoga</div><div class="small text-white">Sarah</div></td>
+                            <td><div class="fw-bold">CrossFit</div><div class="small text-white">Alex</div></td>
+                        </tr>
+                        <tr>
+                            <td class="text-primary-accent fw-bold py-4">07:00 PM</td>
+                            <td><div class="fw-bold">Yoga</div><div class="small text-white">Sarah</div></td>
+                            <td><div class="fw-bold">Cardio</div><div class="small text-white">Emma</div></td>
+                            <td><div class="fw-bold">CrossFit</div><div class="small text-white">Alex</div></td>
+                            <td><div class="fw-bold">Strength</div><div class="small text-white">Daniel</div></td>
+                            <td><div class="fw-bold">Yoga</div><div class="small text-white">Sarah</div></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Membership Pricing Section -->
+    <section id="membership" class="section-padding bg-dark position-relative">
+        <div class="container">
+            <div class="text-center mb-5 reveal-fade-up">
+                <h6 class="text-primary-accent text-uppercase fw-bold letter-spacing-1">Pricing Plans</h6>
+                <h2 class="display-5 fw-bold">Choose Your Membership</h2>
+            </div>
+            
+            <div class="row g-4 align-items-center justify-content-center">
+                <!-- Basic Plan -->
+                <div class="col-md-6 col-lg-4 reveal-fade-up" style="transition-delay: 0.1s;">
+                    <div class="pricing-card bg-darker rounded-4 p-5 border border-secondary border-opacity-25 text-center transition-all h-100">
+                        <h4 class="fw-bold text-uppercase mb-3">Basic</h4>
+                        <div class="price mb-4">
+                            <span class="fs-4 text-white">₹</span><span class="display-4 fw-black text-white">999</span><span class="text-white">/mo</span>
+                        </div>
+                        <ul class="list-unstyled text-start mb-5">
+                            <li class="mb-3 d-flex align-items-center"><i class="fa-solid fa-check text-primary-accent me-3"></i> Gym Access</li>
+                            <li class="mb-3 d-flex align-items-center"><i class="fa-solid fa-check text-primary-accent me-3"></i> Locker Access</li>
+                            <li class="mb-3 d-flex align-items-center"><i class="fa-solid fa-check text-primary-accent me-3"></i> Basic Equipment</li>
+                            <li class="mb-3 d-flex align-items-center text-white"><i class="fa-solid fa-xmark me-3"></i> Personal Training</li>
+                            <li class="mb-3 d-flex align-items-center text-white"><i class="fa-solid fa-xmark me-3"></i> Group Classes</li>
+                        </ul>
+                        <button class="btn btn-outline-light w-100 rounded-pill py-3 fw-bold btn-select-plan" data-bs-toggle="modal" data-bs-target="#membershipModal" data-plan="Basic" data-price="₹999/mo">Select Basic</button>
+                    </div>
+                </div>
+                
+                <!-- Pro Plan -->
+                <div class="col-md-6 col-lg-4 reveal-fade-up" style="transition-delay: 0.2s;">
+                    <div class="pricing-card bg-primary-accent text-dark rounded-4 p-5 border-0 text-center transition-all position-relative shadow-lg transform-scale-lg z-1">
+                        <div class="position-absolute top-0 start-50 translate-middle badge bg-dark text-white rounded-pill px-3 py-2 fw-bold small">MOST POPULAR</div>
+                        <h4 class="fw-bold text-uppercase mb-3 mt-2">Pro</h4>
+                        <div class="price mb-4">
+                            <span class="fs-4">₹</span><span class="display-4 fw-black">1,999</span><span>/mo</span>
+                        </div>
+                        <ul class="list-unstyled text-start mb-5 fw-medium">
+                            <li class="mb-3 d-flex align-items-center"><i class="fa-solid fa-check me-3 fs-5"></i> Unlimited Gym Access</li>
+                            <li class="mb-3 d-flex align-items-center"><i class="fa-solid fa-check me-3 fs-5"></i> Locker & Shower Access</li>
+                            <li class="mb-3 d-flex align-items-center"><i class="fa-solid fa-check me-3 fs-5"></i> All Equipment</li>
+                            <li class="mb-3 d-flex align-items-center"><i class="fa-solid fa-check me-3 fs-5"></i> Personal Training (2/mo)</li>
+                            <li class="mb-3 d-flex align-items-center"><i class="fa-solid fa-check me-3 fs-5"></i> Group Classes & Diet</li>
+                        </ul>
+                        <button class="btn btn-dark w-100 rounded-pill py-3 fw-bold btn-pro btn-select-plan" data-bs-toggle="modal" data-bs-target="#membershipModal" data-plan="Pro" data-price="₹1,999/mo">Select Pro</button>
+                    </div>
+                </div>
+                
+                <!-- Elite Plan -->
+                <div class="col-md-6 col-lg-4 reveal-fade-up" style="transition-delay: 0.3s;">
+                    <div class="pricing-card bg-darker rounded-4 p-5 border border-secondary border-opacity-25 text-center transition-all h-100">
+                        <h4 class="fw-bold text-uppercase mb-3">Elite</h4>
+                        <div class="price mb-4">
+                            <span class="fs-4 text-white">₹</span><span class="display-4 fw-black text-white">2,999</span><span class="text-white">/mo</span>
+                        </div>
+                        <ul class="list-unstyled text-start mb-5">
+                            <li class="mb-3 d-flex align-items-center"><i class="fa-solid fa-check text-primary-accent me-3"></i> Everything in Pro</li>
+                            <li class="mb-3 d-flex align-items-center"><i class="fa-solid fa-check text-primary-accent me-3"></i> Dedicated Trainer</li>
+                            <li class="mb-3 d-flex align-items-center"><i class="fa-solid fa-check text-primary-accent me-3"></i> Customized Diet Plan</li>
+                            <li class="mb-3 d-flex align-items-center"><i class="fa-solid fa-check text-primary-accent me-3"></i> Body Analysis</li>
+                            <li class="mb-3 d-flex align-items-center"><i class="fa-solid fa-check text-primary-accent me-3"></i> SPA & Massage</li>
+                        </ul>
+                        <button class="btn btn-outline-light w-100 rounded-pill py-3 fw-bold btn-select-plan" data-bs-toggle="modal" data-bs-target="#membershipModal" data-plan="Elite" data-price="₹2,999/mo">Select Elite</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials & Stats -->
+    <section id="testimonials" class="section-padding bg-darker position-relative">
+        <div class="container">
+            <div class="row g-5">
+                <!-- Statistics -->
+                <div class="col-lg-5 reveal-fade-right">
+                    <h6 class="text-primary-accent text-uppercase fw-bold letter-spacing-1">Our Impact</h6>
+                    <h2 class="display-5 fw-bold mb-4">Fitness In Numbers</h2>
+                    <p class="text-white mb-5">We take pride in the community we've built and the results our members achieve every single day.</p>
+                    
+                    <div class="row g-4">
+                        <div class="col-6">
+                            <div class="stat-box">
+                                <h2 class="display-4 fw-bold text-primary-accent mb-0"><span class="counter" data-target="5000">0</span>+</h2>
+                                <p class="text-white fw-semibold">Active Members</p>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="stat-box">
+                                <h2 class="display-4 fw-bold text-primary-accent mb-0"><span class="counter" data-target="20">0</span>+</h2>
+                                <p class="text-white fw-semibold">Expert Trainers</p>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="stat-box">
+                                <h2 class="display-4 fw-bold text-primary-accent mb-0"><span class="counter" data-target="50">0</span>+</h2>
+                                <p class="text-white fw-semibold">Weekly Classes</p>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="stat-box">
+                                <h2 class="display-4 fw-bold text-primary-accent mb-0"><span class="counter" data-target="95">0</span>%</h2>
+                                <p class="text-white fw-semibold">Satisfaction Rate</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonials Carousel -->
+                <div class="col-lg-7 reveal-fade-left">
+                    <div class="bg-dark p-5 rounded-4 border border-secondary border-opacity-25 h-100 d-flex flex-column justify-content-center">
+                        <i class="fa-solid fa-quote-left display-4 text-primary-accent opacity-50 mb-4"></i>
+                        <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <p class="fs-4 fst-italic text-light mb-4">"FITFORGE completely changed my approach to fitness. The trainers are incredibly supportive and the environment is amazing. I've never felt stronger!"</p>
+                                    <div class="d-flex align-items-center">
+                                        <div class="bg-secondary rounded-circle me-3" style="width: 60px; height: 60px;"></div>
+                                        <div>
+                                            <h5 class="fw-bold mb-0">Michael Chen</h5>
+                                            <div class="text-primary-accent small mt-1">
+                                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <p class="fs-4 fst-italic text-light mb-4">"The facilities are top-notch and always clean. The Pro membership is definitely worth it for the group classes alone. Highly recommend to anyone serious about their goals."</p>
+                                    <div class="d-flex align-items-center">
+                                        <div class="bg-secondary rounded-circle me-3" style="width: 60px; height: 60px;"></div>
+                                        <div>
+                                            <h5 class="fw-bold mb-0">Jessica Taylor</h5>
+                                            <div class="text-primary-accent small mt-1">
+                                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <p class="fs-4 fst-italic text-light mb-4">"I joined for the CrossFit classes and stayed for the community. You won't find a better equipped gym with such knowledgeable staff anywhere else in the city."</p>
+                                    <div class="d-flex align-items-center">
+                                        <div class="bg-secondary rounded-circle me-3" style="width: 60px; height: 60px;"></div>
+                                        <div>
+                                            <h5 class="fw-bold mb-0">David Rodriguez</h5>
+                                            <div class="text-primary-accent small mt-1">
+                                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex gap-2 mt-4">
+                                <button class="btn btn-outline-light rounded-circle" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev" style="width: 40px; height: 40px;">
+                                    <i class="fa-solid fa-arrow-left"></i>
+                                </button>
+                                <button class="btn btn-outline-light rounded-circle" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next" style="width: 40px; height: 40px;">
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section-padding bg-dark">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-5 reveal-fade-right">
+                    <h6 class="text-primary-accent text-uppercase fw-bold letter-spacing-1">Get In Touch</h6>
+                    <h2 class="display-5 fw-bold mb-4">Contact Us</h2>
+                    <p class="text-white mb-5">Have questions about our memberships or facilities? Send us a message and our team will get back to you shortly.</p>
+                    
+                    <div class="contact-info d-flex flex-column gap-4">
+                        <div class="d-flex align-items-center">
+                            <div class="bg-darker text-primary-accent rounded-circle d-flex align-items-center justify-content-center me-4" style="width: 60px; height: 60px;">
+                                <i class="fa-solid fa-location-dot fs-4"></i>
+                            </div>
+                            <div>
+                                <h5 class="fw-bold mb-1">Address</h5>
+                                <p class="text-white mb-0">123 Fitness Street, Gym City, GC 10023</p>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <div class="bg-darker text-primary-accent rounded-circle d-flex align-items-center justify-content-center me-4" style="width: 60px; height: 60px;">
+                                <i class="fa-solid fa-phone fs-4"></i>
+                            </div>
+                            <div>
+                                <h5 class="fw-bold mb-1">Phone</h5>
+                                <p class="text-white mb-0">+91 98765 43210</p>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <div class="bg-darker text-primary-accent rounded-circle d-flex align-items-center justify-content-center me-4" style="width: 60px; height: 60px;">
+                                <i class="fa-solid fa-envelope fs-4"></i>
+                            </div>
+                            <div>
+                                <h5 class="fw-bold mb-1">Email</h5>
+                                <p class="text-white mb-0">info@fitforge.com</p>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <div class="bg-darker text-primary-accent rounded-circle d-flex align-items-center justify-content-center me-4" style="width: 60px; height: 60px;">
+                                <i class="fa-solid fa-clock fs-4"></i>
+                            </div>
+                            <div>
+                                <h5 class="fw-bold mb-1">Opening Hours</h5>
+                                <p class="text-white mb-0">Mon - Sun: 5:00 AM - 11:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-7 reveal-fade-left">
+                    <div class="bg-darker p-5 rounded-4 border border-secondary border-opacity-25 h-100">
+                        <form id="contactForm" class="needs-validation" novalidate>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control bg-dark text-white border-secondary border-opacity-25 py-3" placeholder="Full Name" required>
+                                    <div class="invalid-feedback">Please enter your name.</div>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="email" class="form-control bg-dark text-white border-secondary border-opacity-25 py-3" placeholder="Email Address" required>
+                                    <div class="invalid-feedback">Please enter a valid email.</div>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="tel" class="form-control bg-dark text-white border-secondary border-opacity-25 py-3" placeholder="Phone Number" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control bg-dark text-white border-secondary border-opacity-25 py-3" placeholder="Subject" required>
+                                </div>
+                                <div class="col-12">
+                                    <textarea class="form-control bg-dark text-white border-secondary border-opacity-25 py-3" rows="5" placeholder="Your Message" required></textarea>
+                                    <div class="invalid-feedback">Please enter a message.</div>
+                                </div>
+                                <div class="col-12 mt-4">
+                                    <button type="submit" class="btn btn-primary-accent w-100 py-3 rounded-pill fw-bold text-uppercase letter-spacing-1">Send Message</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Map Section -->
+            <div class="row mt-5 reveal-fade-up">
+                <div class="col-12">
+                    <h4 class="fw-bold mb-3 text-white"><i class="fa-solid fa-location-dot text-primary-accent me-2"></i>Find Our Location</h4>
+                    <div class="rounded-4 overflow-hidden border border-secondary border-opacity-25 shadow-lg transition-all" style="height: 420px; background-color: #111;">
+                        <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=77.1200%2C28.5800%2C77.2800%2C28.6800&amp;layer=mapnik" width="100%" height="100%" style="border:0; filter: invert(90%) hue-rotate(180deg) contrast(1.2);" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="py-5 bg-primary-accent text-dark text-center">
+        <div class="container py-5 reveal-scale-up">
+            <h2 class="display-4 fw-black text-uppercase mb-4">Your Goals. Your Journey.<br>Your Stronger Future.</h2>
+            <p class="lead fw-semibold mb-5 w-75 mx-auto">Don't wait for tomorrow. Take the first step towards a healthier, stronger you today.</p>
+            <button class="btn btn-dark btn-lg rounded-pill px-5 py-3 fw-bold text-uppercase letter-spacing-1 shadow-lg btn-select-plan" data-bs-toggle="modal" data-bs-target="#membershipModal" data-plan="Pro" data-price="₹1,999/mo">Join FITFORGE Today</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-darker pt-5 border-top border-secondary border-opacity-25">
+        <div class="container pb-4">
+            <div class="row g-4 mb-5">
+                <div class="col-lg-4 col-md-6">
+                    <a class="navbar-brand fw-bold text-uppercase fs-3 text-white mb-3 d-inline-block" href="#">
+                        <i class="fa-solid fa-dumbbell text-primary-accent me-2"></i>FITFORGE
+                    </a>
+                    <p class="text-white pe-lg-4">A premium fitness facility dedicated to helping you achieve your health and wellness goals through expert guidance and state-of-the-art equipment.</p>
+                    <div class="d-flex gap-3 mt-4">
+                        <a href="#" class="btn btn-outline-light rounded-circle btn-sm d-flex align-items-center justify-content-center" style="width: 36px; height: 36px;"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="btn btn-outline-light rounded-circle btn-sm d-flex align-items-center justify-content-center" style="width: 36px; height: 36px;"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#" class="btn btn-outline-light rounded-circle btn-sm d-flex align-items-center justify-content-center" style="width: 36px; height: 36px;"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="btn btn-outline-light rounded-circle btn-sm d-flex align-items-center justify-content-center" style="width: 36px; height: 36px;"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6">
+                    <h5 class="fw-bold text-white mb-4">Quick Links</h5>
+                    <ul class="list-unstyled d-flex flex-column gap-2">
+                        <li><a href="#home" class="text-white text-decoration-none footer-link">Home</a></li>
+                        <li><a href="#about" class="text-white text-decoration-none footer-link">About Us</a></li>
+                        <li><a href="#trainers" class="text-white text-decoration-none footer-link">Trainers</a></li>
+                        <li><a href="#membership" class="text-white text-decoration-none footer-link">Membership</a></li>
+                        <li><a href="#contact" class="text-white text-decoration-none footer-link">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-2 col-md-6">
+                    <h5 class="fw-bold text-white mb-4">Programs</h5>
+                    <ul class="list-unstyled d-flex flex-column gap-2">
+                        <li><a href="#" class="text-white text-decoration-none footer-link">Strength Training</a></li>
+                        <li><a href="#" class="text-white text-decoration-none footer-link">CrossFit</a></li>
+                        <li><a href="#" class="text-white text-decoration-none footer-link">Yoga & Mobility</a></li>
+                        <li><a href="#" class="text-white text-decoration-none footer-link">Weight Loss</a></li>
+                        <li><a href="#" class="text-white text-decoration-none footer-link">Personal Training</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <h5 class="fw-bold text-white mb-4">Newsletter</h5>
+                    <p class="text-white">Subscribe to our newsletter for fitness tips, recipes, and exclusive offers.</p>
+                    <form id="newsletterForm" class="mt-3">
+                        <div class="input-group">
+                            <input type="email" id="newsletterEmail" class="form-control bg-dark text-white border-secondary border-opacity-25" placeholder="Email Address" required>
+                            <button class="btn btn-primary-accent fw-bold px-4" type="submit">Subscribe</button>
+                        </div>
+                        <div id="newsletterFeedback" class="small mt-2 text-primary-accent d-none"></div>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="row pt-4 border-top border-secondary border-opacity-25 text-center text-md-start">
+                <div class="col-md-6">
+                    <p class="text-white small mb-0">&copy; <span id="currentYear"></span> FITFORGE. All Rights Reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end mt-3 mt-md-0">
+                    <a href="#" class="text-white small text-decoration-none me-3 footer-link">Privacy Policy</a>
+                    <a href="#" class="text-white small text-decoration-none footer-link">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="btn btn-primary-accent rounded-circle shadow-lg position-fixed bottom-0 end-0 m-4 d-none z-3" style="width: 50px; height: 50px; opacity: 0; transition: opacity 0.3s;">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <!-- Program Details Modal -->
+    <div class="modal fade" id="programModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content bg-dark text-white border border-secondary border-opacity-25 rounded-4 shadow-lg">
+                <div class="modal-header border-secondary border-opacity-25">
+                    <h5 class="modal-title fw-bold d-flex align-items-center"><i id="modalProgramIcon" class="fa-solid fa-dumbbell text-primary-accent me-3 fs-4"></i><span id="modalProgramTitle">Program Details</span></h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <p id="modalProgramDesc" class="lead text-white mb-4">Detailed program description goes here.</p>
+                    <div class="row g-3 mb-4 text-center">
+                        <div class="col-6">
+                            <div class="bg-darker p-3 rounded-3 border border-secondary border-opacity-25">
+                                <span class="text-primary-accent small fw-bold text-uppercase d-block mb-1">Level</span>
+                                <span id="modalProgramLevel" class="fw-bold">All Levels</span>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="bg-darker p-3 rounded-3 border border-secondary border-opacity-25">
+                                <span class="text-primary-accent small fw-bold text-uppercase d-block mb-1">Duration</span>
+                                <span id="modalProgramDuration" class="fw-bold">60 Mins</span>
+                            </div>
+                        </div>
+                    </div>
+                    <h6 class="fw-bold text-primary-accent mb-3">Key Highlights & Benefits:</h6>
+                    <ul class="list-unstyled mb-4">
+                        <li class="mb-2"><i class="fa-solid fa-check text-primary-accent me-2"></i> Structured progressive training blocks</li>
+                        <li class="mb-2"><i class="fa-solid fa-check text-primary-accent me-2"></i> Dedicated certified trainer guidance</li>
+                        <li class="mb-2"><i class="fa-solid fa-check text-primary-accent me-2"></i> Heart-rate and recovery tracking</li>
+                    </ul>
+                </div>
+                <div class="modal-footer border-secondary border-opacity-25">
+                    <button type="button" class="btn btn-outline-light rounded-pill px-4" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary-accent rounded-pill px-4 fw-bold btn-select-plan" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#membershipModal" data-plan="Pro" data-price="₹1,999/mo">Enroll In Class</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Trainer Profile Modal -->
+    <div class="modal fade" id="trainerModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content bg-dark text-white border border-secondary border-opacity-25 rounded-4 shadow-lg">
+                <div class="modal-header border-secondary border-opacity-25">
+                    <h5 class="modal-title fw-bold" id="modalTrainerName">Trainer Profile</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4 text-center">
+                    <img id="modalTrainerImg" src="" alt="Trainer" class="rounded-circle mb-3 object-fit-cover shadow-lg border border-2 border-warning" style="width: 120px; height: 120px;">
+                    <h4 id="modalTrainerHeader" class="fw-bold mb-1">Trainer Name</h4>
+                    <p id="modalTrainerRole" class="text-primary-accent fw-bold text-uppercase small mb-2">Role</p>
+                    <span id="modalTrainerExp" class="badge bg-darker text-white border border-secondary border-opacity-25 px-3 py-2 rounded-pill mb-4">Exp</span>
+                    <p id="modalTrainerBio" class="text-white text-start mb-4">Detailed bio and achievements of the trainer.</p>
+                </div>
+                <div class="modal-footer border-secondary border-opacity-25">
+                    <button type="button" class="btn btn-outline-light rounded-pill px-4" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary-accent rounded-pill px-4 fw-bold btn-select-plan" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#membershipModal" data-plan="Elite" data-price="₹2,999/mo">Book 1-on-1 Session</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Membership Checkout Modal -->
+    <div class="modal fade" id="membershipModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content bg-dark text-white border border-secondary border-opacity-25 rounded-4 shadow-lg">
+                <div class="modal-header border-secondary border-opacity-25">
+                    <h5 class="modal-title fw-bold"><i class="fa-solid fa-dumbbell text-primary-accent me-2"></i>Join FITFORGE — <span id="modalPlanTitle" class="text-primary-accent">Pro Plan</span></h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div class="bg-darker p-3 rounded-3 border border-secondary border-opacity-25 mb-4 d-flex justify-content-between align-items-center">
+                        <div>
+                            <span class="text-white small d-block">Selected Package</span>
+                            <h5 id="modalPlanName" class="fw-bold text-white mb-0">Pro Membership</h5>
+                        </div>
+                        <h3 id="modalPlanPrice" class="fw-bold text-primary-accent mb-0">₹1,999/mo</h3>
+                    </div>
+                    <form id="membershipForm">
+                        <div class="mb-3">
+                            <label class="form-label text-white small fw-bold">Full Name</label>
+                            <input type="text" class="form-control bg-darker text-white border-secondary border-opacity-25" placeholder="John Doe" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label text-white small fw-bold">Phone Number</label>
+                            <input type="tel" class="form-control bg-darker text-white border-secondary border-opacity-25" placeholder="+91 98765 43210" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label text-white small fw-bold">Email Address</label>
+                            <input type="email" class="form-control bg-darker text-white border-secondary border-opacity-25" placeholder="john@example.com" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary-accent w-100 py-3 rounded-3 fw-bold text-uppercase mt-3">Confirm & Join Now</button>
+                    </form>
+                    <div id="membershipSuccess" class="alert alert-success mt-4 d-none text-center rounded-3">
+                        <i class="fa-solid fa-circle-check fs-2 mb-2 d-block text-success"></i>
+                        <h5 class="fw-bold mb-1">Welcome to FITFORGE!</h5>
+                        <p class="small mb-0">Your membership request has been confirmed. Our team will contact you shortly.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="js/script.js"></script>
+</body>
+</html>

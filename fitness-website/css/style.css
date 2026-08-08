@@ -1,0 +1,312 @@
+/* 
+   ==========================================================================
+   FITFORGE CSS
+   Modern, Premium Fitness Website Styles
+   ========================================================================== 
+*/
+
+:root {
+    --primary-accent: #e2f939; /* Neon yellow accent */
+    --primary-accent-hover: #cbe033;
+    --dark-bg: #111111;
+    --darker-bg: #0a0a0a;
+    --text-main: #ffffff;
+    --text-muted: #ffffff;
+    
+    --font-main: 'Outfit', sans-serif;
+    
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+}
+
+/* Base Styles */
+body {
+    font-family: var(--font-main);
+    background-color: var(--dark-bg);
+    color: #ffffff;
+    overflow-x: hidden;
+}
+
+/* Typography Utilities */
+.fw-black {
+    font-weight: 900;
+}
+.letter-spacing-1 {
+    letter-spacing: 1px;
+}
+.letter-spacing-2 {
+    letter-spacing: 2px;
+}
+.text-primary-accent {
+    color: var(--primary-accent) !important;
+}
+.text-muted {
+    color: #ffffff !important;
+}
+
+/* Custom Backgrounds */
+.bg-dark {
+    background-color: var(--dark-bg) !important;
+}
+.bg-darker {
+    background-color: var(--darker-bg) !important;
+}
+.bg-primary-accent {
+    background-color: var(--primary-accent) !important;
+}
+
+/* Section Padding */
+.section-padding {
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+/* Custom Buttons */
+.btn-primary-accent {
+    background-color: var(--primary-accent);
+    color: var(--darker-bg);
+    border: none;
+    transition: var(--transition-normal);
+}
+.btn-primary-accent:hover {
+    background-color: var(--primary-accent-hover);
+    color: var(--darker-bg);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(226, 249, 57, 0.2);
+}
+.btn-outline-primary-accent {
+    background-color: transparent;
+    color: var(--primary-accent);
+    border: 2px solid var(--primary-accent);
+    transition: var(--transition-normal);
+}
+.btn-outline-primary-accent:hover {
+    background-color: var(--primary-accent);
+    color: var(--darker-bg);
+    transform: translateY(-3px);
+}
+.btn-outline-light:hover {
+    transform: translateY(-3px);
+}
+.btn-pro {
+    transition: var(--transition-normal);
+}
+.btn-pro:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Navbar */
+.navbar {
+    transition: var(--transition-normal);
+    padding: 1.5rem 0;
+    background-color: transparent;
+}
+.navbar.scrolled {
+    background-color: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 1rem 0;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+}
+.navbar-dark .navbar-nav .nav-link {
+    color: var(--text-main);
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    margin: 0 10px;
+    position: relative;
+    transition: var(--transition-fast);
+}
+.navbar-dark .navbar-nav .nav-link:hover,
+.navbar-dark .navbar-nav .nav-link.active {
+    color: var(--primary-accent);
+}
+.navbar-dark .navbar-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--primary-accent);
+    transition: var(--transition-normal);
+}
+.navbar-dark .navbar-nav .nav-link:hover::after,
+.navbar-dark .navbar-nav .nav-link.active::after {
+    width: 100%;
+}
+.navbar-toggler {
+    border-color: rgba(255,255,255,0.1);
+    color: var(--text-main);
+}
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+
+/* Hero Section */
+.hero {
+    min-height: 100vh;
+    background-image: linear-gradient(rgba(10, 10, 10, 0.8), rgba(10, 10, 10, 0.9)), url('../images/hero.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
+    padding-top: 100px;
+}
+.hero-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 150px;
+    background: linear-gradient(to top, var(--darker-bg), transparent);
+}
+
+/* Cards & Hover Effects */
+.transition-all {
+    transition: all var(--transition-normal);
+}
+.program-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--primary-accent) !important;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+}
+.program-card .icon-box {
+    transition: var(--transition-normal);
+}
+.program-card:hover .icon-box {
+    transform: scale(1.1) rotate(5deg);
+}
+.program-card .arrow-link {
+    transition: var(--transition-fast);
+}
+.program-card:hover .arrow-link {
+    color: var(--primary-accent) !important;
+}
+.program-card:hover .transition-transform {
+    transform: translateX(5px);
+}
+
+/* Trainer Cards */
+.trainer-card {
+    transition: var(--transition-normal);
+}
+.trainer-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--primary-accent) !important;
+}
+.trainer-img-wrapper img {
+    transition: var(--transition-slow);
+}
+.trainer-card:hover .trainer-img-wrapper img,
+.trainer-card:hover .bg-secondary {
+    transform: scale(1.05);
+}
+.trainer-social {
+    bottom: -50px;
+    right: 20px;
+    opacity: 0;
+    transition: var(--transition-normal);
+}
+.trainer-card:hover .trainer-social {
+    bottom: 20px;
+    opacity: 1;
+}
+
+/* Pricing Cards */
+.pricing-card:hover {
+    transform: translateY(-10px);
+}
+.transform-scale-lg {
+    transform: scale(1.05);
+}
+.transform-scale-lg:hover {
+    transform: scale(1.05) translateY(-10px);
+}
+@media (max-width: 991px) {
+    .transform-scale-lg {
+        transform: scale(1);
+    }
+    .transform-scale-lg:hover {
+        transform: scale(1) translateY(-10px);
+    }
+}
+
+/* Schedule Table */
+.schedule-table th, .schedule-table td {
+    border-color: rgba(255,255,255,0.1);
+}
+.schedule-table tbody tr:hover {
+    background-color: rgba(255,255,255,0.05);
+}
+
+/* Forms */
+.form-control:focus {
+    background-color: var(--dark);
+    color: white;
+    border-color: var(--primary-accent);
+    box-shadow: 0 0 0 0.25rem rgba(226, 249, 57, 0.25);
+}
+.form-control::placeholder {
+    color: #ffffff !important;
+    opacity: 0.9 !important;
+}
+
+/* Footer */
+.footer-link {
+    color: #ffffff !important;
+    transition: var(--transition-fast);
+}
+.footer-link:hover {
+    color: var(--primary-accent) !important;
+    padding-left: 5px;
+}
+
+/* Scroll Animations */
+.reveal-fade-up {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease;
+}
+.reveal-fade-up.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal-fade-left {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: all 0.8s ease;
+}
+.reveal-fade-left.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.reveal-fade-right {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all 0.8s ease;
+}
+.reveal-fade-right.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.reveal-scale-up {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: all 0.8s ease;
+}
+.reveal-scale-up.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Misc Utilities */
+.fw-mono {
+    font-family: monospace;
+    font-size: 1.1rem;
+}
