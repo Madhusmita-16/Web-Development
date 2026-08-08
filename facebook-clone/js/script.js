@@ -1,5 +1,5 @@
 /**
- * ConnectHub — Social Media Platform Application Script
+ * Facebook — Social Media Platform Application Script
  * Features: Dark Mode, Post Creation, Like/Comment/Share, Stories, Search, Messenger, Friend Requests, Toasts
  */
 
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const htmlElement = document.documentElement;
 
     // Check saved theme in localStorage
-    const savedTheme = localStorage.getItem('connecthub-theme') || 'light';
+    const savedTheme = localStorage.getItem('facebook-theme') || 'light';
     htmlElement.setAttribute('data-theme', savedTheme);
     if (darkModeToggle) {
         darkModeToggle.checked = (savedTheme === 'dark');
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
         darkModeToggle.addEventListener('change', () => {
             const newTheme = darkModeToggle.checked ? 'dark' : 'light';
             htmlElement.setAttribute('data-theme', newTheme);
-            localStorage.setItem('connecthub-theme', newTheme);
+            localStorage.setItem('facebook-theme', newTheme);
             showToast(`Switched to ${newTheme === 'dark' ? 'Dark' : 'Light'} mode`, 'fa-solid fa-moon text-warning');
         });
     }
@@ -420,7 +420,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!searchResultsList) return;
 
         if (!query) {
-            searchResultsList.innerHTML = '<p class="text-muted text-center py-4">Start typing to search ConnectHub...</p>';
+            searchResultsList.innerHTML = '<p class="text-muted text-center py-4">Start typing to search Facebook...</p>';
             return;
         }
 
@@ -550,7 +550,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (logoutBtn) {
         logoutBtn.addEventListener('click', (e) => {
             e.preventDefault();
-            showToast('Logged out of ConnectHub', 'fa-solid fa-right-from-bracket text-warning');
+            showToast('Logged out of Facebook', 'fa-solid fa-right-from-bracket text-warning');
         });
     }
 

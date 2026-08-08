@@ -1,14 +1,14 @@
-# ConnectHub — Social Media Platform Clone
+# Facebook — Social Media Platform Clone
 
-ConnectHub is a modern, feature-packed, fully responsive **Facebook-style Social Media Application Clone** built using **HTML5, CSS3, Vanilla JavaScript (ES6+), and Bootstrap 5**.
+A modern, feature-packed, fully responsive **Facebook Web Platform Application Clone** built using **HTML5, CSS3, Vanilla JavaScript (ES6+), and Bootstrap 5**.
 
 ---
 
 ## 🌟 Key Features
 
-* **Sticky Navigation Bar:** Logo, live search input, tooltips, notification counter, user profile dropdown, and mobile menu trigger.
+* **Facebook Branding & Sticky Navigation Bar:** Official Facebook logo icon, live search input, navigation tabs (*Home, Friends, Videos, Marketplace, Groups*) with active states & tooltips, notification counter, user profile dropdown, and mobile menu trigger.
 * **Three-Column Desktop Layout:** Left sidebar navigation, central feed, and right sidebar (Sponsored ads, Friend requests, Contacts).
-* **Stories Section:** Interactive story cards with full-screen story viewer modal.
+* **Stories Bar:** Interactive story cards with full-screen story viewer modal.
 * **Create Post Modal & Dynamic Feed:** Create posts with text and image attachments. New posts append to the feed instantly with smooth fade-in animations.
 * **Interactive Like System:** Dynamic like/unlike toggling with animated icon transforms and live count updates.
 * **Comment System:** Write, display, and delete comments in real time with relative timestamps.
@@ -25,7 +25,7 @@ ConnectHub is a modern, feature-packed, fully responsive **Facebook-style Social
 ## 📁 Directory Structure
 
 ```text
-connecthub/
+facebook-clone/
 ├── index.html
 ├── css/
 │   └── style.css
@@ -46,5 +46,6 @@ connecthub/
 Simply open `index.html` in any web browser, or launch a local dev server:
 
 ```bash
-npx serve . -p 3000
+cd facebook-clone
+npx serve . -p 3001
 ```
