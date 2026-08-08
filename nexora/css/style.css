@@ -751,3 +751,144 @@ body {
         width: auto;
     }
 }
+
+/* ==========================================================================
+   8. Additional Feature Styles (v3.0)
+   ========================================================================== */
+
+/* ── Ripple Effect ── */
+@keyframes rippleAnim {
+    from { transform: scale(0); opacity: 0.5; }
+    to   { transform: scale(4); opacity: 0; }
+}
+
+/* ── Typing Indicator (3 bouncing dots) ── */
+.typing-indicator {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 10px 16px !important;
+}
+.typing-indicator span {
+    width: 7px;
+    height: 7px;
+    background: var(--text-muted);
+    border-radius: 50%;
+    display: inline-block;
+    animation: typingBounce 1s ease-in-out infinite;
+}
+.typing-indicator span:nth-child(2) { animation-delay: 0.15s; }
+.typing-indicator span:nth-child(3) { animation-delay: 0.3s; }
+@keyframes typingBounce {
+    0%, 60%, 100% { transform: translateY(0); }
+    30%           { transform: translateY(-8px); }
+}
+
+/* ── Search Result Item Hover ── */
+.search-result-item:hover {
+    background: var(--surface-hover);
+    transform: translateX(4px);
+    transition: var(--transition);
+}
+
+/* ── Comment Item ── */
+.comment-item {
+    animation: fadeSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes fadeSlideUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Messenger liked button ── */
+.comment-like-btn.text-primary { color: var(--primary) !important; }
+.comment-like-btn.fw-bold { font-weight: 700 !important; }
+
+/* ── Liked Post Glow ── */
+.btn-like-nexora.liked {
+    background: rgba(239, 68, 68, 0.08);
+    color: #ef4444;
+}
+
+/* ── Post Card Transition on Delete ── */
+.post-card-nexora {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* ── Auth Page: Profile Modal Tab Styles ── */
+.nav-tabs .nav-link {
+    border: none;
+    color: var(--text-muted);
+    border-bottom: 2px solid transparent;
+    border-radius: 0;
+    padding: 8px 16px;
+    transition: var(--transition);
+}
+.nav-tabs .nav-link.active {
+    color: var(--primary);
+    border-bottom-color: var(--primary);
+    background: transparent;
+}
+.nav-tabs .nav-link:hover {
+    color: var(--primary);
+}
+
+/* ── Avatar Wrapper Ring in Profile Modal ── */
+.avatar-wrapper-ring {
+    border: 3px solid transparent;
+    background-image: var(--gradient-primary);
+    background-origin: border-box;
+    padding: 3px;
+}
+
+/* ── Messenger Emoji Button ── */
+.messenger-footer-nexora {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 12px;
+}
+
+/* ── Settings list hover ── */
+#settingsModal .list-group-item:hover {
+    background: var(--surface-hover);
+    transform: translateX(4px);
+    transition: var(--transition);
+}
+
+/* ── Social Share modal item hover ── */
+#shareModal .list-group-item-action:hover {
+    transform: translateX(4px);
+    transition: var(--transition);
+}
+
+/* ── Edit Profile button animation ── */
+#openEditProfileBtn {
+    transition: var(--transition);
+}
+#openEditProfileBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(79,70,229,0.25);
+}
+
+/* ── RSVP done state ── */
+.btn-rsvp-event.rsvp-done {
+    background: #10b981;
+    border-color: #10b981;
+    color: white;
+}
+
+/* ── Join group joined state ── */
+.btn-join-group.joined {
+    background: #10b981;
+    border-color: #10b981;
+    color: white;
+}
+
+/* ── Friend add button state ── */
+.btn-add-friend.added {
+    background: #10b981;
+    border-color: #10b981;
+    color: white;
+}
+
