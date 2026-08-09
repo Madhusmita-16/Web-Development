@@ -1,49 +1,51 @@
 /**
- * Maison Élan — Restaurant Website JavaScript
- * Features: Preloader, GSAP animations, ScrollTrigger, Counter animation,
- *           Menu filtering, Lightbox, Testimonials Carousel, Reservation form,
- *           Navbar scroll effects, Mobile drawer, Scroll-to-top, Newsletter
+ * Maison Élan — Restaurant Website Main JavaScript
+ * Handles: Preloader, GSAP ScrollTrigger Animations, Dynamic 125+ Item Menu,
+ *          Category Filters, Menu Live Search, 30-Item Gallery & Lightbox,
+ *          Testimonials Carousel, Reservation Form Validation & Confetti,
+ *          Navbar Scroll & Drawer, Image Fallback Handling.
  */
 
-/* ── Register GSAP plugins ── */
+// Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
+
+// Global fallback image URL if an external image link encounters network issues
+const FALLBACK_FOOD_IMG = 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&q=80';
 
 /* ==========================================================================
    PRELOADER
    ========================================================================== */
 window.addEventListener('load', () => {
     const preloader = document.getElementById('preloader');
-    setTimeout(() => {
-        preloader.classList.add('hidden');
-        // Start hero animations after preloader
-        initHeroAnimations();
-    }, 1800);
+    if (preloader) {
+        setTimeout(() => {
+            preloader.classList.add('hidden');
+            initHeroAnimations();
+        }, 1200);
+    }
 });
 
 /* ==========================================================================
-   1. NAVBAR — Scroll behaviour + active link
+   1. NAVBAR — Scroll behaviour & active state
    ========================================================================== */
 const navbar = document.getElementById('mainNavbar');
 const navLinks = document.querySelectorAll('.nav-link');
-const sections = document.querySelectorAll('section[id], div[id]');
+const sections = document.querySelectorAll('section[id]');
 
 window.addEventListener('scroll', () => {
-    // Scrolled class
     if (window.scrollY > 60) {
-        navbar.classList.add('scrolled');
+        navbar?.classList.add('scrolled');
     } else {
-        navbar.classList.remove('scrolled');
+        navbar?.classList.remove('scrolled');
     }
 
-    // Scroll-to-top button
     const scrollTop = document.getElementById('scrollTop');
     if (window.scrollY > 400) {
-        scrollTop.classList.add('visible');
+        scrollTop?.classList.add('visible');
     } else {
-        scrollTop.classList.remove('visible');
+        scrollTop?.classList.remove('visible');
     }
 
-    // Active nav link based on scroll position
     let current = '';
     sections.forEach(section => {
         const sectionTop = section.offsetTop - 120;
@@ -62,193 +64,319 @@ window.addEventListener('scroll', () => {
 /* ==========================================================================
    2. MOBILE DRAWER
    ========================================================================== */
-const hamburger   = document.getElementById('hamburger');
+const hamburger = document.getElementById('hamburger');
 const mobileDrawer = document.getElementById('mobileDrawer');
 const drawerOverlay = document.getElementById('drawerOverlay');
 const drawerClose = document.getElementById('drawerClose');
 const drawerLinks = document.querySelectorAll('.drawer-link, .drawer-cta');
 
 function openDrawer() {
-    hamburger.classList.add('open');
-    mobileDrawer.classList.add('open');
-    drawerOverlay.classList.add('show');
+    hamburger?.classList.add('open');
+    mobileDrawer?.classList.add('open');
+    drawerOverlay?.classList.add('show');
     document.body.style.overflow = 'hidden';
 }
 
 function closeDrawer() {
-    hamburger.classList.remove('open');
-    mobileDrawer.classList.remove('open');
-    drawerOverlay.classList.remove('show');
+    hamburger?.classList.remove('open');
+    mobileDrawer?.classList.remove('open');
+    drawerOverlay?.classList.remove('show');
     document.body.style.overflow = '';
 }
 
-hamburger.addEventListener('click', () => {
-    mobileDrawer.classList.contains('open') ? closeDrawer() : openDrawer();
+hamburger?.addEventListener('click', () => {
+    mobileDrawer?.classList.contains('open') ? closeDrawer() : openDrawer();
 });
-drawerClose.addEventListener('click', closeDrawer);
-drawerOverlay.addEventListener('click', closeDrawer);
+drawerClose?.addEventListener('click', closeDrawer);
+drawerOverlay?.addEventListener('click', closeDrawer);
 drawerLinks.forEach(link => link.addEventListener('click', closeDrawer));
 
 /* ==========================================================================
-   3. HERO SECTION — GSAP Entrance Animations
+   3. HERO GSAP ANIMATIONS
    ========================================================================== */
 function initHeroAnimations() {
     const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
-    tl.to('#heroEyebrow', {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        delay: 0.1,
-    })
-    .to('#heroHeadline', {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-    }, '-=0.4')
-    .to('#heroSubtext', {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-    }, '-=0.6')
-    .to('#heroCtas', {
-        opacity: 1,
-        y: 0,
-        duration: 0.7,
-    }, '-=0.5')
-    .to('#heroCards', {
-        opacity: 1,
-        x: 0,
-        duration: 0.9,
-    }, '-=0.4');
+    tl.to('#heroEyebrow', { opacity: 1, y: 0, duration: 0.8, delay: 0.1 })
+      .to('#heroHeadline', { opacity: 1, y: 0, duration: 1 }, '-=0.4')
+      .to('#heroSubtext', { opacity: 1, y: 0, duration: 0.8 }, '-=0.6')
+      .to('#heroCtas', { opacity: 1, y: 0, duration: 0.7 }, '-=0.5')
+      .to('#heroCards', { opacity: 1, x: 0, duration: 0.9 }, '-=0.4');
 
-    // Set initial states for GSAP (to complement CSS opacity:0)
     gsap.set('#heroEyebrow, #heroHeadline, #heroSubtext, #heroCtas', { y: 30 });
     gsap.set('#heroCards', { x: 30 });
 }
 
 /* ==========================================================================
-   4. SCROLL-TRIGGERED REVEAL ANIMATIONS
+   4. DYNAMIC MENU RENDERING (125 ITEMS) & SEARCH
    ========================================================================== */
-// Reveal Up
-gsap.utils.toArray('.reveal-up').forEach(el => {
-    gsap.fromTo(el,
-        { opacity: 0, y: 50 },
-        {
-            opacity: 1,
-            y: 0,
-            duration: 0.9,
-            ease: 'power3.out',
-            scrollTrigger: {
-                trigger: el,
-                start: 'top 88%',
-                once: true,
-            }
-        }
-    );
-});
+let activeCategory = 'all';
+let searchQuery = '';
+let displayLimit = 24; // Initial items to show for fast render
 
-// Reveal Left
-gsap.utils.toArray('.reveal-left').forEach(el => {
-    gsap.fromTo(el,
-        { opacity: 0, x: -60 },
-        {
-            opacity: 1,
-            x: 0,
-            duration: 1,
-            ease: 'power3.out',
-            scrollTrigger: {
-                trigger: el,
-                start: 'top 85%',
-                once: true,
-            }
-        }
-    );
-});
+function renderMenuGrid() {
+    const menuGrid = document.getElementById('menuGrid');
+    if (!menuGrid || typeof MENU_DATA === 'undefined') return;
 
-// Reveal Right
-gsap.utils.toArray('.reveal-right').forEach(el => {
-    gsap.fromTo(el,
-        { opacity: 0, x: 60 },
-        {
-            opacity: 1,
-            x: 0,
-            duration: 1,
-            ease: 'power3.out',
-            scrollTrigger: {
-                trigger: el,
-                start: 'top 85%',
-                once: true,
-            }
-        }
-    );
-});
+    // Filter items
+    let filtered = MENU_DATA.filter(item => {
+        const matchesCategory = (activeCategory === 'all') || (item.category === activeCategory);
+        const matchesSearch = item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                              item.desc.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                              item.badge.toLowerCase().includes(searchQuery.toLowerCase());
+        return matchesCategory && matchesSearch;
+    });
 
-// Staggered Menu Cards
-gsap.utils.toArray('#menuGrid .menu-item').forEach((item, i) => {
-    gsap.fromTo(item,
-        { opacity: 0, y: 40, scale: 0.97 },
-        {
-            opacity: 1,
-            y: 0,
-            scale: 1,
-            duration: 0.7,
-            ease: 'power2.out',
-            delay: (i % 3) * 0.12,
-            scrollTrigger: {
-                trigger: '#menuGrid',
-                start: 'top 80%',
-                once: true,
-            }
-        }
-    );
-});
+    const totalMatches = filtered.length;
+    const itemsToDisplay = filtered.slice(0, displayLimit);
 
-// Parallax on hero background
-gsap.to('.hero-section', {
-    backgroundPositionY: '30%',
-    ease: 'none',
-    scrollTrigger: {
-        trigger: '.hero-section',
-        start: 'top top',
-        end: 'bottom top',
-        scrub: true,
+    if (itemsToDisplay.length === 0) {
+        menuGrid.innerHTML = `
+            <div class="col-12 text-center py-5">
+                <div class="glass-card p-5 mx-auto" style="max-width:500px;">
+                    <i class="fa-solid fa-utensils fs-1 text-gold mb-3"></i>
+                    <h4>No Dishes Found</h4>
+                    <p class="text-muted">No dishes matched "${searchQuery}". Try selecting another category or searching for "Truffle", "Paneer", "Salmon", or "Mocktail".</p>
+                    <button class="btn-primary-gold mt-3" onclick="resetMenuFilters()">View All 125 Dishes</button>
+                </div>
+            </div>
+        `;
+        document.getElementById('loadMoreContainer')?.classList.add('d-none');
+        return;
+    }
+
+    menuGrid.innerHTML = itemsToDisplay.map((dish, i) => `
+        <div class="col-lg-4 col-md-6 menu-item" data-category="${dish.category}">
+            <div class="menu-card glass-card ${dish.badge.includes('Signature') || dish.badge.includes('Chef') ? 'featured-card' : ''}">
+                <div class="menu-card-img">
+                    <img src="${dish.img}" alt="${dish.name}" loading="lazy" onerror="this.onerror=null;this.src='${FALLBACK_FOOD_IMG}';">
+                    <div class="menu-badge">${dish.badge}</div>
+                </div>
+                <div class="menu-card-body">
+                    <div class="menu-card-top">
+                        <h5 class="menu-name">${dish.name}</h5>
+                        <span class="menu-price">${dish.price}</span>
+                    </div>
+                    <p class="menu-desc">${dish.desc}</p>
+                    <div class="menu-card-footer">
+                        <div class="menu-rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <span>${dish.rating}</span>
+                        </div>
+                        <button class="menu-order-btn" onclick="handleAddToCart(this, '${dish.name.replace(/'/g, "\\'")}')">
+                            <i class="fa-solid fa-plus"></i> Add
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `).join('');
+
+    // Load More Button state
+    const loadMoreContainer = document.getElementById('loadMoreContainer');
+    const loadMoreBtn = document.getElementById('loadMoreMenuBtn');
+    if (loadMoreContainer && loadMoreBtn) {
+        if (totalMatches > displayLimit) {
+            loadMoreContainer.classList.remove('d-none');
+            loadMoreBtn.innerHTML = `<span>Show More Dishes (${totalMatches - displayLimit} remaining)</span> <i class="fa-solid fa-chevron-down ms-2"></i>`;
+        } else {
+            loadMoreContainer.classList.add('d-none');
+        }
+    }
+
+    // Trigger subtle fade up animation on new elements
+    gsap.fromTo('#menuGrid .menu-card',
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.4, stagger: 0.04, ease: 'power2.out' }
+    );
+}
+
+function resetMenuFilters() {
+    activeCategory = 'all';
+    searchQuery = '';
+    displayLimit = 24;
+    const searchInput = document.getElementById('menuSearchInput');
+    if (searchInput) searchInput.value = '';
+
+    document.querySelectorAll('.menu-filter-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.filter === 'all');
+    });
+    renderMenuGrid();
+}
+
+function handleAddToCart(btn, dishName) {
+    if (btn.classList.contains('added')) {
+        btn.classList.remove('added');
+        btn.innerHTML = '<i class="fa-solid fa-plus"></i> Add';
+    } else {
+        btn.classList.add('added');
+        btn.innerHTML = '<i class="fa-solid fa-check"></i> Added';
+        showToast(`Added "${dishName}" to your order! 🍽️`);
+    }
+}
+
+// Category Filters Event Listeners
+document.addEventListener('DOMContentLoaded', () => {
+    renderMenuGrid();
+    renderGalleryGrid();
+
+    const filterBtns = document.querySelectorAll('.menu-filter-btn');
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            activeCategory = btn.dataset.filter;
+            displayLimit = 24; // reset pagination limit on tab change
+            renderMenuGrid();
+        });
+    });
+
+    const menuSearchInput = document.getElementById('menuSearchInput');
+    if (menuSearchInput) {
+        menuSearchInput.addEventListener('input', (e) => {
+            searchQuery = e.target.value.trim();
+            displayLimit = 24;
+            renderMenuGrid();
+        });
+    }
+
+    const loadMoreMenuBtn = document.getElementById('loadMoreMenuBtn');
+    if (loadMoreMenuBtn) {
+        loadMoreMenuBtn.addEventListener('click', () => {
+            displayLimit += 24;
+            renderMenuGrid();
+        });
     }
 });
 
-// Gallery items stagger
-gsap.utils.toArray('.gallery-item').forEach((item, i) => {
-    gsap.fromTo(item,
-        { opacity: 0, scale: 0.92 },
+/* ==========================================================================
+   5. DYNAMIC GALLERY RENDERING (30 HIGH-RES PHOTOS)
+   ========================================================================== */
+let currentLightboxIndex = 0;
+
+function renderGalleryGrid() {
+    const galleryGrid = document.getElementById('galleryGrid');
+    if (!galleryGrid || typeof GALLERY_DATA === 'undefined') return;
+
+    galleryGrid.innerHTML = GALLERY_DATA.map((item, i) => `
+        <div class="gallery-item ${item.tall ? 'gallery-tall' : ''} ${item.wide ? 'gallery-wide' : ''}" data-index="${i}" onclick="openLightbox(${i})">
+            <img src="${item.img}" alt="${item.title}" loading="lazy" onerror="this.onerror=null;this.src='${FALLBACK_FOOD_IMG}';">
+            <div class="gallery-overlay">
+                <i class="fa-solid fa-magnifying-glass-plus"></i>
+                <span class="gallery-title">${item.title}</span>
+                <small class="text-gold uppercase tracking-wider" style="font-size:0.7rem;">${item.tag}</small>
+            </div>
+        </div>
+    `).join('');
+}
+
+// Lightbox modal logic
+function openLightbox(index) {
+    if (typeof GALLERY_DATA === 'undefined') return;
+    currentLightboxIndex = index;
+    const item = GALLERY_DATA[index];
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxCaption = document.getElementById('lightboxCaption');
+
+    if (!lightbox || !lightboxImg || !lightboxCaption) return;
+
+    lightboxImg.src = item.img;
+    lightboxCaption.innerHTML = `<h5 class="text-gold mb-1">${item.title}</h5><span class="badge bg-gold text-dark">${item.tag}</span>`;
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+    const lightbox = document.getElementById('lightbox');
+    lightbox?.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+function navigateLightbox(dir) {
+    if (typeof GALLERY_DATA === 'undefined') return;
+    currentLightboxIndex = (currentLightboxIndex + dir + GALLERY_DATA.length) % GALLERY_DATA.length;
+    const lightboxImg = document.getElementById('lightboxImg');
+    if (lightboxImg) {
+        lightboxImg.style.opacity = '0';
+        setTimeout(() => {
+            openLightbox(currentLightboxIndex);
+            lightboxImg.style.opacity = '1';
+        }, 150);
+    }
+}
+
+document.getElementById('lightboxClose')?.addEventListener('click', closeLightbox);
+document.getElementById('lightboxPrev')?.addEventListener('click', () => navigateLightbox(-1));
+document.getElementById('lightboxNext')?.addEventListener('click', () => navigateLightbox(1));
+document.getElementById('lightbox')?.addEventListener('click', (e) => {
+    if (e.target.id === 'lightbox') closeLightbox();
+});
+document.addEventListener('keydown', (e) => {
+    const lightbox = document.getElementById('lightbox');
+    if (!lightbox?.classList.contains('active')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') navigateLightbox(-1);
+    if (e.key === 'ArrowRight') navigateLightbox(1);
+});
+
+/* ==========================================================================
+   6. SCROLL REVEAL ANIMATIONS (GSAP)
+   ========================================================================== */
+gsap.utils.toArray('.reveal-up').forEach(el => {
+    gsap.fromTo(el,
+        { opacity: 0, y: 40 },
         {
             opacity: 1,
-            scale: 1,
-            duration: 0.7,
-            delay: (i % 4) * 0.1,
-            ease: 'power2.out',
-            scrollTrigger: {
-                trigger: '#galleryGrid',
-                start: 'top 85%',
-                once: true,
-            }
+            y: 0,
+            duration: 0.8,
+            ease: 'power3.out',
+            scrollTrigger: { trigger: el, start: 'top 88%', once: true }
+        }
+    );
+});
+
+gsap.utils.toArray('.reveal-left').forEach(el => {
+    gsap.fromTo(el,
+        { opacity: 0, x: -50 },
+        {
+            opacity: 1,
+            x: 0,
+            duration: 0.9,
+            ease: 'power3.out',
+            scrollTrigger: { trigger: el, start: 'top 85%', once: true }
+        }
+    );
+});
+
+gsap.utils.toArray('.reveal-right').forEach(el => {
+    gsap.fromTo(el,
+        { opacity: 0, x: 50 },
+        {
+            opacity: 1,
+            x: 0,
+            duration: 0.9,
+            ease: 'power3.out',
+            scrollTrigger: { trigger: el, start: 'top 85%', once: true }
         }
     );
 });
 
 /* ==========================================================================
-   5. ANIMATED STAT COUNTERS
+   7. STAT COUNTERS
    ========================================================================== */
 const statNumbers = document.querySelectorAll('.stat-number');
-
 const counterObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
             entry.target.classList.add('counted');
             const target = parseInt(entry.target.dataset.target);
-            const duration = 2000;
-            const step = target / (duration / 16);
             let current = 0;
-
+            const step = target / 60;
             const update = () => {
                 current += step;
                 if (current < target) {
@@ -266,86 +394,165 @@ const counterObserver = new IntersectionObserver((entries) => {
 statNumbers.forEach(el => counterObserver.observe(el));
 
 /* ==========================================================================
-   6. MENU CATEGORY FILTER
+   8. TESTIMONIALS CAROUSEL
    ========================================================================== */
-const filterBtns = document.querySelectorAll('.menu-filter-btn');
-const menuItems  = document.querySelectorAll('.menu-item');
+const slides = document.querySelectorAll('.testimonial-slide');
+const dotsContainer = document.getElementById('testDots');
+let currentSlide = 0;
+let autoSlideInterval;
 
-filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-        // Active state
-        filterBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-
-        const filter = btn.dataset.filter;
-
-        menuItems.forEach(item => {
-            const category = item.dataset.category;
-            if (filter === 'all' || category === filter) {
-                item.classList.remove('hidden');
-                // Re-animate
-                gsap.fromTo(item,
-                    { opacity: 0, y: 20, scale: 0.96 },
-                    { opacity: 1, y: 0, scale: 1, duration: 0.45, ease: 'power2.out' }
-                );
-            } else {
-                item.classList.add('hidden');
-            }
-        });
+if (slides.length > 0 && dotsContainer) {
+    dotsContainer.innerHTML = '';
+    slides.forEach((_, i) => {
+        const dot = document.createElement('div');
+        dot.className = `test-dot ${i === 0 ? 'active' : ''}`;
+        dot.addEventListener('click', () => goToSlide(i));
+        dotsContainer.appendChild(dot);
     });
-});
+}
+
+function goToSlide(index) {
+    if (slides.length === 0) return;
+    slides[currentSlide]?.classList.remove('active');
+    document.querySelectorAll('.test-dot')[currentSlide]?.classList.remove('active');
+    currentSlide = (index + slides.length) % slides.length;
+    slides[currentSlide]?.classList.add('active');
+    document.querySelectorAll('.test-dot')[currentSlide]?.classList.add('active');
+}
+
+function nextSlide() { goToSlide(currentSlide + 1); }
+function prevSlide() { goToSlide(currentSlide - 1); }
+
+document.getElementById('testNext')?.addEventListener('click', () => { nextSlide(); resetAutoSlide(); });
+document.getElementById('testPrev')?.addEventListener('click', () => { prevSlide(); resetAutoSlide(); });
+
+function startAutoSlide() { autoSlideInterval = setInterval(nextSlide, 5500); }
+function resetAutoSlide() { clearInterval(autoSlideInterval); startAutoSlide(); }
+
+const testimonialsSection = document.getElementById('reviews');
+if (testimonialsSection) {
+    new IntersectionObserver(entries => {
+        if (entries[0].isIntersecting) startAutoSlide();
+        else clearInterval(autoSlideInterval);
+    }, { threshold: 0.3 }).observe(testimonialsSection);
+}
 
 /* ==========================================================================
-   7. MENU — Add to Cart Button
+   9. RESERVATION FORM
    ========================================================================== */
-document.querySelectorAll('.menu-order-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-        if (btn.classList.contains('added')) {
-            btn.classList.remove('added');
-            btn.innerHTML = '<i class="fa-solid fa-plus"></i> Add';
-        } else {
-            btn.classList.add('added');
-            btn.innerHTML = '<i class="fa-solid fa-check"></i> Added';
-            showToast('Added to your order! 🍽️');
+const resForm = document.getElementById('reservationForm');
+const resSuccess = document.getElementById('reservationSuccess');
+const reserveBtn = document.getElementById('reserveBtn');
+const newResBtn = document.getElementById('newReservationBtn');
 
-            // Ripple effect
-            const ripple = document.createElement('span');
-            ripple.style.cssText = `
-                position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) scale(0);
-                width:80px;height:80px;border-radius:50%;
-                background:rgba(201,168,76,0.3);
-                animation:rippleOut 0.5s ease forwards;
-                pointer-events:none;
-            `;
-            btn.style.position = 'relative';
-            btn.style.overflow = 'hidden';
-            btn.appendChild(ripple);
-            setTimeout(() => ripple.remove(), 500);
-        }
-    });
+const resDateInput = document.getElementById('resDate');
+if (resDateInput) {
+    resDateInput.setAttribute('min', new Date().toISOString().split('T')[0]);
+}
+
+function showError(id, msg) {
+    const el = document.getElementById(id);
+    const errEl = document.getElementById('err' + id.replace('res', '').charAt(0).toUpperCase() + id.replace('res', '').slice(1));
+    if (el) el.classList.add('error');
+    if (errEl) errEl.textContent = msg;
+}
+
+function clearError(id) {
+    const el = document.getElementById(id);
+    const errEl = document.getElementById('err' + id.replace('res', '').charAt(0).toUpperCase() + id.replace('res', '').slice(1));
+    if (el) el.classList.remove('error');
+    if (errEl) errEl.textContent = '';
+}
+
+['resName','resEmail','resPhone','resDate','resTime','resGuests'].forEach(id => {
+    const el = document.getElementById(id);
+    el?.addEventListener('input', () => clearError(id));
+    el?.addEventListener('change', () => clearError(id));
 });
 
-// Toast notification
-function showToast(message, duration = 3000) {
+resForm?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    let valid = true;
+
+    const name = document.getElementById('resName').value.trim();
+    const email = document.getElementById('resEmail').value.trim();
+    const phone = document.getElementById('resPhone').value.trim();
+    const date = document.getElementById('resDate').value;
+    const time = document.getElementById('resTime').value;
+    const guests = document.getElementById('resGuests').value;
+
+    if (!name || name.length < 2) { showError('resName', 'Please enter your full name.'); valid = false; }
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showError('resEmail', 'Please enter a valid email.'); valid = false; }
+    if (!phone || phone.length < 7) { showError('resPhone', 'Please enter a valid phone number.'); valid = false; }
+    if (!date) { showError('resDate', 'Please select a date.'); valid = false; }
+    if (!time) { showError('resTime', 'Please select a time slot.'); valid = false; }
+    if (!guests) { showError('resGuests', 'Please select guests count.'); valid = false; }
+
+    if (!valid) return;
+
+    reserveBtn.disabled = true;
+    reserveBtn.innerHTML = '<span>Reserving...</span> <i class="fa-solid fa-spinner fa-spin ms-2"></i>';
+
+    setTimeout(() => {
+        resForm.classList.add('d-none');
+        resSuccess?.classList.remove('d-none');
+        launchConfetti();
+    }, 1500);
+});
+
+newResBtn?.addEventListener('click', () => {
+    resForm?.classList.remove('d-none');
+    resSuccess?.classList.add('d-none');
+    resForm?.reset();
+    if (reserveBtn) {
+        reserveBtn.disabled = false;
+        reserveBtn.innerHTML = '<span>Reserve Your Table</span> <i class="fa-regular fa-calendar ms-2"></i>';
+    }
+});
+
+function launchConfetti() {
+    const colors = ['#c9a84c', '#e8c86d', '#ffffff', '#9a7535'];
+    for (let i = 0; i < 70; i++) {
+        const dot = document.createElement('div');
+        dot.style.cssText = `
+            position:fixed;left:${Math.random()*100}vw;top:50vh;
+            width:${5+Math.random()*6}px;height:${5+Math.random()*6}px;
+            background:${colors[Math.floor(Math.random()*colors.length)]};
+            border-radius:${Math.random()>0.5?'50%':'2px'};
+            pointer-events:none;z-index:99999;
+        `;
+        document.body.appendChild(dot);
+        gsap.to(dot, {
+            y: -(Math.random()*350 + 100),
+            x: (Math.random()-0.5)*400,
+            opacity: 0,
+            duration: 1.5 + Math.random(),
+            ease: 'power2.out',
+            onComplete: () => dot.remove()
+        });
+    }
+}
+
+/* ==========================================================================
+   10. TOAST & UTILS
+   ========================================================================== */
+function showToast(msg) {
     const existing = document.querySelector('.toast-restaurant');
-    if (existing) existing.remove();
+    existing?.remove();
 
     const toast = document.createElement('div');
     toast.className = 'toast-restaurant';
-    toast.innerHTML = `<i class="fa-solid fa-circle-check me-2" style="color:var(--gold);"></i>${message}`;
+    toast.innerHTML = `<i class="fa-solid fa-circle-check me-2" style="color:var(--gold);"></i>${msg}`;
     toast.style.cssText = `
-        position:fixed;bottom:40px;left:50%;transform:translateX(-50%) translateY(20px);
-        background:rgba(10,8,5,0.95);color:#f5f0e8;
-        padding:14px 24px;border-radius:100px;
-        border:1px solid rgba(201,168,76,0.35);
-        font-size:0.88rem;font-weight:500;
-        z-index:9999;
-        box-shadow:0 8px 30px rgba(0,0,0,0.5);
-        display:flex;align-items:center;
-        opacity:0;
+        position:fixed;bottom:35px;left:50%;transform:translateX(-50%) translateY(20px);
+        background:rgba(15,12,7,0.95);color:#f5f0e8;
+        padding:14px 28px;border-radius:100px;
+        border:1px solid rgba(201,168,76,0.4);
+        font-size:0.9rem;font-weight:500;z-index:99999;
+        box-shadow:0 10px 40px rgba(0,0,0,0.6);
+        display:flex;align-items:center;opacity:0;
         transition:all 0.4s cubic-bezier(0.16,1,0.3,1);
-        backdrop-filter:blur(20px);
-        white-space:nowrap;
+        backdrop-filter:blur(20px);white-space:nowrap;
     `;
     document.body.appendChild(toast);
     requestAnimationFrame(() => {
@@ -356,405 +563,9 @@ function showToast(message, duration = 3000) {
         toast.style.opacity = '0';
         toast.style.transform = 'translateX(-50%) translateY(10px)';
         setTimeout(() => toast.remove(), 400);
-    }, duration);
+    }, 3000);
 }
 
-// Inject ripple keyframes once
-const rippleStyle = document.createElement('style');
-rippleStyle.textContent = `@keyframes rippleOut { to { transform:translate(-50%,-50%) scale(2);opacity:0; } }`;
-document.head.appendChild(rippleStyle);
-
-/* ==========================================================================
-   8. GALLERY LIGHTBOX
-   ========================================================================== */
-const galleryItems   = Array.from(document.querySelectorAll('.gallery-item'));
-const lightbox       = document.getElementById('lightbox');
-const lightboxImg    = document.getElementById('lightboxImg');
-const lightboxCaption = document.getElementById('lightboxCaption');
-const lightboxClose  = document.getElementById('lightboxClose');
-const lightboxPrev   = document.getElementById('lightboxPrev');
-const lightboxNext   = document.getElementById('lightboxNext');
-let currentLightboxIndex = 0;
-
-function openLightbox(index) {
-    currentLightboxIndex = index;
-    const item = galleryItems[index];
-    lightboxImg.src = item.dataset.src || item.querySelector('img').src;
-    lightboxCaption.textContent = item.querySelector('.gallery-overlay span')?.textContent || '';
-    lightbox.classList.add('active');
-    document.body.style.overflow = 'hidden';
-}
-
-function closeLightbox() {
-    lightbox.classList.remove('active');
-    document.body.style.overflow = '';
-    lightboxImg.src = '';
-}
-
-function navigateLightbox(direction) {
-    currentLightboxIndex = (currentLightboxIndex + direction + galleryItems.length) % galleryItems.length;
-    lightboxImg.style.opacity = '0';
-    setTimeout(() => {
-        openLightbox(currentLightboxIndex);
-        lightboxImg.style.opacity = '1';
-    }, 200);
-}
-
-galleryItems.forEach((item, index) => {
-    item.addEventListener('click', () => openLightbox(index));
-});
-
-lightboxClose.addEventListener('click', closeLightbox);
-lightboxPrev.addEventListener('click', () => navigateLightbox(-1));
-lightboxNext.addEventListener('click', () => navigateLightbox(1));
-
-lightbox.addEventListener('click', (e) => {
-    if (e.target === lightbox) closeLightbox();
-});
-
-document.addEventListener('keydown', (e) => {
-    if (!lightbox.classList.contains('active')) return;
-    if (e.key === 'Escape')     closeLightbox();
-    if (e.key === 'ArrowLeft')  navigateLightbox(-1);
-    if (e.key === 'ArrowRight') navigateLightbox(1);
-});
-
-// Image transition
-lightboxImg.style.transition = 'opacity 0.2s ease';
-
-/* ==========================================================================
-   9. TESTIMONIALS CAROUSEL
-   ========================================================================== */
-const slides     = document.querySelectorAll('.testimonial-slide');
-const dotsContainer = document.getElementById('testDots');
-const testPrev   = document.getElementById('testPrev');
-const testNext   = document.getElementById('testNext');
-let currentSlide = 0;
-let autoSlideInterval;
-
-// Build dots
-slides.forEach((_, i) => {
-    const dot = document.createElement('div');
-    dot.className = `test-dot ${i === 0 ? 'active' : ''}`;
-    dot.addEventListener('click', () => goToSlide(i));
-    dotsContainer.appendChild(dot);
-});
-
-function goToSlide(index) {
-    slides[currentSlide].classList.remove('active');
-    document.querySelectorAll('.test-dot')[currentSlide].classList.remove('active');
-    currentSlide = (index + slides.length) % slides.length;
-    slides[currentSlide].classList.add('active');
-    document.querySelectorAll('.test-dot')[currentSlide].classList.add('active');
-}
-
-function nextSlide() { goToSlide(currentSlide + 1); }
-function prevSlide() { goToSlide(currentSlide - 1); }
-
-testNext.addEventListener('click', () => { nextSlide(); resetAutoSlide(); });
-testPrev.addEventListener('click', () => { prevSlide(); resetAutoSlide(); });
-
-function startAutoSlide() {
-    autoSlideInterval = setInterval(nextSlide, 5500);
-}
-function resetAutoSlide() {
-    clearInterval(autoSlideInterval);
-    startAutoSlide();
-}
-
-// Start auto-slide when testimonials section is visible
-const testimonialObserver = new IntersectionObserver(entries => {
-    if (entries[0].isIntersecting) {
-        startAutoSlide();
-    } else {
-        clearInterval(autoSlideInterval);
-    }
-}, { threshold: 0.3 });
-const testimonialsSection = document.getElementById('reviews');
-if (testimonialsSection) testimonialObserver.observe(testimonialsSection);
-
-/* ==========================================================================
-   10. RESERVATION FORM — Validation + Success
-   ========================================================================== */
-const resForm    = document.getElementById('reservationForm');
-const resSuccess = document.getElementById('reservationSuccess');
-const reserveBtn = document.getElementById('reserveBtn');
-const newResBtn  = document.getElementById('newReservationBtn');
-
-// Set min date to today
-const resDateInput = document.getElementById('resDate');
-if (resDateInput) {
-    const today = new Date().toISOString().split('T')[0];
-    resDateInput.setAttribute('min', today);
-}
-
-function showError(id, msg) {
-    const el = document.getElementById(id);
-    const errEl = document.getElementById('err' + id.replace('res', '').charAt(0).toUpperCase() + id.replace('res', '').slice(1));
-    if (el) el.classList.add('error');
-    if (errEl) errEl.textContent = msg;
-}
-function clearError(id) {
-    const el = document.getElementById(id);
-    const errEl = document.getElementById('err' + id.replace('res', '').charAt(0).toUpperCase() + id.replace('res', '').slice(1));
-    if (el) el.classList.remove('error');
-    if (errEl) errEl.textContent = '';
-}
-
-// Clear errors on input
-['resName','resEmail','resPhone','resDate','resTime','resGuests'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) el.addEventListener('input', () => clearError(id));
-    if (el) el.addEventListener('change', () => clearError(id));
-});
-
-function validateForm() {
-    let valid = true;
-
-    const name   = document.getElementById('resName').value.trim();
-    const email  = document.getElementById('resEmail').value.trim();
-    const phone  = document.getElementById('resPhone').value.trim();
-    const date   = document.getElementById('resDate').value;
-    const time   = document.getElementById('resTime').value;
-    const guests = document.getElementById('resGuests').value;
-
-    if (!name || name.length < 2) {
-        showError('resName', 'Please enter your full name (min 2 characters).');
-        valid = false;
-    }
-    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        showError('resEmail', 'Please enter a valid email address.');
-        valid = false;
-    }
-    if (!phone || !/^[\+]?[\d\s\-\(\)]{7,15}$/.test(phone)) {
-        showError('resPhone', 'Please enter a valid phone number.');
-        valid = false;
-    }
-    if (!date) {
-        showError('resDate', 'Please select a preferred date.');
-        valid = false;
-    }
-    if (!time) {
-        showError('resTime', 'Please choose a time slot.');
-        valid = false;
-    }
-    if (!guests) {
-        showError('resGuests', 'Please select number of guests.');
-        valid = false;
-    }
-
-    return valid;
-}
-
-resForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    if (!validateForm()) return;
-
-    // Simulate submission
-    reserveBtn.disabled = true;
-    reserveBtn.innerHTML = '<span>Reserving...</span> <i class="fa-solid fa-spinner fa-spin ms-2"></i>';
-
-    setTimeout(() => {
-        resForm.classList.add('d-none');
-        resSuccess.classList.remove('d-none');
-
-        gsap.from(resSuccess, {
-            opacity: 0,
-            y: 30,
-            duration: 0.6,
-            ease: 'power3.out'
-        });
-
-        // Confetti burst
-        launchConfetti();
-    }, 1800);
-});
-
-newResBtn?.addEventListener('click', () => {
-    resForm.classList.remove('d-none');
-    resSuccess.classList.add('d-none');
-    resForm.reset();
-    reserveBtn.disabled = false;
-    reserveBtn.innerHTML = '<span>Reserve Your Table</span> <i class="fa-regular fa-calendar ms-2"></i>';
-    ['resName','resEmail','resPhone','resDate','resTime','resGuests'].forEach(id => clearError(id));
-});
-
-/* Simple confetti burst */
-function launchConfetti() {
-    const colors = ['#c9a84c', '#e8c86d', '#fff', '#9a7535'];
-    for (let i = 0; i < 60; i++) {
-        const dot = document.createElement('div');
-        const color = colors[Math.floor(Math.random() * colors.length)];
-        const x = Math.random() * window.innerWidth;
-        const y = window.innerHeight / 2;
-        dot.style.cssText = `
-            position:fixed;left:${x}px;top:${y}px;
-            width:${4 + Math.random()*6}px;height:${4 + Math.random()*6}px;
-            background:${color};border-radius:${Math.random()>0.5?'50%':'2px'};
-            pointer-events:none;z-index:9999;
-        `;
-        document.body.appendChild(dot);
-        gsap.to(dot, {
-            y: -(Math.random() * 300 + 100),
-            x: (Math.random() - 0.5) * 400,
-            opacity: 0,
-            duration: 1.5 + Math.random(),
-            ease: 'power2.out',
-            onComplete: () => dot.remove()
-        });
-    }
-}
-
-/* ==========================================================================
-   11. NEWSLETTER FORM
-   ========================================================================== */
-const newsletterEmail = document.getElementById('newsletterEmail');
-const newsletterBtn   = document.getElementById('newsletterBtn');
-const newsletterMsg   = document.getElementById('newsletterMsg');
-
-newsletterBtn?.addEventListener('click', () => {
-    const email = newsletterEmail.value.trim();
-    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        newsletterEmail.style.borderColor = '#ef4444';
-        setTimeout(() => newsletterEmail.style.borderColor = '', 2000);
-        return;
-    }
-    newsletterEmail.value = '';
-    newsletterMsg.classList.remove('d-none');
-    setTimeout(() => newsletterMsg.classList.add('d-none'), 5000);
-});
-
-/* ==========================================================================
-   12. SCROLL-TO-TOP
-   ========================================================================== */
 document.getElementById('scrollTop')?.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 });
-
-/* ==========================================================================
-   13. SMOOTH ANCHOR SCROLLING (for all internal links)
-   ========================================================================== */
-document.querySelectorAll('a[href^="#"]').forEach(link => {
-    link.addEventListener('click', (e) => {
-        const target = document.querySelector(link.getAttribute('href'));
-        if (target) {
-            e.preventDefault();
-            const offset = 80;
-            const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
-            window.scrollTo({ top, behavior: 'smooth' });
-        }
-    });
-});
-
-/* ==========================================================================
-   14. NAVBAR LINK — Hover glow effect via GSAP
-   ========================================================================== */
-document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('mouseenter', () => {
-        gsap.to(link, { scale: 1.06, duration: 0.3, ease: 'power2.out' });
-    });
-    link.addEventListener('mouseleave', () => {
-        gsap.to(link, { scale: 1, duration: 0.3, ease: 'power2.out' });
-    });
-});
-
-/* ==========================================================================
-   15. HERO PARALLAX — Mouse Move effect
-   ========================================================================== */
-const heroSection = document.querySelector('.hero-section');
-if (heroSection) {
-    heroSection.addEventListener('mousemove', (e) => {
-        const x = (e.clientX / window.innerWidth  - 0.5) * 20;
-        const y = (e.clientY / window.innerHeight - 0.5) * 20;
-
-        gsap.to('.orb-1', { x: x * 0.4, y: y * 0.4, duration: 2, ease: 'power1.out' });
-        gsap.to('.orb-2', { x: -x * 0.3, y: -y * 0.3, duration: 2.5, ease: 'power1.out' });
-        gsap.to('.orb-3', { x: x * 0.2, y: y * 0.5, duration: 3, ease: 'power1.out' });
-        gsap.to('#heroHeadline', { x: x * 0.05, y: y * 0.05, duration: 1.5, ease: 'power1.out' });
-    });
-}
-
-/* ==========================================================================
-   16. CHEF CARDS — GSAP hover animation
-   ========================================================================== */
-document.querySelectorAll('.chef-card').forEach(card => {
-    card.addEventListener('mouseenter', () => {
-        gsap.to(card.querySelector('.chef-img'), { scale: 1.05, duration: 0.5, ease: 'power2.out' });
-    });
-    card.addEventListener('mouseleave', () => {
-        gsap.to(card.querySelector('.chef-img'), { scale: 1, duration: 0.5, ease: 'power2.out' });
-    });
-});
-
-/* ==========================================================================
-   17. FLOAT CARDS — stagger animation on scroll
-   ========================================================================== */
-gsap.utils.toArray('.float-card').forEach((card, i) => {
-    gsap.fromTo(card,
-        { opacity: 0, x: 40 },
-        {
-            opacity: 1,
-            x: 0,
-            duration: 0.7,
-            delay: i * 0.15,
-            ease: 'power3.out',
-            scrollTrigger: {
-                trigger: card,
-                start: 'top 95%',
-                once: true,
-            }
-        }
-    );
-});
-
-/* ==========================================================================
-   18. ABOUT IMAGE — Floating animation
-   ========================================================================== */
-gsap.to('.about-img-badge', {
-    y: -12,
-    duration: 2.5,
-    ease: 'power1.inOut',
-    yoyo: true,
-    repeat: -1,
-});
-
-/* ==========================================================================
-   19. BUTTON — Magnetic hover effect
-   ========================================================================== */
-document.querySelectorAll('.btn-primary-gold').forEach(btn => {
-    btn.addEventListener('mousemove', (e) => {
-        const rect = btn.getBoundingClientRect();
-        const x = e.clientX - rect.left - rect.width / 2;
-        const y = e.clientY - rect.top  - rect.height / 2;
-        gsap.to(btn, { x: x * 0.15, y: y * 0.15, duration: 0.4, ease: 'power2.out' });
-    });
-    btn.addEventListener('mouseleave', () => {
-        gsap.to(btn, { x: 0, y: 0, duration: 0.5, ease: 'elastic.out(1, 0.5)' });
-    });
-});
-
-/* ==========================================================================
-   20. CONTACT CARDS — stagger reveal
-   ========================================================================== */
-gsap.utils.toArray('.contact-card').forEach((card, i) => {
-    gsap.fromTo(card,
-        { opacity: 0, x: -40 },
-        {
-            opacity: 1,
-            x: 0,
-            duration: 0.7,
-            delay: i * 0.15,
-            ease: 'power3.out',
-            scrollTrigger: {
-                trigger: '#contact',
-                start: 'top 80%',
-                once: true,
-            }
-        }
-    );
-});
-
-/* ==========================================================================
-   INIT LOG
-   ========================================================================== */
-console.log('%c🍽 Maison Élan — Loaded Successfully', 'color:#c9a84c;font-size:14px;font-weight:bold;');

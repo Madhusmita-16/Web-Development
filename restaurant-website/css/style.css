@@ -1456,10 +1456,54 @@ a { text-decoration: none; color: inherit; }
 .scroll-top:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(201,168,76,0.4); }
 
 /* ==========================================================================
-   GSAP Reveal Classes (initial state set by JS)
+   GSAP Reveal Classes & Fallbacks
    ========================================================================== */
 .reveal-up, .reveal-left, .reveal-right {
-    opacity: 0;
+    opacity: 1; /* Fallback for immediate visibility; GSAP handles smooth entrance */
+}
+
+/* ── Menu Live Search Box ── */
+.menu-search-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 6px 16px;
+    border-radius: 100px;
+    border: 1px solid var(--border-glass);
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(16px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    transition: all var(--dur) var(--ease);
+}
+.menu-search-box:focus-within {
+    border-color: var(--gold);
+    box-shadow: 0 8px 30px rgba(201, 168, 76, 0.25);
+    background: rgba(201, 168, 76, 0.06);
+}
+.menu-search-box .search-icon {
+    color: var(--gold);
+    font-size: 1.1rem;
+    margin-right: 12px;
+}
+.menu-search-box input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    padding: 8px 0;
+    font-family: var(--font-body);
+}
+.menu-search-box input::placeholder {
+    color: var(--text-muted);
+}
+
+.gallery-title {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
 }
 
 /* ==========================================================================
@@ -1507,3 +1551,4 @@ a { text-decoration: none; color: inherit; }
     .hours-row { flex-direction: column; gap: 4px; align-items: flex-start; }
     .about-stats { gap: 12px; padding: 18px; }
 }
+
