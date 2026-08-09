@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Maison Élan — Where Every Bite Becomes a Memory. A luxury fine dining restaurant in Bhubaneswar, Odisha offering 125+ gourmet dishes & drinks crafted by world-class chefs.">
-    <meta name="keywords" content="Maison Elan, fine dining, restaurant, Bhubaneswar, luxury restaurant, reservation, Indian food, Continental food">
-    <title>Maison Élan — Fine Dining Restaurant</title>
+    <meta name="description" content="Maison Élan — Where Every Bite Becomes a Memory. A luxury fine dining restaurant in Bhubaneswar offering 155 gourmet delicacies, 30 Indian starters, 50 Indian main courses, and instant online ordering.">
+    <meta name="keywords" content="Maison Elan, fine dining, restaurant, Bhubaneswar, luxury restaurant, reservation, Indian food, Continental food, order online">
+    <title>Maison Élan — Fine Dining Restaurant & Online Ordering</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -52,7 +52,8 @@
                 <ul class="nav-links" id="navLinks">
                     <li><a href="#home"    class="nav-link active">Home</a></li>
                     <li><a href="#about"   class="nav-link">About</a></li>
-                    <li><a href="#menu"    class="nav-link">Menu (125+)</a></li>
+                    <li><a href="#menu"    class="nav-link">Menu (155)</a></li>
+                    <li><a href="#orderSection" class="nav-link text-gold"><i class="fa-solid fa-basket-shopping me-1"></i>My Order (<span class="cart-count">0</span>)</a></li>
                     <li><a href="#gallery" class="nav-link">Gallery (30)</a></li>
                     <li><a href="#chefs"   class="nav-link">Chefs</a></li>
                     <li><a href="#contact" class="nav-link">Contact</a></li>
@@ -60,8 +61,11 @@
 
                 <!-- CTA + Hamburger -->
                 <div class="nav-right">
-                    <a href="#reservation" class="glass-btn">
-                        <i class="fa-regular fa-calendar me-2"></i>Reserve a Table
+                    <a href="#orderSection" class="glass-btn text-gold border-gold">
+                        <i class="fa-solid fa-cart-shopping me-2"></i>Cart (<span class="cart-count">0</span>)
+                    </a>
+                    <a href="#reservation" class="glass-btn d-none d-md-inline-flex">
+                        <i class="fa-regular fa-calendar me-2"></i>Reserve
                     </a>
                     <button class="hamburger" id="hamburger" aria-label="Menu">
                         <span></span><span></span><span></span>
@@ -77,7 +81,8 @@
         <ul class="drawer-links">
             <li><a href="#home"    class="drawer-link">Home</a></li>
             <li><a href="#about"   class="drawer-link">About</a></li>
-            <li><a href="#menu"    class="drawer-link">Menu (125+)</a></li>
+            <li><a href="#menu"    class="drawer-link">Menu (155)</a></li>
+            <li><a href="#orderSection" class="drawer-link text-gold"><i class="fa-solid fa-basket-shopping me-2"></i>My Order Basket (<span class="cart-count">0</span>)</a></li>
             <li><a href="#gallery" class="drawer-link">Gallery (30)</a></li>
             <li><a href="#chefs"   class="drawer-link">Chefs</a></li>
             <li><a href="#contact" class="drawer-link">Contact</a></li>
@@ -110,17 +115,17 @@
                         <em>Becomes a Memory.</em>
                     </h1>
                     <p class="hero-subtext" id="heroSubtext">
-                        Indulge in an extraordinary culinary journey crafted with passion,
-                        seasonal ingredients, and time-honored techniques at the heart of Bhubaneswar.
+                        Indulge in 155 authentic delicacies including 30 Indian Starters and 50 Indian Main Courses,
+                        crafted with passion and time-honored techniques at Bhubaneswar.
                     </p>
                     <div class="hero-ctas" id="heroCtas">
                         <a href="#menu" class="btn-primary-gold">
-                            <span>Explore 125+ Menu Items</span>
+                            <span>Explore Menu (155)</span>
                             <i class="fa-solid fa-arrow-right ms-2"></i>
                         </a>
-                        <a href="#reservation" class="glass-btn-hero">
-                            <i class="fa-regular fa-calendar me-2"></i>
-                            Reserve a Table
+                        <a href="#orderSection" class="glass-btn-hero text-gold">
+                            <i class="fa-solid fa-bag-shopping me-2"></i>
+                            View Order Basket (<span class="cart-count">0</span>)
                         </a>
                     </div>
                 </div>
@@ -138,15 +143,15 @@
             <div class="float-card glass">
                 <div class="float-card-icon"><i class="fa-solid fa-utensils"></i></div>
                 <div>
-                    <div class="float-card-value">125+</div>
-                    <div class="float-card-label">Delicacies</div>
+                    <div class="float-card-value">50 Indian</div>
+                    <div class="float-card-label">Main Courses</div>
                 </div>
             </div>
             <div class="float-card glass">
-                <div class="float-card-icon"><i class="fa-solid fa-award"></i></div>
+                <div class="float-card-icon"><i class="fa-solid fa-pepper-hot"></i></div>
                 <div>
-                    <div class="float-card-value">15+</div>
-                    <div class="float-card-label">Years Experience</div>
+                    <div class="float-card-value">30 Indian</div>
+                    <div class="float-card-label">Starters & Kebabs</div>
                 </div>
             </div>
         </div>
@@ -189,32 +194,31 @@
                         </p>
                         <p class="section-body">
                             Our kitchen celebrates both classical French culinary tradition and the vibrant
-                            flavors of modern Indian cuisine — a harmonious marriage of East and West that
-                            surprises and delights with every visit.
+                            flavors of authentic Indian cuisine — including 30 Indian Starters and 50 Indian Main Courses.
                         </p>
 
                         <div class="about-stats">
                             <div class="stat-item">
-                                <div class="stat-number" data-target="15">0</div>
+                                <div class="stat-number" data-target="30">0</div>
                                 <div class="stat-suffix">+</div>
-                                <div class="stat-label">Years</div>
-                            </div>
-                            <div class="stat-divider"></div>
-                            <div class="stat-item">
-                                <div class="stat-number" data-target="125">0</div>
-                                <div class="stat-suffix">+</div>
-                                <div class="stat-label">Signature Dishes</div>
+                                <div class="stat-label">Indian Starters</div>
                             </div>
                             <div class="stat-divider"></div>
                             <div class="stat-item">
                                 <div class="stat-number" data-target="50">0</div>
-                                <div class="stat-suffix">K+</div>
-                                <div class="stat-label">Happy Guests</div>
+                                <div class="stat-suffix">+</div>
+                                <div class="stat-label">Indian Mains</div>
+                            </div>
+                            <div class="stat-divider"></div>
+                            <div class="stat-item">
+                                <div class="stat-number" data-target="155">0</div>
+                                <div class="stat-suffix">+</div>
+                                <div class="stat-label">Total Dishes</div>
                             </div>
                         </div>
 
                         <a href="#reservation" class="btn-primary-gold mt-4 d-inline-flex align-items-center">
-                            Book Your Experience
+                            Book Your Table
                             <i class="fa-solid fa-arrow-right ms-2"></i>
                         </a>
                     </div>
@@ -224,14 +228,14 @@
     </section>
 
     <!-- ============================================================
-         4. SIGNATURE MENU (125+ ITEMS)
+         4. SIGNATURE MENU (SHOWS 3 CARDS INITIALLY)
     ============================================================ -->
     <section class="section-padding bg-section-alt" id="menu">
         <div class="container">
             <div class="text-center mb-4 reveal-up">
                 <p class="section-eyebrow">Crafted with Passion</p>
                 <h2 class="section-heading">Signature <em>Menu</em></h2>
-                <p class="section-sub">Explore our extensive collection of 125+ handcrafted Indian & Continental delicacies,<br>starters, decadent desserts, and signature beverages.</p>
+                <p class="section-sub">Showing 3 featured Best Sellers. Click <strong>"Show More Dishes"</strong> below to explore all 155 delicacies!</p>
             </div>
 
             <!-- Search Bar -->
@@ -239,16 +243,16 @@
                 <div class="col-lg-6 col-md-8">
                     <div class="menu-search-box glass">
                         <i class="fa-solid fa-magnifying-glass search-icon"></i>
-                        <input type="text" id="menuSearchInput" placeholder="Search 125+ dishes (e.g. Truffle, Paneer, Salmon, Biryani, Fondant)..." autocomplete="off">
+                        <input type="text" id="menuSearchInput" placeholder="Search 155 dishes (e.g. Galouti, Butter Chicken, Biryani, Truffle)..." autocomplete="off">
                     </div>
                 </div>
             </div>
 
             <!-- Category Filters with Live Counts -->
             <div class="menu-filters reveal-up mb-5" id="menuFilters">
-                <button class="menu-filter-btn active" data-filter="all">All Dishes (125)</button>
-                <button class="menu-filter-btn" data-filter="starters">Starters (25)</button>
-                <button class="menu-filter-btn" data-filter="indian_mains">Indian Mains (25)</button>
+                <button class="menu-filter-btn active" data-filter="all">All Dishes (155)</button>
+                <button class="menu-filter-btn" data-filter="starters">Indian Starters (30)</button>
+                <button class="menu-filter-btn" data-filter="indian_mains">Indian Mains (50)</button>
                 <button class="menu-filter-btn" data-filter="continental_mains">Continental Mains (25)</button>
                 <button class="menu-filter-btn" data-filter="desserts">Desserts (25)</button>
                 <button class="menu-filter-btn" data-filter="drinks">Drinks & Beverages (25)</button>
@@ -256,15 +260,110 @@
 
             <!-- Dynamic Menu Grid -->
             <div class="row g-4" id="menuGrid">
-                <!-- Rendered dynamically by script.js -->
+                <!-- Rendered dynamically by script.js (3 items initially) -->
             </div>
 
             <!-- Load More Container -->
-            <div class="text-center mt-5 d-none" id="loadMoreContainer">
+            <div class="text-center mt-5" id="loadMoreContainer">
                 <button class="btn-primary-gold px-5 py-3" id="loadMoreMenuBtn">
                     <span>Show More Dishes</span>
                     <i class="fa-solid fa-chevron-down ms-2"></i>
                 </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         4.5 YOUR ORDER BASKET & PLACE ORDER SECTION
+    ============================================================ -->
+    <section class="section-padding" id="orderSection" style="background:#090704; border-top:1px solid var(--border-glass); border-bottom:1px solid var(--border-glass);">
+        <div class="container">
+            <div class="text-center mb-5 reveal-up">
+                <p class="section-eyebrow">Your Selected Delicacies</p>
+                <h2 class="section-heading">Order <em>Summary Basket</em></h2>
+                <p class="section-sub">Add dishes from the menu above. After reviewing your basket, click <strong>"Place Order Now"</strong>!</p>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-lg-9">
+                    <div class="glass-card p-4 p-md-5">
+
+                        <!-- Cart Empty State -->
+                        <div id="cartEmptyState" class="text-center py-5">
+                            <i class="fa-solid fa-basket-shopping fs-1 text-gold mb-3 opacity-50"></i>
+                            <h4 class="text-primary mb-2">Your Order Basket is Empty</h4>
+                            <p class="text-muted mb-4">Click <strong>"+ Add"</strong> on any dish in the menu section above to build your order.</p>
+                            <a href="#menu" class="btn-primary-gold">
+                                <span>Browse 155 Dishes</span>
+                                <i class="fa-solid fa-arrow-up ms-2"></i>
+                            </a>
+                        </div>
+
+                        <!-- Cart Items Container -->
+                        <div id="cartContentState" class="d-none">
+                            <div class="table-responsive mb-4">
+                                <table class="table align-middle text-light border-0">
+                                    <thead>
+                                        <tr class="border-bottom border-gold-subtle text-gold">
+                                            <th scope="col" style="min-width:220px;">Dish</th>
+                                            <th scope="col" class="text-center">Price</th>
+                                            <th scope="col" class="text-center">Quantity</th>
+                                            <th scope="col" class="text-end">Total</th>
+                                            <th scope="col" class="text-end">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="cartTableBody">
+                                        <!-- Rendered dynamically by script.js -->
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <!-- Cart Calculation & Options -->
+                            <div class="row g-4 pt-3 border-top border-secondary">
+                                <div class="col-md-6">
+                                    <div class="form-group-res mb-3">
+                                        <label>Dine-In Table Number / Order Type <span class="text-gold">*</span></label>
+                                        <select id="orderTypeSelect" class="form-select bg-dark text-light border-gold-subtle">
+                                            <option value="Table 1 (Window Side)">Table 1 — Window Side (Dine-in)</option>
+                                            <option value="Table 4 (VIP Booth)">Table 4 — VIP Booth (Dine-in)</option>
+                                            <option value="Table 7 (Terrace View)">Table 7 — Terrace View (Dine-in)</option>
+                                            <option value="Table 12 (Main Hall)">Table 12 — Main Hall (Dine-in)</option>
+                                            <option value="Takeaway Pickup">Takeaway — Express Counter Pickup</option>
+                                            <option value="Home Delivery">Home Delivery — Bhubaneswar City</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group-res">
+                                        <label>Special Preparation Instructions <span class="text-muted">(Optional)</span></label>
+                                        <input type="text" id="orderNotes" placeholder="e.g. Make it extra spicy, serve dessert after mains..." class="form-control bg-dark text-light border-gold-subtle">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="glass p-3 rounded-4">
+                                        <div class="d-flex justify-content-between mb-2">
+                                            <span class="text-secondary">Subtotal</span>
+                                            <span class="fw-bold" id="cartSubtotal">₹0</span>
+                                        </div>
+                                        <div class="d-flex justify-content-between mb-2">
+                                            <span class="text-secondary">GST / Taxes (5%)</span>
+                                            <span class="fw-bold text-muted" id="cartTax">₹0</span>
+                                        </div>
+                                        <div class="d-flex justify-content-between mb-3 pt-2 border-top border-secondary fs-5">
+                                            <span class="text-gold fw-bold">Grand Total</span>
+                                            <span class="text-gold fw-bold" id="cartGrandTotal">₹0</span>
+                                        </div>
+
+                                        <button class="btn-primary-gold w-100 py-3 text-center justify-content-center" id="placeOrderBtn" onclick="submitOrder()">
+                                            <i class="fa-solid fa-paper-plane me-2"></i>
+                                            <span>Place Order Now</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -383,7 +482,7 @@
                             <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                         </div>
                         <blockquote class="test-quote">
-                            "Maison Élan is unlike anything I've experienced in Bhubaneswar. The truffle pasta and black angus ribeye were absolute perfection. The ambience transports you to Paris. Simply unforgettable."
+                            "Maison Élan is unlike anything I've experienced in Bhubaneswar. The Galouti Kebabs and Murgh Makhani were absolute perfection. The ambience transports you to Paris. Simply unforgettable."
                         </blockquote>
                         <div class="test-author">
                             <img src="https://i.pravatar.cc/80?img=47" alt="Priya Nair" class="test-avatar" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&q=80';">
@@ -401,7 +500,7 @@
                             <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                         </div>
                         <blockquote class="test-quote">
-                            "We celebrated our anniversary here and it was flawless from start to finish. The grilled salmon melted in my mouth, and the Dal Élan is hands down the best dal makhani in India."
+                            "We celebrated our anniversary here and it was flawless from start to finish. The 24-Hour Dal Élan and Hyderabadi Dum Biryani melted in our mouth. Chef Aryan even greeted us personally."
                         </blockquote>
                         <div class="test-author">
                             <img src="https://i.pravatar.cc/80?img=32" alt="Rahul & Sneha" class="test-avatar" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80';">
@@ -419,7 +518,7 @@
                             <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                         </div>
                         <blockquote class="test-quote">
-                            "The chocolate fondant and tiramisu were divine! I've dined across Michelin restaurants in Europe and Asia — Maison Élan holds its own with the finest of them."
+                            "The 30 Indian starters and 50 Indian main course selection is the finest in Odisha! The chocolate fondant and tiramisu were divine. 5-star service all around."
                         </blockquote>
                         <div class="test-author">
                             <img src="https://i.pravatar.cc/80?img=15" alt="James Whitfield" class="test-avatar" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80';">
@@ -626,7 +725,7 @@
                             <span>Maison <em>Élan</em></span>
                         </a>
                         <p class="footer-desc">
-                            Where culinary artistry meets warm hospitality. Experience 125+ fine dining creations in Bhubaneswar — crafted with passion, served with elegance.
+                            Where culinary artistry meets warm hospitality. Experience 155 fine dining creations in Bhubaneswar — including 30 Indian Starters and 50 Indian Main Courses.
                         </p>
                     </div>
 
@@ -635,7 +734,8 @@
                         <ul class="footer-links">
                             <li><a href="#home">Home</a></li>
                             <li><a href="#about">About Us</a></li>
-                            <li><a href="#menu">Our Menu (125+)</a></li>
+                            <li><a href="#menu">Our Menu (155)</a></li>
+                            <li><a href="#orderSection">Order Basket</a></li>
                             <li><a href="#chefs">Our Chefs</a></li>
                             <li><a href="#gallery">Gallery (30)</a></li>
                             <li><a href="#reservation">Reservations</a></li>
@@ -669,10 +769,41 @@
         </div>
     </footer>
 
+    <!-- Floating Sticky Order Cart Button -->
+    <a href="#orderSection" class="floating-cart-btn" id="floatingCartBtn">
+        <i class="fa-solid fa-basket-shopping me-2"></i>
+        <span>My Order</span>
+        <span class="cart-badge cart-count">0</span>
+    </a>
+
     <!-- Scroll to Top -->
     <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
         <i class="fa-solid fa-arrow-up"></i>
     </button>
+
+    <!-- Order Placement Success Modal -->
+    <div class="modal fade" id="orderModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content glass-card bg-dark text-light border-gold">
+                <div class="modal-header border-gold-subtle">
+                    <h5 class="modal-title text-gold font-heading"><i class="fa-solid fa-circle-check me-2"></i>Order Placed Successfully!</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center py-4">
+                    <div class="fs-1 text-gold mb-3"><i class="fa-solid fa-fire-burner"></i></div>
+                    <h4>Sent to Master Kitchen 👨‍🍳</h4>
+                    <p class="text-muted" id="orderModalDetails">Your order has been sent to Chef Aryan & Team. Estimated preparation time: <strong>20 minutes</strong>.</p>
+                    <div class="progress my-3" style="height: 6px; background: rgba(255,255,255,0.1);">
+                        <div class="progress-bar bg-warning progress-bar-striped progress-bar-animated" role="progressbar" style="width: 65%"></div>
+                    </div>
+                    <small class="text-gold">Status: Preparing freshly at your table</small>
+                </div>
+                <div class="modal-footer border-gold-subtle justify-content-center">
+                    <button type="button" class="btn-primary-gold px-4" data-bs-dismiss="modal">Great, Thank You!</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -681,7 +812,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
-    <!-- Menu Data Script (125 items & 30 gallery photos) -->
+    <!-- Menu Data Script (155 items & 30 gallery photos) -->
     <script src="js/menu-data.js"></script>
 
     <!-- Custom Main Script -->

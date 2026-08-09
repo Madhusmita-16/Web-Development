@@ -1,16 +1,18 @@
 /**
  * Maison Élan — Restaurant Website Main JavaScript
- * Handles: Preloader, GSAP ScrollTrigger Animations, Dynamic 125+ Item Menu,
- *          Category Filters, Menu Live Search, 30-Item Gallery & Lightbox,
- *          Testimonials Carousel, Reservation Form Validation & Confetti,
- *          Navbar Scroll & Drawer, Image Fallback Handling.
+ * Features: 3 Cards Initial Menu Display (Best Sellers), Expandable "Show More Dishes",
+ *           30 Indian Starters + 50 Indian Mains + Continental + Desserts + Drinks (155 Total),
+ *           Live Search, 30 Gallery Photos + Lightbox,
+ *           Interactive Shopping Cart & Order Basket with live total, table selection & place order modal!
  */
 
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
 
-// Global fallback image URL if an external image link encounters network issues
 const FALLBACK_FOOD_IMG = 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&q=80';
+
+// Global Cart State
+let CART = [];
 
 /* ==========================================================================
    PRELOADER
@@ -21,12 +23,12 @@ window.addEventListener('load', () => {
         setTimeout(() => {
             preloader.classList.add('hidden');
             initHeroAnimations();
-        }, 1200);
+        }, 1000);
     }
 });
 
 /* ==========================================================================
-   1. NAVBAR — Scroll behaviour & active state
+   1. NAVBAR & SCROLL BEHAVIOUR
    ========================================================================== */
 const navbar = document.getElementById('mainNavbar');
 const navLinks = document.querySelectorAll('.nav-link');
@@ -108,11 +110,11 @@ function initHeroAnimations() {
 }
 
 /* ==========================================================================
-   4. DYNAMIC MENU RENDERING (125 ITEMS) & SEARCH
+   4. DYNAMIC MENU RENDERING (INITIAL DISPLAY 3 CARDS ONLY)
    ========================================================================== */
 let activeCategory = 'all';
 let searchQuery = '';
-let displayLimit = 24; // Initial items to show for fast render
+let displayLimit = 3; // EXACT REQUIREMENT: Only 3 cards show initially!
 
 function renderMenuGrid() {
     const menuGrid = document.getElementById('menuGrid');
@@ -136,8 +138,8 @@ function renderMenuGrid() {
                 <div class="glass-card p-5 mx-auto" style="max-width:500px;">
                     <i class="fa-solid fa-utensils fs-1 text-gold mb-3"></i>
                     <h4>No Dishes Found</h4>
-                    <p class="text-muted">No dishes matched "${searchQuery}". Try selecting another category or searching for "Truffle", "Paneer", "Salmon", or "Mocktail".</p>
-                    <button class="btn-primary-gold mt-3" onclick="resetMenuFilters()">View All 125 Dishes</button>
+                    <p class="text-muted">No dishes matched "${searchQuery}". Try searching for "Galouti", "Paneer", "Makhani", or "Biryani".</p>
+                    <button class="btn-primary-gold mt-3" onclick="resetMenuFilters()">View Best Sellers</button>
                 </div>
             </div>
         `;
@@ -145,40 +147,46 @@ function renderMenuGrid() {
         return;
     }
 
-    menuGrid.innerHTML = itemsToDisplay.map((dish, i) => `
-        <div class="col-lg-4 col-md-6 menu-item" data-category="${dish.category}">
-            <div class="menu-card glass-card ${dish.badge.includes('Signature') || dish.badge.includes('Chef') ? 'featured-card' : ''}">
-                <div class="menu-card-img">
-                    <img src="${dish.img}" alt="${dish.name}" loading="lazy" onerror="this.onerror=null;this.src='${FALLBACK_FOOD_IMG}';">
-                    <div class="menu-badge">${dish.badge}</div>
-                </div>
-                <div class="menu-card-body">
-                    <div class="menu-card-top">
-                        <h5 class="menu-name">${dish.name}</h5>
-                        <span class="menu-price">${dish.price}</span>
+    menuGrid.innerHTML = itemsToDisplay.map((dish) => {
+        const isInCart = CART.some(c => c.id === dish.id);
+        const priceNum = parseInt(dish.price.replace(/[^\d]/g, '')) || 0;
+
+        return `
+            <div class="col-lg-4 col-md-6 menu-item" data-category="${dish.category}">
+                <div class="menu-card glass-card ${dish.badge.includes('Best Seller') || dish.badge.includes('Chef') ? 'featured-card' : ''}">
+                    <div class="menu-card-img">
+                        <img src="${dish.img}" alt="${dish.name}" loading="lazy" onerror="this.onerror=null;this.src='${FALLBACK_FOOD_IMG}';">
+                        <div class="menu-badge">${dish.badge}</div>
                     </div>
-                    <p class="menu-desc">${dish.desc}</p>
-                    <div class="menu-card-footer">
-                        <div class="menu-rating">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <span>${dish.rating}</span>
+                    <div class="menu-card-body">
+                        <div class="menu-card-top">
+                            <h5 class="menu-name">${dish.name}</h5>
+                            <span class="menu-price">${dish.price}</span>
                         </div>
-                        <button class="menu-order-btn" onclick="handleAddToCart(this, '${dish.name.replace(/'/g, "\\'")}')">
-                            <i class="fa-solid fa-plus"></i> Add
-                        </button>
+                        <p class="menu-desc">${dish.desc}</p>
+                        <div class="menu-card-footer">
+                            <div class="menu-rating">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <span>${dish.rating}</span>
+                            </div>
+                            <button class="menu-order-btn ${isInCart ? 'added' : ''}" onclick="addToCart(${dish.id}, '${dish.name.replace(/'/g, "\\'")}', ${priceNum}, '${dish.img}')">
+                                <i class="fa-solid ${isInCart ? 'fa-check' : 'fa-plus'}"></i> ${isInCart ? 'Added' : 'Add'}
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    `).join('');
+        `;
+    }).join('');
 
     // Load More Button state
     const loadMoreContainer = document.getElementById('loadMoreContainer');
     const loadMoreBtn = document.getElementById('loadMoreMenuBtn');
+
     if (loadMoreContainer && loadMoreBtn) {
         if (totalMatches > displayLimit) {
             loadMoreContainer.classList.remove('d-none');
@@ -188,17 +196,16 @@ function renderMenuGrid() {
         }
     }
 
-    // Trigger subtle fade up animation on new elements
     gsap.fromTo('#menuGrid .menu-card',
         { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0.4, stagger: 0.04, ease: 'power2.out' }
+        { opacity: 1, y: 0, duration: 0.4, stagger: 0.05, ease: 'power2.out' }
     );
 }
 
 function resetMenuFilters() {
     activeCategory = 'all';
     searchQuery = '';
-    displayLimit = 24;
+    displayLimit = 3;
     const searchInput = document.getElementById('menuSearchInput');
     if (searchInput) searchInput.value = '';
 
@@ -208,21 +215,148 @@ function resetMenuFilters() {
     renderMenuGrid();
 }
 
-function handleAddToCart(btn, dishName) {
-    if (btn.classList.contains('added')) {
-        btn.classList.remove('added');
-        btn.innerHTML = '<i class="fa-solid fa-plus"></i> Add';
+/* ==========================================================================
+   5. CART & ORDER BASKET LOGIC ("Place Order")
+   ========================================================================== */
+function addToCart(id, name, price, img) {
+    const existingIndex = CART.findIndex(item => item.id === id);
+
+    if (existingIndex > -1) {
+        CART[existingIndex].qty += 1;
+        showToast(`Increased quantity of "${name}" to ${CART[existingIndex].qty}`);
     } else {
-        btn.classList.add('added');
-        btn.innerHTML = '<i class="fa-solid fa-check"></i> Added';
-        showToast(`Added "${dishName}" to your order! 🍽️`);
+        CART.push({ id, name, price, img, qty: 1 });
+        showToast(`Added "${name}" to your Order Basket! 🍽️`);
     }
+
+    updateCartUI();
+    renderMenuGrid(); // Re-render menu to show "Added" checkmark
 }
 
-// Category Filters Event Listeners
+function updateCartQty(id, change) {
+    const item = CART.find(c => c.id === id);
+    if (!item) return;
+
+    item.qty += change;
+    if (item.qty <= 0) {
+        CART = CART.filter(c => c.id !== id);
+        showToast(`Removed "${item.name}" from basket`);
+    }
+    updateCartUI();
+    renderMenuGrid();
+}
+
+function removeFromCart(id) {
+    const item = CART.find(c => c.id === id);
+    CART = CART.filter(c => c.id !== id);
+    if (item) showToast(`Removed "${item.name}" from basket`);
+    updateCartUI();
+    renderMenuGrid();
+}
+
+function updateCartUI() {
+    const totalCount = CART.reduce((sum, item) => sum + item.qty, 0);
+
+    // Update all badge counts
+    document.querySelectorAll('.cart-count').forEach(el => {
+        el.textContent = totalCount;
+    });
+
+    const cartEmptyState = document.getElementById('cartEmptyState');
+    const cartContentState = document.getElementById('cartContentState');
+    const cartTableBody = document.getElementById('cartTableBody');
+
+    if (!cartEmptyState || !cartContentState || !cartTableBody) return;
+
+    if (CART.length === 0) {
+        cartEmptyState.classList.remove('d-none');
+        cartContentState.classList.add('d-none');
+        return;
+    }
+
+    cartEmptyState.classList.add('d-none');
+    cartContentState.classList.remove('d-none');
+
+    // Calculate totals
+    let subtotal = 0;
+    cartTableBody.innerHTML = CART.map(item => {
+        const itemTotal = item.price * item.qty;
+        subtotal += itemTotal;
+
+        return `
+            <tr class="border-bottom border-secondary">
+                <td>
+                    <div class="d-flex align-items-center gap-3">
+                        <img src="${item.img}" alt="${item.name}" style="width:50px;height:50px;object-fit:cover;border-radius:10px;" onerror="this.onerror=null;this.src='${FALLBACK_FOOD_IMG}';">
+                        <div>
+                            <div class="fw-bold text-light">${item.name}</div>
+                            <small class="text-muted">₹${item.price} each</small>
+                        </div>
+                    </div>
+                </td>
+                <td class="text-center font-heading text-gold fs-5">₹${item.price}</td>
+                <td class="text-center">
+                    <div class="d-inline-flex align-items-center gap-2 border border-secondary rounded-pill px-2 py-1">
+                        <button class="btn btn-sm btn-link text-gold p-0 border-0" onclick="updateCartQty(${item.id}, -1)"><i class="fa-solid fa-minus"></i></button>
+                        <span class="fw-bold text-light px-2" style="min-width:20px;">${item.qty}</span>
+                        <button class="btn btn-sm btn-link text-gold p-0 border-0" onclick="updateCartQty(${item.id}, 1)"><i class="fa-solid fa-plus"></i></button>
+                    </div>
+                </td>
+                <td class="text-end font-heading text-gold fs-5">₹${itemTotal.toLocaleString()}</td>
+                <td class="text-end">
+                    <button class="btn btn-sm text-danger border-0 p-1" onclick="removeFromCart(${item.id})" title="Remove Dish"><i class="fa-solid fa-trash-can"></i></button>
+                </td>
+            </tr>
+        `;
+    }).join('');
+
+    const tax = Math.round(subtotal * 0.05);
+    const grandTotal = subtotal + tax;
+
+    document.getElementById('cartSubtotal').textContent = `₹${subtotal.toLocaleString()}`;
+    document.getElementById('cartTax').textContent = `₹${tax.toLocaleString()}`;
+    document.getElementById('cartGrandTotal').textContent = `₹${grandTotal.toLocaleString()}`;
+}
+
+function submitOrder() {
+    if (CART.length === 0) {
+        showToast('Your order basket is empty!');
+        return;
+    }
+
+    const orderType = document.getElementById('orderTypeSelect')?.value || 'Table 1';
+    const notes = document.getElementById('orderNotes')?.value || 'None';
+    const totalCount = CART.reduce((sum, item) => sum + item.qty, 0);
+
+    const orderModalDetails = document.getElementById('orderModalDetails');
+    if (orderModalDetails) {
+        orderModalDetails.innerHTML = `
+            Ordered <strong>${totalCount} items</strong> for <strong>${orderType}</strong>.<br>
+            Special instructions: <em>"${notes}"</em>.<br>
+            Estimated preparation time: <strong>20 minutes</strong>.
+        `;
+    }
+
+    // Launch confetti
+    launchConfetti();
+
+    // Show modal
+    const orderModal = new bootstrap.Modal(document.getElementById('orderModal'));
+    orderModal.show();
+
+    // Reset Cart after placing order
+    CART = [];
+    updateCartUI();
+    renderMenuGrid();
+}
+
+/* ==========================================================================
+   6. EVENT LISTENERS SETUP
+   ========================================================================== */
 document.addEventListener('DOMContentLoaded', () => {
     renderMenuGrid();
     renderGalleryGrid();
+    updateCartUI();
 
     const filterBtns = document.querySelectorAll('.menu-filter-btn');
     filterBtns.forEach(btn => {
@@ -230,7 +364,7 @@ document.addEventListener('DOMContentLoaded', () => {
             filterBtns.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
             activeCategory = btn.dataset.filter;
-            displayLimit = 24; // reset pagination limit on tab change
+            displayLimit = 3; // Reset to 3 cards when changing category
             renderMenuGrid();
         });
     });
@@ -239,7 +373,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (menuSearchInput) {
         menuSearchInput.addEventListener('input', (e) => {
             searchQuery = e.target.value.trim();
-            displayLimit = 24;
+            displayLimit = 3;
             renderMenuGrid();
         });
     }
@@ -247,14 +381,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const loadMoreMenuBtn = document.getElementById('loadMoreMenuBtn');
     if (loadMoreMenuBtn) {
         loadMoreMenuBtn.addEventListener('click', () => {
-            displayLimit += 24;
+            displayLimit += 15; // Expands to show 15 more cards at a time
             renderMenuGrid();
         });
     }
 });
 
 /* ==========================================================================
-   5. DYNAMIC GALLERY RENDERING (30 HIGH-RES PHOTOS)
+   7. DYNAMIC GALLERY RENDERING (30 PHOTOS) & LIGHTBOX
    ========================================================================== */
 let currentLightboxIndex = 0;
 
@@ -274,7 +408,6 @@ function renderGalleryGrid() {
     `).join('');
 }
 
-// Lightbox modal logic
 function openLightbox(index) {
     if (typeof GALLERY_DATA === 'undefined') return;
     currentLightboxIndex = index;
@@ -292,8 +425,7 @@ function openLightbox(index) {
 }
 
 function closeLightbox() {
-    const lightbox = document.getElementById('lightbox');
-    lightbox?.classList.remove('active');
+    document.getElementById('lightbox')?.classList.remove('active');
     document.body.style.overflow = '';
 }
 
@@ -325,50 +457,29 @@ document.addEventListener('keydown', (e) => {
 });
 
 /* ==========================================================================
-   6. SCROLL REVEAL ANIMATIONS (GSAP)
+   8. GSAP SCROLL REVEALS & STAT COUNTERS
    ========================================================================== */
 gsap.utils.toArray('.reveal-up').forEach(el => {
-    gsap.fromTo(el,
-        { opacity: 0, y: 40 },
-        {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            ease: 'power3.out',
-            scrollTrigger: { trigger: el, start: 'top 88%', once: true }
-        }
-    );
+    gsap.fromTo(el, { opacity: 0, y: 40 }, {
+        opacity: 1, y: 0, duration: 0.8, ease: 'power3.out',
+        scrollTrigger: { trigger: el, start: 'top 88%', once: true }
+    });
 });
 
 gsap.utils.toArray('.reveal-left').forEach(el => {
-    gsap.fromTo(el,
-        { opacity: 0, x: -50 },
-        {
-            opacity: 1,
-            x: 0,
-            duration: 0.9,
-            ease: 'power3.out',
-            scrollTrigger: { trigger: el, start: 'top 85%', once: true }
-        }
-    );
+    gsap.fromTo(el, { opacity: 0, x: -50 }, {
+        opacity: 1, x: 0, duration: 0.9, ease: 'power3.out',
+        scrollTrigger: { trigger: el, start: 'top 85%', once: true }
+    });
 });
 
 gsap.utils.toArray('.reveal-right').forEach(el => {
-    gsap.fromTo(el,
-        { opacity: 0, x: 50 },
-        {
-            opacity: 1,
-            x: 0,
-            duration: 0.9,
-            ease: 'power3.out',
-            scrollTrigger: { trigger: el, start: 'top 85%', once: true }
-        }
-    );
+    gsap.fromTo(el, { opacity: 0, x: 50 }, {
+        opacity: 1, x: 0, duration: 0.9, ease: 'power3.out',
+        scrollTrigger: { trigger: el, start: 'top 85%', once: true }
+    });
 });
 
-/* ==========================================================================
-   7. STAT COUNTERS
-   ========================================================================== */
 const statNumbers = document.querySelectorAll('.stat-number');
 const counterObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -390,11 +501,10 @@ const counterObserver = new IntersectionObserver((entries) => {
         }
     });
 }, { threshold: 0.5 });
-
 statNumbers.forEach(el => counterObserver.observe(el));
 
 /* ==========================================================================
-   8. TESTIMONIALS CAROUSEL
+   9. TESTIMONIALS & RESERVATION
    ========================================================================== */
 const slides = document.querySelectorAll('.testimonial-slide');
 const dotsContainer = document.getElementById('testDots');
@@ -437,67 +547,22 @@ if (testimonialsSection) {
     }, { threshold: 0.3 }).observe(testimonialsSection);
 }
 
-/* ==========================================================================
-   9. RESERVATION FORM
-   ========================================================================== */
 const resForm = document.getElementById('reservationForm');
 const resSuccess = document.getElementById('reservationSuccess');
 const reserveBtn = document.getElementById('reserveBtn');
 const newResBtn = document.getElementById('newReservationBtn');
 
-const resDateInput = document.getElementById('resDate');
-if (resDateInput) {
-    resDateInput.setAttribute('min', new Date().toISOString().split('T')[0]);
-}
-
-function showError(id, msg) {
-    const el = document.getElementById(id);
-    const errEl = document.getElementById('err' + id.replace('res', '').charAt(0).toUpperCase() + id.replace('res', '').slice(1));
-    if (el) el.classList.add('error');
-    if (errEl) errEl.textContent = msg;
-}
-
-function clearError(id) {
-    const el = document.getElementById(id);
-    const errEl = document.getElementById('err' + id.replace('res', '').charAt(0).toUpperCase() + id.replace('res', '').slice(1));
-    if (el) el.classList.remove('error');
-    if (errEl) errEl.textContent = '';
-}
-
-['resName','resEmail','resPhone','resDate','resTime','resGuests'].forEach(id => {
-    const el = document.getElementById(id);
-    el?.addEventListener('input', () => clearError(id));
-    el?.addEventListener('change', () => clearError(id));
-});
-
 resForm?.addEventListener('submit', (e) => {
     e.preventDefault();
-    let valid = true;
-
-    const name = document.getElementById('resName').value.trim();
-    const email = document.getElementById('resEmail').value.trim();
-    const phone = document.getElementById('resPhone').value.trim();
-    const date = document.getElementById('resDate').value;
-    const time = document.getElementById('resTime').value;
-    const guests = document.getElementById('resGuests').value;
-
-    if (!name || name.length < 2) { showError('resName', 'Please enter your full name.'); valid = false; }
-    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showError('resEmail', 'Please enter a valid email.'); valid = false; }
-    if (!phone || phone.length < 7) { showError('resPhone', 'Please enter a valid phone number.'); valid = false; }
-    if (!date) { showError('resDate', 'Please select a date.'); valid = false; }
-    if (!time) { showError('resTime', 'Please select a time slot.'); valid = false; }
-    if (!guests) { showError('resGuests', 'Please select guests count.'); valid = false; }
-
-    if (!valid) return;
-
-    reserveBtn.disabled = true;
-    reserveBtn.innerHTML = '<span>Reserving...</span> <i class="fa-solid fa-spinner fa-spin ms-2"></i>';
-
+    if (reserveBtn) {
+        reserveBtn.disabled = true;
+        reserveBtn.innerHTML = '<span>Reserving...</span> <i class="fa-solid fa-spinner fa-spin ms-2"></i>';
+    }
     setTimeout(() => {
         resForm.classList.add('d-none');
         resSuccess?.classList.remove('d-none');
         launchConfetti();
-    }, 1500);
+    }, 1200);
 });
 
 newResBtn?.addEventListener('click', () => {
@@ -533,9 +598,6 @@ function launchConfetti() {
     }
 }
 
-/* ==========================================================================
-   10. TOAST & UTILS
-   ========================================================================== */
 function showToast(msg) {
     const existing = document.querySelector('.toast-restaurant');
     existing?.remove();

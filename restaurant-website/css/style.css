@@ -1506,6 +1506,45 @@ a { text-decoration: none; color: inherit; }
     color: var(--text-primary);
 }
 
+/* ── Floating Cart Button ── */
+.floating-cart-btn {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    padding: 12px 24px;
+    border-radius: 100px;
+    background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+    color: #0a0805;
+    font-weight: 700;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    z-index: 990;
+    box-shadow: 0 10px 30px rgba(201, 168, 76, 0.35);
+    transition: all var(--dur) var(--ease);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.floating-cart-btn:hover {
+    color: #0a0805;
+    transform: translateY(-4px);
+    box-shadow: 0 14px 40px rgba(201, 168, 76, 0.5);
+}
+.floating-cart-btn .cart-badge {
+    background: #0a0805;
+    color: var(--gold);
+    padding: 2px 8px;
+    border-radius: 100px;
+    font-size: 0.78rem;
+    font-weight: 800;
+}
+.border-gold-subtle {
+    border-color: rgba(201, 168, 76, 0.25) !important;
+}
+.border-gold {
+    border-color: var(--gold) !important;
+}
+
 /* ==========================================================================
    RESPONSIVE
    ========================================================================== */

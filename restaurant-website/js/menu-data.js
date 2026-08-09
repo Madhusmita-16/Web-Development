@@ -1,299 +1,353 @@
 /**
- * Maison Élan — Complete Culinary & Gallery Database
- * Includes: 25 Starters, 25 Indian Mains, 25 Continental Mains, 25 Desserts, 25 Drinks (125 Total)
- *           + 30 High-Resolution Gallery Photographs
+ * Maison Élan — Complete Culinary Database
+ * Includes: 30 Authentic Indian Starters
+ *           50 Authentic Indian Main Courses
+ *           25 Continental Main Courses
+ *           25 Desserts
+ *           25 Drinks & Beverages
+ * Total: 155 Gourmet Delicacies
  */
 
 const MENU_DATA = [
     /* ==========================================
-       1. STARTERS (25 Items)
+       1. STARTERS (30 Authentic Indian Items)
        ========================================== */
     {
         id: 1,
         category: 'starters',
-        name: 'Truffle Bruschetta',
-        price: '₹495',
+        name: 'Tandoori Paneer Tikka Angaara',
+        price: '₹475',
         rating: 4.9,
-        badge: 'Signature Starter',
-        desc: 'Crispy artisan sourdough topped with black truffle paste, whipped ricotta, and micro basil.',
-        img: 'https://images.unsplash.com/photo-1572441713132-c542fc4fe282?w=600&q=80'
+        badge: 'Best Seller',
+        desc: 'Cottage cheese marinated in smoky Mathania chillies, hung curd, and mustard oil, charred in tandoor.',
+        img: 'https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=600&q=80'
     },
     {
         id: 2,
         category: 'starters',
-        name: 'Pan-Seared King Scallops',
-        price: '₹895',
-        rating: 4.8,
-        badge: 'Chef Choice',
-        desc: 'Pan-seared Atlantic scallops served with cauliflower velvet, crispy capers, and lemon beurre blanc.',
-        img: 'https://images.unsplash.com/photo-1632778149955-e80f8ceca2e8?w=600&q=80'
+        name: 'Lucknowi Chicken Galouti Kebab',
+        price: '₹595',
+        rating: 5.0,
+        badge: 'Best Seller',
+        desc: 'Melt-in-mouth minced chicken patties infused with 32 secret aromatic spices, served on ulta tawa paratha.',
+        img: 'https://images.unsplash.com/photo-1603360946369-dc9bb6258143?w=600&q=80'
     },
     {
         id: 3,
         category: 'starters',
-        name: 'Paneer Tikka Angaara',
-        price: '₹475',
+        name: 'Amritsari Fish Tikka Crisp',
+        price: '₹625',
         rating: 4.9,
-        badge: 'Tandoor Special',
-        desc: 'Cottage cheese marinated in smoky Mathania chillies, hung curd, and roasted spices.',
-        img: 'https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=600&q=80'
+        badge: 'Best Seller',
+        desc: 'River sole fish cubes coated in ajwain, gram flour, and lemon juice, crisp-fried Punjabi style.',
+        img: 'https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?w=600&q=80'
     },
     {
         id: 4,
-        category: 'starters',
-        name: 'Lucknowi Chicken Galouti',
-        price: '₹595',
-        rating: 4.9,
-        badge: 'Heritage Dish',
-        desc: 'Melt-in-mouth minced chicken patties infused with 32 secret spices, served on saffron ulta tawa paratha.',
-        img: 'https://images.unsplash.com/photo-1603360946369-dc9bb6258143?w=600&q=80'
-    },
-    {
-        id: 5,
-        category: 'starters',
-        name: 'Crispy Calamari Fritti',
-        price: '₹645',
-        rating: 4.7,
-        badge: 'Seafood',
-        desc: 'Golden crisp squid rings dusted with sea salt and cracked pepper, served with citrus garlic aioli.',
-        img: 'https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=600&q=80'
-    },
-    {
-        id: 6,
-        category: 'starters',
-        name: 'Classic French Onion Soup',
-        price: '₹425',
-        rating: 4.8,
-        badge: 'Classic Soup',
-        desc: 'Rich caramelised onion beef-style vegetable broth topped with toasted baguette and melted Gruyère.',
-        img: 'https://images.unsplash.com/photo-1547592166-23ac45744acd?w=600&q=80'
-    },
-    {
-        id: 7,
-        category: 'starters',
-        name: 'Tandoori Jumbo Tiger Prawns',
-        price: '₹845',
-        rating: 5.0,
-        badge: 'Chef Specialty',
-        desc: 'Ocean jumbo prawns charred in the clay oven with yellow chilli, garlic butter, and fresh cilantro.',
-        img: 'https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=600&q=80'
-    },
-    {
-        id: 8,
-        category: 'starters',
-        name: 'Wild Mushroom Cappuccino',
-        price: '₹395',
-        rating: 4.8,
-        badge: 'Gourmet Soup',
-        desc: 'Silky porcini and cremini soup topped with warm truffle froth and garlic crouton dust.',
-        img: 'https://images.unsplash.com/photo-1547592166-23ac45744acd?w=600&q=80'
-    },
-    {
-        id: 9,
-        category: 'starters',
-        name: 'Burrata & Heirloom Tomatoes',
-        price: '₹575',
-        rating: 4.9,
-        badge: 'Fresh Italian',
-        desc: 'Artisanal Italian burrata cheese with organic heirloom tomatoes, Modena balsamic glaze, and pine nuts.',
-        img: 'https://images.unsplash.com/photo-1592417817098-8f3d6ef23a85?w=600&q=80'
-    },
-    {
-        id: 10,
         category: 'starters',
         name: 'Dahi Ke Shahi Kebab',
         price: '₹445',
         rating: 4.8,
         badge: 'Vegetarian',
-        desc: 'Velvety hung yoghurt and cardamom kebabs encased in a golden panko shell with mint chutney.',
+        desc: 'Silky hung curd and green cardamom patties with a crisp panko coating and mint chutney.',
         img: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&q=80'
     },
     {
-        id: 11,
+        id: 5,
         category: 'starters',
-        name: 'Wagyu Beef Carpaccio',
-        price: '₹995',
-        rating: 4.9,
-        badge: 'Fine Cut',
-        desc: 'Paper-thin Wagyu beef slices with wild arugula, caper berries, shaved Parmigiano-Reggiano, and truffle oil.',
-        img: 'https://images.unsplash.com/photo-1544025162-d76694265947?w=600&q=80'
-    },
-    {
-        id: 12,
-        category: 'starters',
-        name: 'Truffle & Edamame Dumplings',
-        price: '₹425',
-        rating: 4.7,
-        badge: 'Dim Sum',
-        desc: 'Translucent steamed crystal dumplings stuffed with crushed edamame, water chestnut, and black truffle.',
-        img: 'https://images.unsplash.com/photo-1496116218417-1a781b1c416c?w=600&q=80'
-    },
-    {
-        id: 13,
-        category: 'starters',
-        name: 'Amritsari Fish Tikka',
-        price: '₹625',
-        rating: 4.8,
-        badge: 'Coastal Indian',
-        desc: 'River sole fish marinated in carom seeds, lime, and crushed coriander, fried till golden crisp.',
-        img: 'https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?w=600&q=80'
-    },
-    {
-        id: 14,
-        category: 'starters',
-        name: 'Classic Lobster Bisque',
-        price: '₹745',
-        rating: 4.9,
-        badge: 'French Classic',
-        desc: 'Rich velvety cognac-infused lobster broth laced with double cream and chive oil.',
-        img: 'https://images.unsplash.com/photo-1547592166-23ac45744acd?w=600&q=80'
-    },
-    {
-        id: 15,
-        category: 'starters',
-        name: 'Royale Mezze Platter',
-        price: '₹695',
-        rating: 4.8,
-        badge: 'Mediterranean',
-        desc: 'Classic hummus, smoky baba ganoush, tzatziki, stuffed vine leaves, and warm garlic pita bread.',
-        img: 'https://images.unsplash.com/photo-1541529086526-db283c563270?w=600&q=80'
-    },
-    {
-        id: 16,
-        category: 'starters',
-        name: 'Awadhi Mutton Seekh',
-        price: '₹675',
-        rating: 4.9,
-        badge: 'Mutton Special',
-        desc: 'Minced tender lamb skewers seasoned with royal spices, grilled over live charcoal.',
-        img: 'https://images.unsplash.com/photo-1603360946369-dc9bb6258143?w=600&q=80'
-    },
-    {
-        id: 17,
-        category: 'starters',
-        name: 'Avocado & Crab Salad',
-        price: '₹725',
-        rating: 4.8,
-        badge: 'Cold Starter',
-        desc: 'Fresh lump crab meat layered with Hass avocado mousse, grapefruit segments, and yuzu dressing.',
-        img: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600&q=80'
-    },
-    {
-        id: 18,
-        category: 'starters',
-        name: 'Hara Bhara Kebab Imperial',
+        name: 'Hara Bhara Kebab Stuffed',
         price: '₹415',
         rating: 4.7,
         badge: 'Vegetarian',
-        desc: 'Spinach, green peas, and fenugreek patties stuffed with spiced cottage cheese and roasted cashew nuts.',
+        desc: 'Spinach and green pea patties stuffed with spiced cottage cheese and roasted cashew nuts.',
         img: 'https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=600&q=80'
     },
     {
-        id: 19,
+        id: 6,
         category: 'starters',
-        name: 'Baked Camembert w/ Garlic',
-        price: '₹615',
-        rating: 4.9,
-        badge: 'Cheese Fondue',
-        desc: 'Whole baked French Camembert wheel studded with rosemary and garlic, served with honey and artisan crostini.',
-        img: 'https://images.unsplash.com/photo-1541529086526-db283c563270?w=600&q=80'
+        name: 'Tandoori Jumbo Tiger Prawns',
+        price: '₹845',
+        rating: 5.0,
+        badge: 'Seafood',
+        desc: 'Ocean tiger prawns marinated in yellow chilli paste, garlic butter, and smoked in clay oven.',
+        img: 'https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=600&q=80'
     },
     {
-        id: 20,
+        id: 7,
+        category: 'starters',
+        name: 'Awadhi Mutton Seekh Kebab',
+        price: '₹675',
+        rating: 4.9,
+        badge: 'Chef Special',
+        desc: 'Hand-minced tender goat meat skewers seasoned with royal mace, mint, and grilled over charcoal.',
+        img: 'https://images.unsplash.com/photo-1603360946369-dc9bb6258143?w=600&q=80'
+    },
+    {
+        id: 8,
         category: 'starters',
         name: 'Reshmi Malai Chicken Tikka',
         price: '₹565',
         rating: 4.8,
         badge: 'Popular',
-        desc: 'Tender chicken thighs soaked in cream, cheese, cardamom, and white pepper, charbroiled to perfection.',
+        desc: 'Boneless chicken marinated in cashew paste, double cream, and white pepper, charbroiled till tender.',
         img: 'https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=600&q=80'
+    },
+    {
+        id: 9,
+        category: 'starters',
+        name: 'Royal Kakori Kebab',
+        price: '₹685',
+        rating: 5.0,
+        badge: 'Heritage',
+        desc: 'Ultra-tender lamb kebabs blended with rose water, saffron, and clove, baked on skewers.',
+        img: 'https://images.unsplash.com/photo-1603360946369-dc9bb6258143?w=600&q=80'
+    },
+    {
+        id: 10,
+        category: 'starters',
+        name: 'Kashmiri Guchhi Morel Tikki',
+        price: '₹595',
+        rating: 4.9,
+        badge: 'Exotic Spec.',
+        desc: 'Rare Kashmiri wild morels stuffed with khoya and toasted nuts, tandoor roasted.',
+        img: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&q=80'
+    },
+    {
+        id: 11,
+        category: 'starters',
+        name: 'Old Delhi Samosa Ragda Chaat',
+        price: '₹345',
+        rating: 4.8,
+        badge: 'Street Food',
+        desc: 'Crispy potato samosas crushed over spiced white pea curry, tamarind chutney, and sweetened yoghurt.',
+        img: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&q=80'
+    },
+    {
+        id: 12,
+        category: 'starters',
+        name: 'Achari Paneer Tikka',
+        price: '₹485',
+        rating: 4.8,
+        badge: 'Vegetarian',
+        desc: 'Cottage cheese chunks coated in pickled mango spices, kalonji, and mustard oil.',
+        img: 'https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=600&q=80'
+    },
+    {
+        id: 13,
+        category: 'starters',
+        name: 'Bhatti Ka Murgh Tikka',
+        price: '₹585',
+        rating: 4.9,
+        badge: 'Tandoori',
+        desc: 'Chicken leg meat marinated in crushed black peppercorn, garlic, and cooked over bhatti charcoal.',
+        img: 'https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=600&q=80'
+    },
+    {
+        id: 14,
+        category: 'starters',
+        name: 'Crispy Kurkuri Bhindi Chaat',
+        price: '₹375',
+        rating: 4.7,
+        badge: 'Vegetarian',
+        desc: 'Julienned okra tossed in amchur, chaat masala, and chickpea flour, fried light and crispy.',
+        img: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&q=80'
+    },
+    {
+        id: 15,
+        category: 'starters',
+        name: 'Tandoori Broccoli Malai',
+        price: '₹465',
+        rating: 4.8,
+        badge: 'Healthy Veg',
+        desc: 'Fresh broccoli florets marinated in processed cheese, cream, cardamom, and roasted in tandoor.',
+        img: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&q=80'
+    },
+    {
+        id: 16,
+        category: 'starters',
+        name: 'Chicken Tikka Angaara Spicy',
+        price: '₹595',
+        rating: 4.9,
+        badge: 'Spicy',
+        desc: 'Fiery chicken tikka coated in red chilli paste, garlic, and finished with a charcoal smoke infusion.',
+        img: 'https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=600&q=80'
+    },
+    {
+        id: 17,
+        category: 'starters',
+        name: 'Mutton Boti Kebab Dry',
+        price: '₹695',
+        rating: 4.9,
+        badge: 'Mutton',
+        desc: 'Tender boneless mutton cubes marinated in raw papaya, green chilli, and pan-seared with ghee.',
+        img: 'https://images.unsplash.com/photo-1603360946369-dc9bb6258143?w=600&q=80'
+    },
+    {
+        id: 18,
+        category: 'starters',
+        name: 'Stuffed Mushroom Tikka Dulari',
+        price: '₹475',
+        rating: 4.7,
+        badge: 'Vegetarian',
+        desc: 'Button mushrooms stuffed with processed cheese, bell peppers, and herbs, cooked in clay oven.',
+        img: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&q=80'
+    },
+    {
+        id: 19,
+        category: 'starters',
+        name: 'Royal Subz Seekh Kebab',
+        price: '₹425',
+        rating: 4.7,
+        badge: 'Vegetarian',
+        desc: 'Finely minced garden vegetables, lentils, and potatoes skewered and roasted with ghee.',
+        img: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&q=80'
+    },
+    {
+        id: 20,
+        category: 'starters',
+        name: 'Surti Locho Tikki Bites',
+        price: '₹395',
+        rating: 4.6,
+        badge: 'Gujarati Fusion',
+        desc: 'Steamed lentil cake bites tempered with mustard seeds, green chillies, butter, and sev.',
+        img: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&q=80'
     },
     {
         id: 21,
         category: 'starters',
-        name: 'Tartare de Saumon et Avocat',
-        price: '₹785',
-        rating: 4.9,
-        badge: 'French Raw',
-        desc: 'Fresh Norwegian salmon tartare infused with shallots, capers, lime zest, and sesame tuile.',
+        name: 'Kolkata Fish Cutlet Classic',
+        price: '₹545',
+        rating: 4.8,
+        badge: 'Bengali Spec.',
+        desc: 'Bhetki fish fillet marinated in mustard, garlic, and green chillies, breaded and deep fried.',
         img: 'https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?w=600&q=80'
     },
     {
         id: 22,
         category: 'starters',
-        name: 'Sweet Corn & Cheese Croquettes',
-        price: '₹435',
-        rating: 4.7,
-        badge: 'Vegetarian',
-        desc: 'Creamy corn and sharp cheddar croquettes with a crispy golden panko crust and spicy jalapeno dip.',
-        img: 'https://images.unsplash.com/photo-1541529086526-db283c563270?w=600&q=80'
+        name: 'Paneer Malai Tikka Saffron',
+        price: '₹495',
+        rating: 4.9,
+        badge: 'Rich Veg',
+        desc: 'Cottage cheese steeped in cream, saffron strands, mace powder, and charbroiled.',
+        img: 'https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=600&q=80'
     },
     {
         id: 23,
         category: 'starters',
-        name: 'Royal Kakori Kebab',
-        price: '₹685',
-        rating: 5.0,
-        badge: 'Chef Heritage',
-        desc: 'Softest lamb kebabs infused with rose water, saffron, and mace, baked on skewers in a sealed oven.',
-        img: 'https://images.unsplash.com/photo-1603360946369-dc9bb6258143?w=600&q=80'
+        name: 'Tangri Kebab Stuffed Cheese',
+        price: '₹625',
+        rating: 4.9,
+        badge: 'Poultry',
+        desc: 'Chicken drumsticks stuffed with minced chicken and melted cheese, cooked in tandoor.',
+        img: 'https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=600&q=80'
     },
     {
         id: 24,
         category: 'starters',
-        name: 'Gambas al Ajillo (Garlic Shrimp)',
-        price: '₹765',
-        rating: 4.8,
-        badge: 'Spanish Tapas',
-        desc: 'Wild shrimp sizzled in extra virgin olive oil, garlic cloves, dried red chillies, and dry sherry.',
-        img: 'https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=600&q=80'
+        name: 'Chana Jor Garam Papdi Chaat',
+        price: '₹325',
+        rating: 4.7,
+        badge: 'Street Chaat',
+        desc: 'Flattened black chickpeas tossed with chopped onions, tomatoes, green chillies, and lemon juice.',
+        img: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&q=80'
     },
     {
         id: 25,
         category: 'starters',
-        name: 'Stuffed Kashmiri Morel Mushrooms',
-        price: '₹595',
+        name: 'Crispy Honey Lotus Stem',
+        price: '₹435',
+        rating: 4.8,
+        badge: 'Indo-Chinese',
+        desc: 'Thin slices of lotus root fried crisp and tossed in garlic, honey, and chilli glaze.',
+        img: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&q=80'
+    },
+    {
+        id: 26,
+        category: 'starters',
+        name: 'Kadhai Paneer Finger Bites',
+        price: '₹445',
+        rating: 4.7,
+        badge: 'Crispy Veg',
+        desc: 'Crispy fried cottage cheese batons tossed with bell peppers and roasted kadhai spices.',
+        img: 'https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=600&q=80'
+    },
+    {
+        id: 27,
+        category: 'starters',
+        name: 'Kalmi Kebab Saffron Glaze',
+        price: '₹645',
         rating: 4.9,
-        badge: 'Exotic Spec.',
-        desc: 'Rare Kashmiri Guchhi mushrooms stuffed with khoya, herbs, and crushed nuts, cooked in tandoor.',
-        img: 'https://images.unsplash.com/photo-1476124369491-e7addf5db371?w=600&q=80'
+        badge: 'Mughlai',
+        desc: 'Chicken thigh pieces marinated in yogurt, cashew paste, and saffron, broiled over coals.',
+        img: 'https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=600&q=80'
+    },
+    {
+        id: 28,
+        category: 'starters',
+        name: 'Aloo Corn Cheese Tikki',
+        price: '₹385',
+        rating: 4.7,
+        badge: 'Kid Favorite',
+        desc: 'Mashed potato and sweet corn patties filled with mozzarella cheese, shallow fried on tawa.',
+        img: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&q=80'
+    },
+    {
+        id: 29,
+        category: 'starters',
+        name: 'Hydrabadi Shikampuri Kebab',
+        price: '₹695',
+        rating: 5.0,
+        badge: 'Royal Special',
+        desc: 'Spiced minced lamb patties stuffed with hung curd and chopped onions, shallow fried in ghee.',
+        img: 'https://images.unsplash.com/photo-1603360946369-dc9bb6258143?w=600&q=80'
+    },
+    {
+        id: 30,
+        category: 'starters',
+        name: 'Tandoori Soya Chaap Angaara',
+        price: '₹465',
+        rating: 4.8,
+        badge: 'Veg Tikka',
+        desc: 'Protein-packed soya chaap marinated in red chilli yogurt paste, grilled to perfection.',
+        img: 'https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=600&q=80'
     },
 
     /* ==========================================
-       2. INDIAN MAIN COURSE (25 Items)
+       2. INDIAN MAIN COURSE (50 Authentic Items)
        ========================================== */
     {
-        id: 26,
+        id: 31,
         category: 'indian_mains',
         name: 'Paneer Velvet Butter Masala',
         price: '₹595',
         rating: 4.9,
-        badge: 'All-Time Fav',
+        badge: 'Best Seller',
         desc: 'Soft malai paneer cubes simmered in a silky tomato, cashew nut, and kasuri methi gravy with honey touch.',
         img: 'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=600&q=80'
     },
     {
-        id: 27,
+        id: 32,
         category: 'indian_mains',
-        name: 'Maison Murgh Makhani',
+        name: 'Maison Murgh Makhani (Butter Chicken)',
         price: '₹695',
         rating: 5.0,
-        badge: 'House Special',
+        badge: 'Best Seller',
         desc: 'Charcoal-grilled tandoori chicken cooked in a rich cult-butter gravy infused with fenugreek and cream.',
         img: 'https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?w=600&q=80'
     },
     {
-        id: 28,
+        id: 33,
         category: 'indian_mains',
         name: 'Dal Élan (24-Hour Slow Cooked)',
         price: '₹495',
         rating: 5.0,
-        badge: 'Legendary',
-        desc: 'Whole black lentils simmered overnight with cream, butter, and secret aromatic spices.',
+        badge: 'Best Seller',
+        desc: 'Whole black lentils simmered overnight on slow charcoal with cream, white butter, and secret spices.',
         img: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&q=80'
     },
     {
-        id: 29,
+        id: 34,
         category: 'indian_mains',
         name: 'Hyderabadi Dum Mutton Biryani',
         price: '₹795',
@@ -303,7 +357,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=600&q=80'
     },
     {
-        id: 30,
+        id: 35,
         category: 'indian_mains',
         name: 'Kashmiri Lamb Rogan Josh',
         price: '₹765',
@@ -313,7 +367,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1545247181-516773cae754?w=600&q=80'
     },
     {
-        id: 31,
+        id: 36,
         category: 'indian_mains',
         name: 'Awadhi Dum Subz Biryani',
         price: '₹545',
@@ -323,7 +377,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1633945274405-b6c8069047b0?w=600&q=80'
     },
     {
-        id: 32,
+        id: 37,
         category: 'indian_mains',
         name: 'Malai Kofta Imperial',
         price: '₹575',
@@ -333,7 +387,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?w=600&q=80'
     },
     {
-        id: 33,
+        id: 38,
         category: 'indian_mains',
         name: 'Kadhai Jumbo Tiger Prawns',
         price: '₹895',
@@ -343,7 +397,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=600&q=80'
     },
     {
-        id: 34,
+        id: 39,
         category: 'indian_mains',
         name: 'Chicken Tikka Masala Classic',
         price: '₹675',
@@ -353,7 +407,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=600&q=80'
     },
     {
-        id: 35,
+        id: 40,
         category: 'indian_mains',
         name: 'Velvet Palak Paneer',
         price: '₹565',
@@ -363,7 +417,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&q=80'
     },
     {
-        id: 36,
+        id: 41,
         category: 'indian_mains',
         name: 'Old Delhi Nalli Nihari',
         price: '₹845',
@@ -373,7 +427,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1545247181-516773cae754?w=600&q=80'
     },
     {
-        id: 37,
+        id: 42,
         category: 'indian_mains',
         name: 'Goan Fish Curry w/ Coconut',
         price: '₹725',
@@ -383,7 +437,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?w=600&q=80'
     },
     {
-        id: 38,
+        id: 43,
         category: 'indian_mains',
         name: 'Mutton Bhuna Gosht Special',
         price: '₹745',
@@ -393,7 +447,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1545247181-516773cae754?w=600&q=80'
     },
     {
-        id: 39,
+        id: 44,
         category: 'indian_mains',
         name: 'Kaju Khoya Butter Masala',
         price: '₹585',
@@ -403,7 +457,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=600&q=80'
     },
     {
-        id: 40,
+        id: 45,
         category: 'indian_mains',
         name: 'Rajasthani Laal Maas',
         price: '₹785',
@@ -413,7 +467,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1545247181-516773cae754?w=600&q=80'
     },
     {
-        id: 41,
+        id: 46,
         category: 'indian_mains',
         name: 'Smoky Baingan Bharta',
         price: '₹485',
@@ -423,7 +477,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&q=80'
     },
     {
-        id: 42,
+        id: 47,
         category: 'indian_mains',
         name: 'Chettinad Pepper Chicken Curry',
         price: '₹665',
@@ -433,7 +487,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?w=600&q=80'
     },
     {
-        id: 43,
+        id: 48,
         category: 'indian_mains',
         name: 'Banarasi Stuffed Dum Aloo',
         price: '₹495',
@@ -443,7 +497,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?w=600&q=80'
     },
     {
-        id: 44,
+        id: 49,
         category: 'indian_mains',
         name: 'Amritsari Macchi Curry',
         price: '₹715',
@@ -453,7 +507,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?w=600&q=80'
     },
     {
-        id: 45,
+        id: 50,
         category: 'indian_mains',
         name: 'Paneer Lababdar Royal',
         price: '₹585',
@@ -463,7 +517,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=600&q=80'
     },
     {
-        id: 46,
+        id: 51,
         category: 'indian_mains',
         name: 'Dum Chicken Biryani Royale',
         price: '₹695',
@@ -473,7 +527,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=600&q=80'
     },
     {
-        id: 47,
+        id: 52,
         category: 'indian_mains',
         name: 'Awadhi Shahi Mutton Korma',
         price: '₹795',
@@ -483,7 +537,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1545247181-516773cae754?w=600&q=80'
     },
     {
-        id: 48,
+        id: 53,
         category: 'indian_mains',
         name: 'Rawalpindi Pindi Chana',
         price: '₹445',
@@ -493,7 +547,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&q=80'
     },
     {
-        id: 49,
+        id: 54,
         category: 'indian_mains',
         name: 'Sarson Ka Saag & Makki Roti',
         price: '₹525',
@@ -503,7 +557,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&q=80'
     },
     {
-        id: 50,
+        id: 55,
         category: 'indian_mains',
         name: 'Dum Prawn Biryani Gold',
         price: '₹865',
@@ -512,22 +566,272 @@ const MENU_DATA = [
         desc: 'Fresh ocean tiger prawns dum cooked with aged basmati rice, saffron, and fresh herbs.',
         img: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=600&q=80'
     },
+    {
+        id: 56,
+        category: 'indian_mains',
+        name: 'Kadhai Paneer Special',
+        price: '₹575',
+        rating: 4.8,
+        badge: 'Vegetarian',
+        desc: 'Fresh paneer cooked with coarsely pounded coriander seeds, red chillies, and crunchy capsicum.',
+        img: 'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=600&q=80'
+    },
+    {
+        id: 57,
+        category: 'indian_mains',
+        name: 'Murgh Handi Lazeez',
+        price: '₹685',
+        rating: 4.9,
+        badge: 'Claypot Spec.',
+        desc: 'Boneless chicken simmered in an earthenware pot with curd, cashew cream, and crushed fenugreek.',
+        img: 'https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?w=600&q=80'
+    },
+    {
+        id: 58,
+        category: 'indian_mains',
+        name: 'Mutton Rara Ghugni',
+        price: '₹785',
+        rating: 4.9,
+        badge: 'Mutton',
+        desc: 'Combination of minced lamb and lamb chunks cooked together in a rich spicy gravy.',
+        img: 'https://images.unsplash.com/photo-1545247181-516773cae754?w=600&q=80'
+    },
+    {
+        id: 59,
+        category: 'indian_mains',
+        name: 'Methi Matar Malai Velvet',
+        price: '₹535',
+        rating: 4.7,
+        badge: 'Rich Veg',
+        desc: 'Fresh green peas and bitter fenugreek leaves cooked in a rich sweet cream and cashew nut curry.',
+        img: 'https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?w=600&q=80'
+    },
+    {
+        id: 60,
+        category: 'indian_mains',
+        name: 'Bengali Shorshe Ilish (Hilsa Mustard)',
+        price: '₹895',
+        rating: 5.0,
+        badge: 'Heritage Fish',
+        desc: 'Fresh Hilsa fish cooked in a sharp yellow mustard and green chilli sauce with mustard oil.',
+        img: 'https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?w=600&q=80'
+    },
+    {
+        id: 61,
+        category: 'indian_mains',
+        name: 'Paneer Pasanda Nawabi',
+        price: '₹595',
+        rating: 4.8,
+        badge: 'Royal Veg',
+        desc: 'Stuffed paneer sandwiches with raisins and nuts, cooked in a golden saffron onion gravy.',
+        img: 'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=600&q=80'
+    },
+    {
+        id: 62,
+        category: 'indian_mains',
+        name: 'Chicken Saagwala Punjabi',
+        price: '₹645',
+        rating: 4.7,
+        badge: 'Healthy Poultry',
+        desc: 'Tender chicken pieces simmered in fresh pureed spinach, garlic, ginger, and butter.',
+        img: 'https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?w=600&q=80'
+    },
+    {
+        id: 63,
+        category: 'indian_mains',
+        name: 'Dal Tadka Desi Ghee',
+        price: '₹425',
+        rating: 4.8,
+        badge: 'Comfort Food',
+        desc: 'Yellow arhar lentils tempered with cow ghee, cumin seeds, garlic, dried red chillies, and asafoetida.',
+        img: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&q=80'
+    },
+    {
+        id: 64,
+        category: 'indian_mains',
+        name: 'Malabar Fish Curry Kerala',
+        price: '₹745',
+        rating: 4.9,
+        badge: 'South Seafood',
+        desc: 'Seer fish cooked in a tangy coconut gravy with Kudampuli tamarind and roasted spices.',
+        img: 'https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?w=600&q=80'
+    },
+    {
+        id: 65,
+        category: 'indian_mains',
+        name: 'Kashmiri Dum Aloo Gravy',
+        price: '₹495',
+        rating: 4.7,
+        badge: 'Kashmiri',
+        desc: 'Pricked baby potatoes slow cooked in a fennel and dry ginger spiced red yogurt gravy.',
+        img: 'https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?w=600&q=80'
+    },
+    {
+        id: 66,
+        category: 'indian_mains',
+        name: 'Murgh Do Pyaza',
+        price: '₹655',
+        rating: 4.8,
+        badge: 'Classic',
+        desc: 'Chicken cooked with double onions — translucent rings and caramelized purée with whole spices.',
+        img: 'https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?w=600&q=80'
+    },
+    {
+        id: 67,
+        category: 'indian_mains',
+        name: 'Mutton Keema Matar Masala',
+        price: '₹745',
+        rating: 4.9,
+        badge: 'Mutton',
+        desc: 'Coarsely minced mutton braised with green peas, onions, tomatoes, and whole garam masala.',
+        img: 'https://images.unsplash.com/photo-1545247181-516773cae754?w=600&q=80'
+    },
+    {
+        id: 68,
+        category: 'indian_mains',
+        name: 'Paneer Makhani Saffron',
+        price: '₹585',
+        rating: 4.8,
+        badge: 'Mild Veg',
+        desc: 'Cottage cheese cooked in sweet tomato butter gravy scented with Spanish saffron.',
+        img: 'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=600&q=80'
+    },
+    {
+        id: 69,
+        category: 'indian_mains',
+        name: 'Chicken Kolhapuri Fiery',
+        price: '₹665',
+        rating: 4.9,
+        badge: 'Spicy Maharashtra',
+        desc: 'Spicy chicken curry prepared with sesame, poppy seeds, dry coconut, and red Kolhapuri chillies.',
+        img: 'https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?w=600&q=80'
+    },
+    {
+        id: 70,
+        category: 'indian_mains',
+        name: 'Bhindi Masala Restaurant Style',
+        price: '₹445',
+        rating: 4.6,
+        badge: 'Veg',
+        desc: 'Tender ladyfingers sautéed with sliced onions, amchur, cumin, and roasted coriander.',
+        img: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&q=80'
+    },
+    {
+        id: 71,
+        category: 'indian_mains',
+        name: 'Hyderabadi Mirchi Ka Salan',
+        price: '₹425',
+        rating: 4.7,
+        badge: 'Side Spec.',
+        desc: 'Large green chillies cooked in a peanut, sesame, coconut, and tamarind gravy.',
+        img: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&q=80'
+    },
+    {
+        id: 72,
+        category: 'indian_mains',
+        name: 'Murgh Musallam Whole (Half)',
+        price: '₹795',
+        rating: 5.0,
+        badge: 'Royal Feast',
+        desc: 'Mughlai dish of chicken cooked in a rich gravy of boiled eggs, minced meat, and dry fruits.',
+        img: 'https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?w=600&q=80'
+    },
+    {
+        id: 73,
+        category: 'indian_mains',
+        name: 'Mutton Beliram Punjab',
+        price: '₹795',
+        rating: 4.9,
+        badge: 'Heritage Mutton',
+        desc: 'Tender goat meat cooked with equal amount of sliced onions, yogurt, and crushed coriander.',
+        img: 'https://images.unsplash.com/photo-1545247181-516773cae754?w=600&q=80'
+    },
+    {
+        id: 74,
+        category: 'indian_mains',
+        name: 'Subz Handi Diwani',
+        price: '₹525',
+        rating: 4.7,
+        badge: 'Mixed Veg',
+        desc: 'Assorted garden vegetables cooked in a rich spinach and cashew nut gravy.',
+        img: 'https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?w=600&q=80'
+    },
+    {
+        id: 75,
+        category: 'indian_mains',
+        name: 'Lobster Masala Coastal Style',
+        price: '₹1,495',
+        rating: 5.0,
+        badge: 'Luxury Seafood',
+        desc: 'Fresh rock lobster meat sautéed with South Indian curry leaves, mustard seeds, and shallots.',
+        img: 'https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=600&q=80'
+    },
+    {
+        id: 76,
+        category: 'indian_mains',
+        name: 'Paneer Bhurji Dhaba Style',
+        price: '₹495',
+        rating: 4.8,
+        badge: 'Dhaba Style',
+        desc: 'Scrambled cottage cheese tossed with green chillies, tomatoes, butter, and coriander.',
+        img: 'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=600&q=80'
+    },
+    {
+        id: 77,
+        category: 'indian_mains',
+        name: 'Kadhai Chicken Peshavari',
+        price: '₹675',
+        rating: 4.8,
+        badge: 'North Special',
+        desc: 'Chicken cooked in a wok with coarse spices, fresh tomatoes, and green chilli slits.',
+        img: 'https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?w=600&q=80'
+    },
+    {
+        id: 78,
+        category: 'indian_mains',
+        name: 'Jeera Rice Basmati Fluffy',
+        price: '₹295',
+        rating: 4.8,
+        badge: 'Staple Rice',
+        desc: 'Long-grain basmati rice tempered with roasted cumin seeds and desi ghee.',
+        img: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=600&q=80'
+    },
+    {
+        id: 79,
+        category: 'indian_mains',
+        name: 'Garlic Butter Naan Basket',
+        price: '₹195',
+        rating: 4.9,
+        badge: 'Bread',
+        desc: 'Two fluffy tandoori sourdough naans brushed with garlic butter and fresh coriander.',
+        img: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&q=80'
+    },
+    {
+        id: 80,
+        category: 'indian_mains',
+        name: 'Amritsari Kulcha Stuffed Potato',
+        price: '₹225',
+        rating: 4.9,
+        badge: 'Special Bread',
+        desc: 'Crispy layered tandoori bread filled with spiced mashed potatoes, served with chole gravy.',
+        img: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&q=80'
+    },
 
     /* ==========================================
        3. CONTINENTAL MAIN COURSE (25 Items)
        ========================================== */
     {
-        id: 51,
+        id: 81,
         category: 'continental_mains',
         name: 'Handcrafted Black Truffle Pasta',
         price: '₹1,195',
         rating: 5.0,
-        badge: 'Chef Signature',
+        badge: 'Best Seller',
         desc: 'Handmade fresh egg pappardelle with shaved Italian black truffle, 24-month aged parmesan, and sage butter.',
         img: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&q=80'
     },
     {
-        id: 52,
+        id: 82,
         category: 'continental_mains',
         name: 'Pan-Seared Norwegian Salmon',
         price: '₹1,495',
@@ -537,7 +841,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=600&q=80'
     },
     {
-        id: 53,
+        id: 83,
         category: 'continental_mains',
         name: 'Creamy Wild Mushroom Risotto',
         price: '₹1,095',
@@ -547,7 +851,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1476124369491-e7addf5db371?w=600&q=80'
     },
     {
-        id: 54,
+        id: 84,
         category: 'continental_mains',
         name: 'Prime Black Angus Ribeye (250g)',
         price: '₹1,895',
@@ -557,7 +861,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1544025162-d76694265947?w=600&q=80'
     },
     {
-        id: 55,
+        id: 85,
         category: 'continental_mains',
         name: 'Wood-Fired Margherita Gourmet',
         price: '₹895',
@@ -567,7 +871,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&q=80'
     },
     {
-        id: 56,
+        id: 86,
         category: 'continental_mains',
         name: 'Classic Lobster Thermidor',
         price: '₹2,295',
@@ -577,7 +881,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1559742811-8228636464e3?w=600&q=80'
     },
     {
-        id: 57,
+        id: 87,
         category: 'continental_mains',
         name: 'Crispy Duck Confit w/ Cherry Reduction',
         price: '₹1,595',
@@ -587,7 +891,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1514944288352-fffac99f0bdf?w=600&q=80'
     },
     {
-        id: 58,
+        id: 88,
         category: 'continental_mains',
         name: 'Chicken Piccata Lemon Caper',
         price: '₹945',
@@ -597,7 +901,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1532550907401-a500c9a57435?w=600&q=80'
     },
     {
-        id: 59,
+        id: 89,
         category: 'continental_mains',
         name: 'Grilled Sea Bass Florentine',
         price: '₹1,425',
@@ -607,7 +911,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?w=600&q=80'
     },
     {
-        id: 60,
+        id: 90,
         category: 'continental_mains',
         name: 'Herb-Crusted Rack of Lamb',
         price: '₹1,795',
@@ -617,7 +921,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1544025162-d76694265947?w=600&q=80'
     },
     {
-        id: 61,
+        id: 91,
         category: 'continental_mains',
         name: 'Seafood Linguine Marinara',
         price: '₹1,245',
@@ -627,7 +931,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&q=80'
     },
     {
-        id: 62,
+        id: 92,
         category: 'continental_mains',
         name: 'Veal Osso Buco Braised',
         price: '₹1,695',
@@ -637,7 +941,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1544025162-d76694265947?w=600&q=80'
     },
     {
-        id: 63,
+        id: 93,
         category: 'continental_mains',
         name: 'Spinach & Ricotta Ravioli',
         price: '₹985',
@@ -647,7 +951,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&q=80'
     },
     {
-        id: 64,
+        id: 94,
         category: 'continental_mains',
         name: 'Filet Mignon w/ Béarnaise',
         price: '₹1,995',
@@ -657,7 +961,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1544025162-d76694265947?w=600&q=80'
     },
     {
-        id: 65,
+        id: 95,
         category: 'continental_mains',
         name: 'Classic Quiche Lorraine',
         price: '₹785',
@@ -667,7 +971,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&q=80'
     },
     {
-        id: 66,
+        id: 96,
         category: 'continental_mains',
         name: 'Gnocchi Gorgonzola & Walnut',
         price: '₹925',
@@ -677,7 +981,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&q=80'
     },
     {
-        id: 67,
+        id: 97,
         category: 'continental_mains',
         name: 'Roasted Chicken Supreme',
         price: '₹995',
@@ -687,7 +991,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1532550907401-a500c9a57435?w=600&q=80'
     },
     {
-        id: 68,
+        id: 98,
         category: 'continental_mains',
         name: 'Paella de Mariscos Supreme',
         price: '₹1,395',
@@ -697,7 +1001,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=600&q=80'
     },
     {
-        id: 69,
+        id: 99,
         category: 'continental_mains',
         name: 'Slow-BBQ Glazed Pork Ribs',
         price: '₹1,195',
@@ -707,7 +1011,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1544025162-d76694265947?w=600&q=80'
     },
     {
-        id: 70,
+        id: 100,
         category: 'continental_mains',
         name: 'Vegetable Lasagna al Forno',
         price: '₹865',
@@ -717,7 +1021,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&q=80'
     },
     {
-        id: 71,
+        id: 101,
         category: 'continental_mains',
         name: 'Chilean Sea Bass En Papillote',
         price: '₹1,845',
@@ -727,7 +1031,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?w=600&q=80'
     },
     {
-        id: 72,
+        id: 102,
         category: 'continental_mains',
         name: 'Truffle Mac & Cheese Royale',
         price: '₹845',
@@ -737,7 +1041,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&q=80'
     },
     {
-        id: 73,
+        id: 103,
         category: 'continental_mains',
         name: 'Beef Wellington Prime',
         price: '₹2,195',
@@ -747,7 +1051,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1544025162-d76694265947?w=600&q=80'
     },
     {
-        id: 74,
+        id: 104,
         category: 'continental_mains',
         name: 'Saffron Seafood Risotto',
         price: '₹1,295',
@@ -757,7 +1061,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1476124369491-e7addf5db371?w=600&q=80'
     },
     {
-        id: 75,
+        id: 105,
         category: 'continental_mains',
         name: 'Crispy Chicken Parmigiana Melt',
         price: '₹945',
@@ -771,7 +1075,7 @@ const MENU_DATA = [
        4. DESSERTS (25 Items)
        ========================================== */
     {
-        id: 76,
+        id: 106,
         category: 'desserts',
         name: 'Valrhona Dark Chocolate Fondant',
         price: '₹595',
@@ -781,7 +1085,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1624353365286-3f8d62daad51?w=600&q=80'
     },
     {
-        id: 77,
+        id: 107,
         category: 'desserts',
         name: 'Classic Venetian Tiramisu',
         price: '₹495',
@@ -791,7 +1095,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=600&q=80'
     },
     {
-        id: 78,
+        id: 108,
         category: 'desserts',
         name: 'Vanilla Bean Crème Brûlée',
         price: '₹465',
@@ -801,7 +1105,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1470124182917-cc6e71b22ecc?w=600&q=80'
     },
     {
-        id: 79,
+        id: 109,
         category: 'desserts',
         name: 'Gulab Jamun Cheesecake Fusion',
         price: '₹485',
@@ -811,7 +1115,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=600&q=80'
     },
     {
-        id: 80,
+        id: 110,
         category: 'desserts',
         name: 'Pistachio Baklava w/ Kulfi',
         price: '₹525',
@@ -821,7 +1125,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1519676867240-f03562e64548?w=600&q=80'
     },
     {
-        id: 81,
+        id: 111,
         category: 'desserts',
         name: 'Artisan Churros w/ Dulce de Leche',
         price: '₹425',
@@ -831,7 +1135,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1624371350106-2920e4ad608f?w=600&q=80'
     },
     {
-        id: 82,
+        id: 112,
         category: 'desserts',
         name: 'French Macarons Assortment',
         price: '₹495',
@@ -841,7 +1145,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1569864358642-9d1684040f43?w=600&q=80'
     },
     {
-        id: 83,
+        id: 113,
         category: 'desserts',
         name: 'Mango Passion Panna Cotta',
         price: '₹445',
@@ -851,7 +1155,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1488477181946-6428a0291777?w=600&q=80'
     },
     {
-        id: 84,
+        id: 114,
         category: 'desserts',
         name: 'Rasmalai Tres Leches Cake',
         price: '₹515',
@@ -861,7 +1165,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=600&q=80'
     },
     {
-        id: 85,
+        id: 115,
         category: 'desserts',
         name: 'New York Baked Cheesecake',
         price: '₹545',
@@ -871,7 +1175,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=600&q=80'
     },
     {
-        id: 86,
+        id: 116,
         category: 'desserts',
         name: 'Warm Tarte Tatin & Vanilla Gelato',
         price: '₹475',
@@ -881,7 +1185,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=600&q=80'
     },
     {
-        id: 87,
+        id: 117,
         category: 'desserts',
         name: 'Chocolate Hazelnut Gianduja Tart',
         price: '₹525',
@@ -891,7 +1195,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1624353365286-3f8d62daad51?w=600&q=80'
     },
     {
-        id: 88,
+        id: 118,
         category: 'desserts',
         name: 'Shahi Tukda Gold Edition',
         price: '₹455',
@@ -901,7 +1205,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=600&q=80'
     },
     {
-        id: 89,
+        id: 119,
         category: 'desserts',
         name: 'Salted Caramel Hot Soufflé',
         price: '₹565',
@@ -911,7 +1215,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1470124182917-cc6e71b22ecc?w=600&q=80'
     },
     {
-        id: 90,
+        id: 120,
         category: 'desserts',
         name: 'Wild Berry Pavlova Crisp',
         price: '₹485',
@@ -921,7 +1225,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1488477181946-6428a0291777?w=600&q=80'
     },
     {
-        id: 91,
+        id: 121,
         category: 'desserts',
         name: 'Matcha Green Tea Sundae',
         price: '₹435',
@@ -931,7 +1235,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1488477181946-6428a0291777?w=600&q=80'
     },
     {
-        id: 92,
+        id: 122,
         category: 'desserts',
         name: 'Opéra Cake Gateau Layered',
         price: '₹535',
@@ -941,7 +1245,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=600&q=80'
     },
     {
-        id: 93,
+        id: 123,
         category: 'desserts',
         name: 'Moong Dal Halwa Truffle Balls',
         price: '₹415',
@@ -951,7 +1255,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=600&q=80'
     },
     {
-        id: 94,
+        id: 124,
         category: 'desserts',
         name: 'Grand Marnier Crêpes Suzette',
         price: '₹585',
@@ -961,7 +1265,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1624371350106-2920e4ad608f?w=600&q=80'
     },
     {
-        id: 95,
+        id: 125,
         category: 'desserts',
         name: 'Citron Lemon Meringue Pie',
         price: '₹455',
@@ -971,7 +1275,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=600&q=80'
     },
     {
-        id: 96,
+        id: 126,
         category: 'desserts',
         name: 'Kesar Pista Kulfi Falooda',
         price: '₹395',
@@ -981,7 +1285,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1488477181946-6428a0291777?w=600&q=80'
     },
     {
-        id: 97,
+        id: 127,
         category: 'desserts',
         name: 'Hot Lava Chocolate Brownie',
         price: '₹475',
@@ -991,7 +1295,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1624353365286-3f8d62daad51?w=600&q=80'
     },
     {
-        id: 98,
+        id: 128,
         category: 'desserts',
         name: 'Affogato al Caffè Speciale',
         price: '₹385',
@@ -1001,7 +1305,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1517701604599-bb29b565090c?w=600&q=80'
     },
     {
-        id: 99,
+        id: 129,
         category: 'desserts',
         name: 'Thai Coconut Mango Sticky Rice',
         price: '₹425',
@@ -1011,7 +1315,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1488477181946-6428a0291777?w=600&q=80'
     },
     {
-        id: 100,
+        id: 130,
         category: 'desserts',
         name: 'Gold Leaf Élan Grand Sundae',
         price: '₹695',
@@ -1025,7 +1329,7 @@ const MENU_DATA = [
        5. DRINKS & BEVERAGES (25 Items)
        ========================================== */
     {
-        id: 101,
+        id: 131,
         category: 'drinks',
         name: 'Élan Passionfruit Gold Mocktail',
         price: '₹395',
@@ -1035,7 +1339,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=600&q=80'
     },
     {
-        id: 102,
+        id: 132,
         category: 'drinks',
         name: 'Royal Saffron Cardamom Lassi',
         price: '₹295',
@@ -1045,7 +1349,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1571006682858-a45722271578?w=600&q=80'
     },
     {
-        id: 103,
+        id: 133,
         category: 'drinks',
         name: 'Smoked Rosemary Old Fashioned',
         price: '₹595',
@@ -1055,7 +1359,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=600&q=80'
     },
     {
-        id: 104,
+        id: 134,
         category: 'drinks',
         name: 'Botanical Cucumber Mint Cooler',
         price: '₹345',
@@ -1065,7 +1369,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=600&q=80'
     },
     {
-        id: 105,
+        id: 135,
         category: 'drinks',
         name: 'Artisanal Cold Brew Espresso Tonic',
         price: '₹325',
@@ -1075,7 +1379,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1517701604599-bb29b565090c?w=600&q=80'
     },
     {
-        id: 106,
+        id: 136,
         category: 'drinks',
         name: 'French Sparkling Elderflower Fizz',
         price: '₹425',
@@ -1085,7 +1389,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=600&q=80'
     },
     {
-        id: 107,
+        id: 137,
         category: 'drinks',
         name: 'Kashmiri Saffron Kahwa Infusion',
         price: '₹285',
@@ -1095,7 +1399,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=600&q=80'
     },
     {
-        id: 108,
+        id: 138,
         category: 'drinks',
         name: 'Velvet Belgian Iced Mocha',
         price: '₹365',
@@ -1105,7 +1409,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=600&q=80'
     },
     {
-        id: 109,
+        id: 139,
         category: 'drinks',
         name: 'Rose Lychee Sparkling Spritzer',
         price: '₹375',
@@ -1115,7 +1419,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=600&q=80'
     },
     {
-        id: 110,
+        id: 140,
         category: 'drinks',
         name: 'Hibiscus Wild Berry Sangria',
         price: '₹395',
@@ -1125,7 +1429,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=600&q=80'
     },
     {
-        id: 111,
+        id: 141,
         category: 'drinks',
         name: 'Single Origin V60 Pour-Over',
         price: '₹295',
@@ -1135,7 +1439,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1517701604599-bb29b565090c?w=600&q=80'
     },
     {
-        id: 112,
+        id: 142,
         category: 'drinks',
         name: 'Mango Chilli Margarita Twist',
         price: '₹445',
@@ -1145,7 +1449,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=600&q=80'
     },
     {
-        id: 113,
+        id: 143,
         category: 'drinks',
         name: 'Spiced Kullad Masala Chai',
         price: '₹265',
@@ -1155,7 +1459,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=600&q=80'
     },
     {
-        id: 114,
+        id: 144,
         category: 'drinks',
         name: 'Blue Lagoon Citrus Freeze',
         price: '₹355',
@@ -1165,7 +1469,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=600&q=80'
     },
     {
-        id: 115,
+        id: 145,
         category: 'drinks',
         name: 'Virgin Tropical Pina Colada',
         price: '₹385',
@@ -1175,7 +1479,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=600&q=80'
     },
     {
-        id: 116,
+        id: 146,
         category: 'drinks',
         name: 'Matcha Cold Foam Cloud Latte',
         price: '₹345',
@@ -1185,7 +1489,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=600&q=80'
     },
     {
-        id: 117,
+        id: 147,
         category: 'drinks',
         name: 'Fresh Watermelon Basil Blast',
         price: '₹315',
@@ -1195,7 +1499,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=600&q=80'
     },
     {
-        id: 118,
+        id: 148,
         category: 'drinks',
         name: 'Sparkling Lavender Lemonade',
         price: '₹335',
@@ -1205,7 +1509,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=600&q=80'
     },
     {
-        id: 119,
+        id: 149,
         category: 'drinks',
         name: 'Gold Dust Flaked Cappuccino',
         price: '₹375',
@@ -1215,7 +1519,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1517701604599-bb29b565090c?w=600&q=80'
     },
     {
-        id: 120,
+        id: 150,
         category: 'drinks',
         name: 'Spiced Ginger Peach Iced Tea',
         price: '₹285',
@@ -1225,7 +1529,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=600&q=80'
     },
     {
-        id: 121,
+        id: 151,
         category: 'drinks',
         name: 'Pomegranate Lime Mojito Zero',
         price: '₹365',
@@ -1235,7 +1539,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=600&q=80'
     },
     {
-        id: 122,
+        id: 152,
         category: 'drinks',
         name: 'Belgian Hot Chocolate Pot',
         price: '₹395',
@@ -1245,7 +1549,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=600&q=80'
     },
     {
-        id: 123,
+        id: 153,
         category: 'drinks',
         name: 'Green Detox Fusion Juice',
         price: '₹325',
@@ -1255,7 +1559,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=600&q=80'
     },
     {
-        id: 124,
+        id: 154,
         category: 'drinks',
         name: 'Frozen Salted Caramel Macchiato',
         price: '₹355',
@@ -1265,7 +1569,7 @@ const MENU_DATA = [
         img: 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=600&q=80'
     },
     {
-        id: 125,
+        id: 155,
         category: 'drinks',
         name: 'Sparkling San Pellegrino (750ml)',
         price: '₹245',
