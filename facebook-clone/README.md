@@ -1,51 +1,42 @@
-# Facebook — Social Media Platform Clone
+# 📘 ConnectHub (Facebook Clone) — Feature-Complete Social Platform
 
-A modern, feature-packed, fully responsive **Facebook Web Platform Application Clone** built using **HTML5, CSS3, Vanilla JavaScript (ES6+), and Bootstrap 5**.
+> A full-featured, responsive **Facebook clone** built with HTML5, CSS3, Bootstrap 5, and JavaScript. Designed with Facebook's signature blue palette, multi-tab navigation, post feeds, reactions, comments, story rails, profile management, and interactive widgets.
+
+---
+
+## 📹 10-Second Navigation Walkthrough
+
+![ConnectHub Navigation Demo](demo-navigation.webp)
 
 ---
 
 ## 🌟 Key Features
 
-* **Facebook Branding & Sticky Navigation Bar:** Official Facebook logo icon, live search input, navigation tabs (*Home, Friends, Videos, Marketplace, Groups*) with active states & tooltips, notification counter, user profile dropdown, and mobile menu trigger.
-* **Three-Column Desktop Layout:** Left sidebar navigation, central feed, and right sidebar (Sponsored ads, Friend requests, Contacts).
-* **Stories Bar:** Interactive story cards with full-screen story viewer modal.
-* **Create Post Modal & Dynamic Feed:** Create posts with text and image attachments. New posts append to the feed instantly with smooth fade-in animations.
-* **Interactive Like System:** Dynamic like/unlike toggling with animated icon transforms and live count updates.
-* **Comment System:** Write, display, and delete comments in real time with relative timestamps.
-* **Share System:** Share options with Clipboard API link copying and Toast notifications.
-* **Friend Request Actions:** Accept or reject friend requests with instant feedback toasts.
-* **Floating Messenger Chat:** Interactive Messenger UI with automated reply simulation.
-* **Live Search Filtering:** Real-time search across users and groups.
-* **Profile View Modal:** Full profile view featuring cover photo, avatar, bio, stats, and about section.
-* **Dark Mode Toggle:** Smooth light/dark theme switching with `localStorage` preference persistence.
-* **Mobile First & Fully Responsive:** Bootstrap 5 grid layout and offcanvas drawer navigation.
+* **Authentic Facebook UI**: Top navigation bar with search, Home, Watch, Marketplace, Groups, and Gaming tabs.
+* **Interactive Main Feed**:
+  * Post Creation composer supporting text, photos, feeling/activity tagging, and live location.
+  * Multi-reaction system (Like, Love, Haha, Wow, Sad, Angry) with hover popups.
+  * Real-time comment threads and share counter updates.
+* **Stories Rail**: Horizontal story carousels featuring active user avatars and add-to-story buttons.
+* **Sidebar Widgets**: Left navigation panel for shortcuts and Right sidebar for active contacts and sponsored ads.
+* **Dark / Light Mode**: Seamless dark mode toggle with persistent local storage settings.
 
 ---
 
-## 📁 Directory Structure
+## 🛠️ Technology Stack
 
-```text
-facebook-clone/
-├── index.html
-├── css/
-│   └── style.css
-├── js/
-│   └── script.js
-├── images/
-│   ├── avatars/
-│   ├── posts/
-│   ├── stories/
-│   └── cover/
-└── README.md
-```
+* **Frontend**: HTML5, Vanilla JavaScript
+* **Styling**: Custom CSS3 & Bootstrap 5
+* **Icons**: Font Awesome 6
+* **Typography**: Segoe UI & Inter
 
 ---
 
-## 🚀 How to Run Locally
-
-Simply open `index.html` in any web browser, or launch a local dev server:
+## 🚀 Quick Start & Local Run
 
 ```bash
-cd facebook-clone
-npx serve . -p 3001
+# Serve locally
+cd Web-Development/facebook-clone
+npx serve . -p 3005
 ```
+Open your browser and visit: `http://localhost:3005`

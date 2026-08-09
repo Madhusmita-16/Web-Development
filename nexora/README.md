@@ -1,55 +1,45 @@
-# NEXORA — Next-Generation Modern SaaS Social Media Platform
+# 🚀 Nexora — 2026 Next-Gen Social Networking Platform
 
-NEXORA is a 2026-inspired, ultra-premium, fully responsive **SaaS Social Media Web Application** built using **HTML5, CSS3, Vanilla JavaScript (ES6+), and Bootstrap 5**.
-
----
-
-## 🎨 Visual Design & Motion System
-
-* **Glassmorphism & Backdrop Blur:** Translucent glass cards (`backdrop-filter: blur(24px)`), subtle shadows, soft rounded corners, and gradient glowing borders.
-* **Animated Background Blobs:** Floating, blurred radial gradient background circles creating a deep, dynamic visual atmosphere.
-* **Scroll Animations:** Built using **Vanilla JavaScript `IntersectionObserver`** for smooth feed post entrance reveals (`translateY(30px) -> translateY(0)`).
-* **Micro-interactions:** Particle burst animations on Likes, button scale/glow effects, story card zoom on hover, animated gradient story rings, and toast notifications.
-* **Dark & Light Mode:** Seamless theme switching with persistent `localStorage` preference state (`[data-theme="dark"]`).
+> A premium, modern, fully responsive **social media SaaS web application** featuring glassmorphism UI, real-time post creation, dark/light theme switching, live story reels, interactive reactions, and secure authentication workflows.
 
 ---
 
-## 📱 Features Overview
+## 📹 10-Second Navigation Walkthrough
 
-- **Floating Glass Navbar:** Search input, animated active indicators, notifications dropdown with unread badge count, Messenger toggle, Theme toggle, and Profile avatar.
-- **Glass Profile Sidebar:** Animated gradient avatar ring, user stats, and navigation menu links.
-- **Horizontal Stories Bar:** Scrollable story cards with glowing gradient rings and full-screen story viewer.
-- **Create Post Modal & Feed:** Post creation modal supporting text and image attachments. New posts animate smoothly onto the top of the feed.
-- **Interactive Feed Cards:** Like button particle effects, expandable comment section, and Share modal with Clipboard API copy link.
-- **Floating Messenger Panel:** Bottom-right glass messenger panel with live messaging and simulated automated replies.
-- **Mobile Bottom Navigation:** Fixed glass bottom bar (`< 768px`) for mobile devices with zero horizontal scroll.
+![Nexora Navigation Demo](demo-navigation.webp)
 
 ---
 
-## 📁 Project Structure
+## 🌟 Key Features
 
-```text
-nexora/
-├── index.html
-├── css/
-│   └── style.css
-├── js/
-│   └── script.js
-├── images/
-│   ├── avatars/
-│   ├── posts/
-│   ├── stories/
-│   └── cover/
-└── README.md
-```
+* **Futuristic Glassmorphism Aesthetic**: Vibrant dark/light mode engine, backdrop blur, translucent cards, smooth micro-interactions, and floating UI elements.
+* **Interactive Social Feed**:
+  * Rich post composer modal with image/video attachments and emoji picker.
+  * Like, comment, bookmark, and share interactions with live counters.
+  * Instagram-style horizontal story reels with ring highlights.
+* **Authentication & Form Validation**:
+  * Sign In and Sign Up modal forms with instant field validation.
+  * Password strength meters and secure reset triggers.
+* **User Profile & Activity Widgets**:
+  * Floating user profile cards, trending topics, suggested connections, and notification centers.
+* **Fully Responsive**: Mobile-first layout optimized across all screen sizes.
 
 ---
 
-## 🚀 How to Run Locally
+## 🛠️ Technology Stack
 
-Run a local development server in the `nexora` directory:
+* **Frontend**: HTML5, Vanilla JavaScript (ES6+)
+* **Styling**: Modern CSS3 (Glassmorphism, CSS Variables, Flexbox, Grid)
+* **Icons**: Font Awesome 6 & Lucide Icons
+* **Typography**: Google Fonts (*Outfit*, *Inter*)
+
+---
+
+## 🚀 Quick Start & Local Run
 
 ```bash
-cd nexora
-npx serve . -p 3002
+# Serve locally
+cd Web-Development/nexora
+npx serve . -p 3004
 ```
+Open your browser and visit: `http://localhost:3004`
