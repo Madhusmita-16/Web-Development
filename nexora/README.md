@@ -4,9 +4,14 @@
 
 ---
 
-## 📹 10-Second Navigation Walkthrough
+## 📸 Interface Preview & 10-Second Navigation Walkthrough
 
-![Nexora Navigation Demo](demo-navigation.webp)
+![Nexora Main Interface](preview.png)
+
+> [!NOTE]
+> Below is the full 10-second interactive navigation recording of the Nexora web application:
+
+![Nexora Navigation Walkthrough](demo-navigation.webp)
 
 ---
 

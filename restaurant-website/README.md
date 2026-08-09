@@ -4,9 +4,14 @@
 
 ---
 
-## 📹 10-Second Navigation Walkthrough
+## 📸 Interface Preview & 10-Second Navigation Walkthrough
 
-![Maison Élan Navigation Demo](demo-navigation.webp)
+![Maison Élan Main Interface](preview.png)
+
+> [!NOTE]
+> Below is the full 10-second interactive navigation recording of the Maison Élan restaurant web application:
+
+![Maison Élan Navigation Walkthrough](demo-navigation.webp)
 
 ---
 
@@ -43,11 +48,8 @@
 ## 🚀 Quick Start & Local Run
 
 ```bash
-# Clone the repository
-git clone https://github.com/Madhusmita-16/Web-Development.git
-cd Web-Development/restaurant-website
-
 # Serve locally
+cd Web-Development/restaurant-website
 npx serve . -p 3003
 ```
 Open your browser and visit: `http://localhost:3003`
